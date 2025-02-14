@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# The Calculator - Movie Industry Tycoon
+
+## About the Project
+
+"The Calculator" is an interactive web tool designed to assist players of "The Executive - Movie Industry Tycoon" in creating successful movies. This calculator helps users determine the best combination of genres, themes, and age ratings to maximize the box office potential of their virtual film projects.
+
+**Note:** This tool has no official affiliation with the game "The Executive - Movie Industry Tycoon" and is a fan-made project created for the community. Also, please note that I am not a professional developer, and this project is purely a hobby.
+
+## Features
+
+- Primary and secondary genre selection
+- Theme choice
+- Age rating definition
+- Affinity calculation based on user choices
+- Support for multiple languages
+- Dark/light mode
+
+## Technologies Used
+
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+- Perplexity AI
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Node.js (version 14 or higher)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository
+```
+git clone https://github.com/seu-usuario/the-calculator-movie-industry-tycoon.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies
+```
+cd the-calculator-movie-industry-tycoon
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Run the project in development mode
+```
+npm run dev
+``` 
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Access `http://localhost:3000` in your browser
 
-## Learn More
+## Usage
 
-To learn more about Next.js, take a look at the following resources:
+1. Select the primary genre of your movie
+2. (Optional) Choose a secondary genre
+3. Select the movie theme
+4. Choose the desired age rating
+5. The calculator will show the calculated affinity for your combination
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Contributing
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Contributions are welcome! To contribute:
 
-## Deploy on Vercel
+1. Fork the project
+2. Create a branch for your feature (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Distributed under the MIT License. See `LICENSE` for more information.
+
+## Contact
+
+Victor Franco - [in/oovictorfranco](https://www.linkedin.com/in/oovictorfranco/)
+
+Project Link: [https://github.com/your-username/the-calculator-movie-industry-tycoon](https://github.com/your-username/the-calculator-movie-industry-tycoon)
+
+## Acknowledgments
+
+- [The Executive - Movie Industry Tycoon](https://store.steampowered.com/app/2315430/The_Executive__Movie_Industry_Tycoon/)

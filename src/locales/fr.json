@@ -1,0 +1,23 @@
+{
+  "title": "Le Calculateur",
+  "subtitle": "Découvrez la combinaison parfaite pour votre prochain succès cinématographique!",
+  "genre1": "Genre 1",
+  "genre2": "Genre 2",
+  "optinSelect": "(Optionnel)",
+  "theme": "Thème",
+  "rating": "Classification par âge",
+  "result": "Résultat :",
+  "noResult": "Remplissez tous les champs obligatoires.",
+  "bad": "Mauvais 🚫",
+  "medium": "Moyen ⚠️",
+  "good": "Bon 👍",
+  "great": "Excellent 🎉",
+  "language": "Langue",
+  "select": "Sélectionnez...",
+  "lightModeTooltip": "Allumer la lumière",
+  "darkModeTooltip": "Éteindre la lumière",
+  "gameTitle": "The Executive - Movie Industry Tycoon",
+  "gameTitleAriaLabel": "The Executive - Movie Industry Tycoon (s'ouvre dans un nouvel onglet)",
+  "disclaimerPrefix": "Cette page n'a aucun lien avec le jeu et vise uniquement à aider les utilisateurs dans la configuration initiale du film dans",
+  "disclaimerSuffix": ". Les calculs sont basés sur l'exploration des fichiers du jeu et peuvent ne pas être précis à 100%."
+}

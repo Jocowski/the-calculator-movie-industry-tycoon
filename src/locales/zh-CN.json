@@ -1,0 +1,23 @@
+{
+  "title": "计算器",
+  "subtitle": "发现你下一部电影大片的完美组合！",
+  "genre1": "类型 1",
+  "genre2": "类型 2",
+  "optinSelect": "(可选)",
+  "theme": "主题",
+  "rating": "年龄评级",
+  "result": "结果：",
+  "noResult": "请填写所有必填字段。",
+  "bad": "差 🚫",
+  "medium": "中 ⚠️",
+  "good": "好 👍",
+  "great": "优秀 🎉",
+  "language": "语言",
+  "select": "请选择",
+  "lightModeTooltip": "开灯",
+  "darkModeTooltip": "关灯",
+  "gameTitle": "The Executive - Movie Industry Tycoon",
+  "gameTitleAriaLabel": "The Executive - Movie Industry Tycoon（在新标签页中打开）",
+  "disclaimerPrefix": "本页面与游戏无任何关联，仅旨在帮助用户在",
+  "disclaimerSuffix": "中进行初始电影配置。计算基于游戏文件分析，可能并非100%准确。"
+}

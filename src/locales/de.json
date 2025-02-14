@@ -1,0 +1,23 @@
+{
+  "title": "Der Rechner",
+  "subtitle": "Entdecken Sie die perfekte Mischung für Ihren nächsten Kinohit!",
+  "genre1": "Genre 1",
+  "genre2": "Genre 2",
+  "optinSelect": "(Optional)",
+  "theme": "Thema",
+  "rating": "Altersfreigabe",
+  "result": "Ergebnis:",
+  "noResult": "Füllen Sie alle Pflichtfelder aus.",
+  "bad": "Schlecht 🚫",
+  "medium": "Mittel ⚠️",
+  "good": "Gut 👍",
+  "great": "Großartig 🎉",
+  "language": "Sprache",
+  "select": "Auswählen...",
+  "lightModeTooltip": "Licht einschalten",
+  "darkModeTooltip": "Licht ausschalten",
+  "gameTitle": "The Executive - Movie Industry Tycoon",
+  "gameTitleAriaLabel": "The Executive - Movie Industry Tycoon (öffnet in einem neuen Tab)",
+  "disclaimerPrefix": "Diese Seite steht in keiner Verbindung zum Spiel und dient lediglich dazu, Benutzern bei der ersten Filmkonfiguration in",
+  "disclaimerSuffix": "zu helfen. Die Berechnungen basieren auf der Analyse von Spieldateien und sind möglicherweise nicht 100% genau."
+}

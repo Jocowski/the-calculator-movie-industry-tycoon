@@ -1,0 +1,23 @@
+{
+  "title": "The Calculator",
+  "subtitle": "Discover the perfect blend for your next box office hit!",
+  "genre1": "Genre 1",
+  "genre2": "Genre 2",
+  "optinSelect": "(Optional)",
+  "theme": "Theme",
+  "rating": "Age Rating",
+  "result": "Result:",
+  "noResult": "Fill in all required fields.",
+  "bad": "Bad 🚫",
+  "medium": "Medium ⚠️",
+  "good": "Good 👍",
+  "great": "Great 🎉",
+  "language": "Language",
+  "select": "Select",
+  "lightModeTooltip": "Turn on the light",
+  "darkModeTooltip": "Turn off the light",
+  "gameTitle": "The Executive - Movie Industry Tycoon",
+  "gameTitleAriaLabel": "The Executive - Movie Industry Tycoon (opens in a new tab)",
+  "disclaimerPrefix": "This page has no affiliation with the game and is intended solely to assist users in the initial film configuration within",
+  "disclaimerSuffix": ". Calculations are based on game file exploration and may not be 100% accurate."
+}

@@ -1,0 +1,23 @@
+{
+  "title": "計算機",
+  "subtitle": "發現你下一部電影大片的完美組合！",
+  "genre1": "類型 1",
+  "genre2": "類型 2",
+  "optinSelect": "(可選)",
+  "theme": "主題",
+  "rating": "年齡評級",
+  "result": "結果：",
+  "noResult": "請填寫所有必填字段。",
+  "bad": "差 🚫",
+  "medium": "中 ⚠️",
+  "good": "好 👍",
+  "great": "優秀 🎉",
+  "language": "語言",
+  "select": "請選擇",
+  "lightModeTooltip": "開燈",
+  "darkModeTooltip": "關燈",
+  "gameTitle": "The Executive - Movie Industry Tycoon",
+  "gameTitleAriaLabel": "The Executive - Movie Industry Tycoon（在新分頁中開啟）",
+  "disclaimerPrefix": "本頁面與遊戲無任何關聯，僅旨在幫助用戶在",
+  "disclaimerSuffix": "中進行初始電影配置。計算基於遊戲文件分析，可能並非100%準確。"
+}

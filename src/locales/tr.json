@@ -1,0 +1,23 @@
+{
+  "title": "Hesap Makinesi",
+  "subtitle": "Bir sonraki gişe rekorunuz için mükemmel kombinasyonu keşfedin!",
+  "genre1": "Tür 1",
+  "genre2": "Tür 2",
+  "optinSelect": "(İsteğe Bağlı)",
+  "theme": "Tema",
+  "rating": "Yaş Derecelendirmesi",
+  "result": "Sonuç:",
+  "noResult": "Tüm zorunlu alanları doldurun.",
+  "bad": "Kötü 🚫",
+  "medium": "Orta ⚠️",
+  "good": "İyi 👍",
+  "great": "Harika 🎉",
+  "language": "Dil",
+  "select": "Seçiniz...",
+  "lightModeTooltip": "Işığı aç",
+  "darkModeTooltip": "Işığı kapat",
+  "gameTitle": "The Executive - Movie Industry Tycoon",
+  "gameTitleAriaLabel": "The Executive - Movie Industry Tycoon (yeni sekmede açılır)",
+  "disclaimerPrefix": "Bu sayfanın oyunla hiçbir bağlantısı yoktur ve yalnızca",
+  "disclaimerSuffix": "içindeki ilk film yapılandırmasında kullanıcılara yardımcı olmayı amaçlamaktadır. Hesaplamalar oyun dosyası analizine dayanmaktadır ve %100 doğru olmayabilir."
+}
