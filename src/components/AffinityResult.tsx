@@ -13,12 +13,12 @@ const AffinityResult: React.FC<AffinityResultProps> = ({ result, loading }) => {
 
   // Função para determinar o rótulo com base na pontuação
   const getAffinityLabel = (score: number | null): string => {
-    if (score === null) return t.noResult; // Quando não há resultado
-    if (score < 0.5) return t.bad; // Resultado ruim
-    if (score < 1.5) return t.medium; // Resultado médio
-    if (score < 2.5) return t.good; // Resultado bom
-    if (score >= 2.5) return t.great; // Resultado ótimo
-    return t.noResult; // Valor padrão
+    if (score === null) return t.noResult;
+    if (score < 0.5) return t.bad;
+    if (score < 1.5) return t.medium;
+    if (score < 2.5) return t.good;
+    if (score >= 2.5) return t.great;
+    return t.noResult;
   };
 
   return (

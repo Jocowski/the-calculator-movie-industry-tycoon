@@ -14,12 +14,12 @@
   "great": "优秀 🎉",
   "language": "语言",
   "select": "请选择",
+  "score": "分数",
   "lightModeTooltip": "开灯",
   "darkModeTooltip": "关灯",
   "gameTitle": "The Executive - Movie Industry Tycoon",
   "gameTitleAriaLabel": "The Executive - Movie Industry Tycoon（在新标签页中打开）",
   "disclaimerPrefix": "本页面与游戏无任何关联，仅旨在帮助用户在",
   "disclaimerSuffix": "中进行初始电影配置。计算基于游戏文件分析，可能并非100%准确。",
-  "viewOnGithub": "在GitHub上查看项目",
-  "score": "分数"
+  "viewOnGithub": "在GitHub上查看项目"
 }

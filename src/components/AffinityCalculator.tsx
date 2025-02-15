@@ -94,21 +94,6 @@ const AffinityCalculator: React.FC = () => {
         totalScore * affinities.affinities["script-affinity-mod-mult"] +
         affinities.affinities["script-affinity-mod-offset"];
 
-      // Logs para depuração:
-      console.log("DEBUG: Affinity Calculation");
-      console.log("---------------------------");
-      console.log(`Genre 1: ${genre1}, Genre 2: ${genre2}`);
-      console.log(`Theme: ${theme}, Rating: ${rating}`);
-      console.log(`Genre 1 Index: ${genre1Index}`);
-      console.log(`Genre 2 Index: ${genre2Index}`);
-      console.log(`Theme Score: ${themeScore}`);
-      console.log(`Rating Score: ${ratingScore}`);
-      console.log(`Genre Score: ${genreScore}`);
-      console.log(`Divisor: ${divisor}`);
-      console.log(`Total Score: ${totalScore}`);
-      console.log(`Final Score: ${finalScore}`);
-      console.log("---------------------------");
-
       setTimeout(() => {
         setResult(finalScore);
         setLoading(false);
