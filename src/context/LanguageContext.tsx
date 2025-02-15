@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState, ReactNode } from "react";
+import React, { createContext, useContext, useState, ReactNode, useEffect } from "react";
 import en from "@/locales/en.json";
 import pt from "@/locales/pt.json";
 import fr from "@/locales/fr.json";
@@ -36,11 +36,21 @@ type LanguageContextType = {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  const [locale, setLocale] = useState<string>("en"); // Idioma padrão
-  const translations = translationsMap[locale as keyof typeof translationsMap];
+  const [locale, setLocaleState] = useState<string>("en");
 
-  // Verifica se o idioma está disponível, caso contrário, retorna para o "en"
+  useEffect(() => {
+    // Obtém o idioma do localStorage ou usa 'en' como padrão
+    const savedLocale = localStorage.getItem("locale") || "en";
+    setLocaleState(savedLocale);
+  }, []);
+
+  const translations = translationsMap[locale as keyof typeof translationsMap];
   const safeTranslations = translations || translationsMap["en"];
+
+  const setLocale = (newLocale: string) => {
+    setLocaleState(newLocale);
+    localStorage.setItem("locale", newLocale); // Salva o novo idioma no localStorage
+  };
 
   return (
     <LanguageContext.Provider value={{ locale, setLocale, translations: safeTranslations }}>

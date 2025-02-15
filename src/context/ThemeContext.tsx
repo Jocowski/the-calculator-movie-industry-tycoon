@@ -10,19 +10,30 @@ type ThemeContextType = {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-  const [theme, setTheme] = useState<string>("light"); // Tema inicial: claro
+  const [theme, setTheme] = useState<string>("light");
 
-  // Alternância entre os dois temas
-  const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
-  };
+  useEffect(() => {
+    // Obtém o tema do localStorage ou usa 'light' como padrão
+    const savedTheme = localStorage.getItem("theme") || "light";
+    setTheme(savedTheme);
+  }, []);
 
-  // Aplica tema ao <html> sempre que o estado mudar
+  // Aplica tema sempre que o estado mudar
   useEffect(() => {
     const root = window.document.documentElement;
     root.classList.remove("light", "dark");
     root.classList.add(theme);
+
+    localStorage.setItem("theme", theme); // Salva o novo tema no localStorage
   }, [theme]);
+
+  // Alternância entre os dois temas
+  const toggleTheme = () => {
+    setTheme((prevTheme) => {
+      const newTheme = prevTheme === "light" ? "dark" : "light";
+      return newTheme;
+    });
+  };
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
