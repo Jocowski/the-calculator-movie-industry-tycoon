@@ -19,5 +19,6 @@
   "gameTitle": "The Executive - Movie Industry Tycoon",
   "gameTitleAriaLabel": "The Executive - Movie Industry Tycoon (abre em nova aba)",
   "disclaimerPrefix": "Esta página não tem nenhuma ligação com o jogo e visa apenas auxiliar os usuários na configuração inicial do filme dentro de",
-  "disclaimerSuffix": ". Os cálculos são baseados na exploração de arquivos do jogo e podem não ser 100% precisos."
+  "disclaimerSuffix": ". Os cálculos são baseados na exploração de arquivos do jogo e podem não ser 100% precisos.",
+  "viewOnGithub": "Ver projeto no GitHub"
 }
