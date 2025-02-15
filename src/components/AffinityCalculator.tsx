@@ -13,19 +13,21 @@ interface AffinitiesData {
     "script-affinity-mod-offset": number;
     "genre-vs-genre": {
       header: string[];
-      [genre: string]: number[];
+      items: {
+        [genre: string]: number[];
+      };
     };
     "genre-vs-rating": {
       header: string[];
-      [rating: string]: number[];
-    };
-    "genre-vs-planning": {
-      header: string[];
-      [planningAspect: string]: number[];
+      items: {
+        [rating: string]: number[];
+      };
     };
     "genre-vs-theme": {
       header: string[];
-      [theme: string]: number[];
+      items: {
+        [theme: string]: number[];
+      };
     };
   };
 }
@@ -37,66 +39,58 @@ const AffinityCalculator: React.FC = () => {
   const [ratings, setRatings] = useState<string[]>([]);
   const [affinities, setAffinities] = useState<AffinitiesData | null>(null);
 
-  const [genre1, setGenre1] = useState<string>("");
-  const [genre2, setGenre2] = useState<string>("");
-  const [theme, setTheme] = useState<string>("");
-  const [rating, setRating] = useState<string>("");
+  const [genre1, setGenre1] = useState("");
+  const [genre2, setGenre2] = useState("");
+  const [theme, setTheme] = useState("");
+  const [rating, setRating] = useState("");
   const [result, setResult] = useState<number | null>(null);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch("/api/affinities");
         const jsonData: AffinitiesData = await response.json();
-
         setGenres(jsonData.affinities["genre-vs-genre"].header || []);
-        setThemes(
-          Object.keys(jsonData.affinities["genre-vs-theme"] || {}).filter(
-            (key) => key !== "header"
-          )
-        );
-        setRatings(
-          Object.keys(jsonData.affinities["genre-vs-rating"] || {}).filter(
-            (rating) => rating !== "header"
-          )
-        );
+        setThemes(Object.keys(jsonData.affinities["genre-vs-theme"].items || {}));
+        setRatings(Object.keys(jsonData.affinities["genre-vs-rating"].items || {}));
         setAffinities(jsonData);
       } catch (error) {
-        console.error("Erro ao carregar os dados da API:", error);
+        console.error("Erro ao carregar dados:", error);
       }
     };
-
     fetchData();
   }, []);
 
   const calculateAffinity = useCallback(() => {
     if (genre1 && theme && rating && affinities) {
       setLoading(true);
-
       const genre1Index = genres.indexOf(genre1);
       const genre2Index = genre2 ? genres.indexOf(genre2) : -1;
 
-      const themeScore = affinities.affinities["genre-vs-theme"]?.[theme]?.[genre1Index] || 0;
-      const ratingScore = affinities.affinities["genre-vs-rating"]?.[rating]?.[genre1Index] || 0;
-
+      const themeScore = affinities.affinities["genre-vs-theme"].items[theme]?.[genre1Index] || 0;
+      const ratingScore = affinities.affinities["genre-vs-rating"].items[rating]?.[genre1Index] || 0;
       let genreScore = 0;
       if (genre2Index >= 0) {
-        genreScore = affinities.affinities["genre-vs-genre"]?.[genre1]?.[genre2Index] || 0;
+        genreScore = affinities.affinities["genre-vs-genre"].items[genre1]?.[genre2Index] || 0;
       }
 
-      const divisor = genre2 ? 3 : 2;
-      const totalScore = (genreScore + themeScore + ratingScore) / divisor;
-      const finalScore = (totalScore * affinities.affinities["script-affinity-mod-mult"]) + affinities.affinities["script-affinity-mod-offset"];
+      const divisor = genre2 ? 2.5 : 2; // Reduz o impacto do segundo gênero
+      const totalScore = ((genreScore * (genre2 ? 1.5 : 1)) + themeScore + ratingScore) / divisor;
+      const finalScore = (totalScore * affinities.affinities["script-affinity-mod-mult"]) +
+        affinities.affinities["script-affinity-mod-offset"];
 
-      console.log("genreScore:", genreScore);
-      console.log("themeScore:", themeScore);
-      console.log("ratingScore:", ratingScore);
-      console.log("divisor:", divisor);
-      console.log("totalScore:", totalScore);
+      console.log("Genre1 Index:", genre1Index);
+      console.log("Genre2 Index:", genre2Index);
+      console.log("Theme Score:", themeScore);
+      console.log("Rating Score:", ratingScore);
+      console.log("Genre Score:", genreScore);
+      console.log("Divisor:", divisor);
+      console.log("Total Score:", totalScore);
+      console.log("Final Score:", finalScore);
 
       setTimeout(() => {
-        setResult(totalScore);
+        setResult(finalScore);
         setLoading(false);
       }, 800);
     } else {
@@ -108,47 +102,25 @@ const AffinityCalculator: React.FC = () => {
     calculateAffinity();
   }, [calculateAffinity]);
 
-  const handleGenre1Change = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const newGenre1 = e.target.value;
-    setGenre1(newGenre1);
-    if (newGenre1 === genre2) {
-      setGenre2("");
-    }
-  };
-
-  const handleGenre2Change = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const newGenre2 = e.target.value;
-    setGenre2(newGenre2);
-  };
-
-  const getGenre1Options = () => genres;
-
-  const getGenre2Options = () => {
-    return ["", ...genres.filter(genre => genre !== genre1)];
-  };
-
   return (
     <div className="affinity-form-container">
       <p className="text-l text-center mb-4 dark:text-gray-100">{t.subtitle}</p>
-
       <SelectInput
         label={t.genre1}
         name="genre1"
-        options={getGenre1Options()}
+        options={genres}
         value={genre1}
-        onChange={handleGenre1Change}
+        onChange={(e) => setGenre1(e.target.value)}
         required
       />
-
       <SelectInput
         label={t.genre2}
         name="genre2"
-        options={getGenre2Options()}
+        options={["", ...genres.filter((g) => g !== genre1)]}
         value={genre2}
-        onChange={handleGenre2Change}
+        onChange={(e) => setGenre2(e.target.value)}
         isOptional={true}
       />
-
       <SelectInput
         label={t.theme}
         name="theme"
@@ -157,24 +129,21 @@ const AffinityCalculator: React.FC = () => {
         onChange={(e) => setTheme(e.target.value)}
         required
       />
-
       <div className="my-4">
         <label className="block text-sm font-medium mb-2 dark:text-gray-300">{t.rating}</label>
         <AgeRatingRadio
-          options={ratings.map(rating => ({
+          options={ratings.map((rating) => ({
             value: rating,
             label: rating.toUpperCase(),
-            color: rating === "pg" ? "bg-green-500" :
-              rating === "pg-13" ? "bg-yellow-500" : "bg-red-500"
+            color: rating === "pg" ? "bg-green-500" : rating === "pg-13" ? "bg-yellow-500" : "bg-red-500",
           }))}
           selectedValue={rating}
           onChange={setRating}
         />
       </div>
-
       <AffinityResult result={result} loading={loading} />
     </div>
   );
 };
 
-export default AffinityCalculator;
+export default AffinityCalculator
