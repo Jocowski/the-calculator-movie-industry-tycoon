@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import Link from 'next/link';
 import { useLanguage } from '@/context/LanguageContext';
 
 const Disclaimer: React.FC = () => {
@@ -19,7 +20,11 @@ const Disclaimer: React.FC = () => {
         >
           {t.gameTitle}
         </a>{' '}
-        {t.disclaimerSuffix}
+        {t.disclaimerSuffix} Read <Link
+          href="/privacy-policy"
+          aria-label="Policy privacy"
+          className="text-blue-500 hover:underline"
+        > Policy Privacy</Link>
       </p>
     </footer>
   );
