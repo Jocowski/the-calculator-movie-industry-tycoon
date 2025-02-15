@@ -29,7 +29,6 @@ const AffinityResult: React.FC<AffinityResultProps> = ({ result, loading }) => {
           <div className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full text-blue-500">
             {/* Spinner de carregamento */}
           </div>
-          <p className="text-gray-500 dark:text-gray-300 mt-2">{t.loading}</p>
         </div>
       ) : (
         // Exibição do Resultado
