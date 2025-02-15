@@ -7,6 +7,8 @@ import LanguageSelector from '@/components/LanguageSelector';
 import ThemeToggle from '@/components/ThemeToggle';
 import Disclaimer from '@/components/Disclaimer';
 import GitHubLink from '@/components/GitHubLink';
+import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const inter = Inter({ subsets: ['latin'] });
 
