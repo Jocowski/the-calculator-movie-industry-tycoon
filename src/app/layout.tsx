@@ -13,9 +13,20 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://the-calculator-movie-industry-tycoon.vercel.app/'),
   title: 'The Calculator - Movie Industry Tycoon',
-  description: 'Calculate affinity in the movie industry.',
-};
+  description: 'Calculate movie affinities for The Executive: Movie Industry Tycoon',
+  openGraph: {
+    images: [
+      {
+        url: '/og-image.webp',
+        width: 650,
+        height: 365,
+        alt: 'The Calculator - Movie Industry Tycoon',
+      },
+    ],
+  },
+}
 
 export default function RootLayout({
   children,
