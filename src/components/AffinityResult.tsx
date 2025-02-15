@@ -11,16 +11,14 @@ type AffinityResultProps = {
 const AffinityResult: React.FC<AffinityResultProps> = ({ result, loading }) => {
   const { translations: t } = useLanguage();
 
-  // Função para determinar o rótulo com base na pontuação
+  // Função atualizada para determinar o rótulo com base na pontuação
   const getAffinityLabel = (score: number | null) => {
     if (score === null) return t.noResult;
-    switch (score) {
-      case 0: return t.bad;
-      case 1: return t.medium;
-      case 2: return t.good;
-      case 3: return t.great;
-      default: return t.noResult;
-    }
+    if (score < 0.5) return t.bad;
+    if (score < 1.5) return t.medium;
+    if (score < 2.5) return t.good;
+    if (score >= 2.5) return t.great;
+    return t.noResult;
   };
 
   return (
@@ -34,7 +32,9 @@ const AffinityResult: React.FC<AffinityResultProps> = ({ result, loading }) => {
       ) : (
         <>
           <h3 className="text-lg font-semibold mb-2 dark:text-gray-200">{t.result}</h3>
-          <p className="text-xl dark:text-gray-300">{getAffinityLabel(result)}</p>
+          <p className="text-xl dark:text-gray-300">
+            {getAffinityLabel(result)}
+          </p>
         </>
       )}
     </div>
