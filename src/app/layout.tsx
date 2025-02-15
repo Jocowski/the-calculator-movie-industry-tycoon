@@ -9,6 +9,7 @@ import Disclaimer from '@/components/Disclaimer';
 import GitHubLink from '@/components/GitHubLink';
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import Script from 'next/script';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -26,10 +27,9 @@ export const metadata: Metadata = {
       },
     ],
   },
-
   other: {
     "google-adsense-account": "ca-pub-4335073140276405"
-  },
+  }
 };
 
 export default function RootLayout({
@@ -41,6 +41,11 @@ export default function RootLayout({
     <html lang="en" className="h-full">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <Script
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4335073140276405"
+          strategy="afterInteractive"
+          crossOrigin="anonymous"
+        />
       </head>
       <body className={`${inter.className} flex flex-col h-full`}>
         <ThemeProvider>
