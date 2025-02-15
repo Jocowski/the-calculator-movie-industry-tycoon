@@ -6,12 +6,36 @@ import AffinityResult from "@/components/AffinityResult";
 import AgeRatingRadio from "@/components/AgeRatingRadio";
 import { useLanguage } from "@/context/LanguageContext";
 
+interface AffinitiesData {
+  affinities: {
+    "loc-prefix": string;
+    "script-affinity-mod-mult": number;
+    "script-affinity-mod-offset": number;
+    "genre-vs-genre": {
+      header: string[];
+      [genre: string]: number[];
+    };
+    "genre-vs-rating": {
+      header: string[];
+      [rating: string]: number[];
+    };
+    "genre-vs-planning": {
+      header: string[];
+      [planningAspect: string]: number[];
+    };
+    "genre-vs-theme": {
+      header: string[];
+      [theme: string]: number[];
+    };
+  };
+}
+
 const AffinityCalculator: React.FC = () => {
   const { translations: t } = useLanguage();
   const [genres, setGenres] = useState<string[]>([]);
   const [themes, setThemes] = useState<string[]>([]);
   const [ratings, setRatings] = useState<string[]>([]);
-  const [affinities, setAffinities] = useState<any>(null);
+  const [affinities, setAffinities] = useState<AffinitiesData | null>(null);
 
   const [genre1, setGenre1] = useState<string>("");
   const [genre2, setGenre2] = useState<string>("");
@@ -23,23 +47,23 @@ const AffinityCalculator: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/Affinities.json");
-        const jsonData = await response.json();
+        const response = await fetch("/api/affinities");
+        const jsonData: AffinitiesData = await response.json();
 
-        setGenres(jsonData["genre-vs-genre"]?.header || []);
+        setGenres(jsonData.affinities["genre-vs-genre"].header || []);
         setThemes(
-          Object.keys(jsonData["genre-vs-theme"] || {}).filter(
+          Object.keys(jsonData.affinities["genre-vs-theme"] || {}).filter(
             (key) => key !== "header"
           )
         );
         setRatings(
-          Object.keys(jsonData["genre-vs-rating"] || {}).filter(
+          Object.keys(jsonData.affinities["genre-vs-rating"] || {}).filter(
             (rating) => rating !== "header"
           )
         );
         setAffinities(jsonData);
       } catch (error) {
-        console.error("Erro ao carregar o JSON:", error);
+        console.error("Erro ao carregar os dados da API:", error);
       }
     };
 
@@ -53,16 +77,17 @@ const AffinityCalculator: React.FC = () => {
       const genre1Index = genres.indexOf(genre1);
       const genre2Index = genre2 ? genres.indexOf(genre2) : -1;
 
-      const themeScore = affinities["genre-vs-theme"]?.[theme]?.[genre1Index] || 0;
-      const ratingScore = affinities["genre-vs-rating"]?.[rating]?.[genre1Index] || 0;
+      const themeScore = affinities.affinities["genre-vs-theme"]?.[theme]?.[genre1Index] || 0;
+      const ratingScore = affinities.affinities["genre-vs-rating"]?.[rating]?.[genre1Index] || 0;
 
       let genreScore = 0;
       if (genre2Index >= 0) {
-        genreScore = affinities["genre-vs-genre"]?.data?.[genre1Index]?.[genre2Index] || 0;
+        genreScore = affinities.affinities["genre-vs-genre"]?.[genre1]?.[genre2Index] || 0;
       }
 
       const divisor = genre2 ? 3 : 2;
       const totalScore = (genreScore + themeScore + ratingScore) / divisor;
+      const finalScore = (totalScore * affinities.affinities["script-affinity-mod-mult"]) + affinities.affinities["script-affinity-mod-offset"];
 
       console.log("genreScore:", genreScore);
       console.log("themeScore:", themeScore);
