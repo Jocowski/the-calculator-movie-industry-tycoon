@@ -37,6 +37,8 @@ export default function RootLayout({
             </header>
             <main className="flex-grow flex items-center justify-center px-4">
               {children}
+              <Analytics />
+              <SpeedInsights />
             </main>
             <Disclaimer />
           </LanguageProvider>
