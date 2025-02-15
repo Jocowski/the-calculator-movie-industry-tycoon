@@ -11,31 +11,36 @@ type AffinityResultProps = {
 const AffinityResult: React.FC<AffinityResultProps> = ({ result, loading }) => {
   const { translations: t } = useLanguage();
 
-  // Função atualizada para determinar o rótulo com base na pontuação
-  const getAffinityLabel = (score: number | null) => {
-    if (score === null) return t.noResult;
-    if (score < 0.5) return t.bad;
-    if (score < 1.5) return t.medium;
-    if (score < 2.5) return t.good;
-    if (score >= 2.5) return t.great;
-    return t.noResult;
+  // Função para determinar o rótulo com base na pontuação
+  const getAffinityLabel = (score: number | null): string => {
+    if (score === null) return t.noResult; // Quando não há resultado
+    if (score < 0.5) return t.bad; // Resultado ruim
+    if (score < 1.5) return t.medium; // Resultado médio
+    if (score < 2.5) return t.good; // Resultado bom
+    if (score >= 2.5) return t.great; // Resultado ótimo
+    return t.noResult; // Valor padrão
   };
 
   return (
-    <div className="mt-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-md shadow-md transition-all duration-300"
-      style={{ minHeight: "80px" }}>
+    <div className="border rounded-md p-4 mt-4 text-center bg-gray-100 dark:bg-gray-800">
       {loading ? (
-        <div className="flex justify-center items-center h-full">
-          {/* Spinner de carregamento */}
-          <div className="w-6 h-6 border-4 border-blue-500 border-t-transparent rounded-full animate-spin" />
+        // Componente de Loading
+        <div className="flex flex-col items-center">
+          <div className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full text-blue-500">
+            {/* Spinner de carregamento */}
+          </div>
+          <p className="text-gray-500 dark:text-gray-300 mt-2">{t.loading}</p>
         </div>
       ) : (
-        <>
-          <h3 className="text-lg font-semibold mb-2 dark:text-gray-200">{t.result}</h3>
-          <p className="text-xl dark:text-gray-300">
-            {getAffinityLabel(result)}
+        // Exibição do Resultado
+        <div className="result-content">
+          <p className="text-l">{t.result}</p>
+          <h2 className="text-xl font-bold mt-2">{getAffinityLabel(result)}</h2>
+          {/* Exibe o valor numérico do resultado para depuração, se necessário */}
+          <p className="text-gray-500 dark:text-gray-400 mt-2">
+            {t.score}: {result?.toFixed(2) || "-.--"}
           </p>
-        </>
+        </div>
       )}
     </div>
   );

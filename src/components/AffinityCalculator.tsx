@@ -39,10 +39,10 @@ const AffinityCalculator: React.FC = () => {
   const [ratings, setRatings] = useState<string[]>([]);
   const [affinities, setAffinities] = useState<AffinitiesData | null>(null);
 
-  const [genre1, setGenre1] = useState("");
-  const [genre2, setGenre2] = useState("");
-  const [theme, setTheme] = useState("");
-  const [rating, setRating] = useState("");
+  const [genre1, setGenre1] = useState<string>("");
+  const [genre2, setGenre2] = useState<string>("");
+  const [theme, setTheme] = useState<string>("");
+  const [rating, setRating] = useState<string>("");
   const [result, setResult] = useState<number | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -65,20 +65,49 @@ const AffinityCalculator: React.FC = () => {
   const calculateAffinity = useCallback(() => {
     if (genre1 && theme && rating && affinities) {
       setLoading(true);
+
       const genre1Index = genres.indexOf(genre1);
       const genre2Index = genre2 ? genres.indexOf(genre2) : -1;
 
-      const themeScore = affinities.affinities["genre-vs-theme"].items[theme]?.[genre1Index] || 0;
-      const ratingScore = affinities.affinities["genre-vs-rating"].items[rating]?.[genre1Index] || 0;
+      // Cálculo dos scores
+      const themeScore =
+        ((affinities.affinities["genre-vs-theme"].items[theme]?.[genre1Index] || 0) +
+          (genre2Index >= 0 ? affinities.affinities["genre-vs-theme"].items[theme]?.[genre2Index] || 0 : 0)) /
+        (genre2 ? 2 : 1);
+
+      const ratingScore =
+        ((affinities.affinities["genre-vs-rating"].items[rating]?.[genre1Index] || 0) +
+          (genre2Index >= 0 ? affinities.affinities["genre-vs-rating"].items[rating]?.[genre2Index] || 0 : 0)) /
+        (genre2 ? 2 : 1);
+
       let genreScore = 0;
       if (genre2Index >= 0) {
-        genreScore = affinities.affinities["genre-vs-genre"].items[genre1]?.[genre2Index] || 0;
+        genreScore =
+          (affinities.affinities["genre-vs-genre"].items[genre1]?.[genre2Index] || 0);
       }
 
-      const divisor = genre2 ? 2.5 : 2; // Reduz o impacto do segundo gênero
-      const totalScore = ((genreScore * (genre2 ? 1.5 : 1)) + themeScore + ratingScore) / divisor;
-      const finalScore = (totalScore * affinities.affinities["script-affinity-mod-mult"]) +
+      // Divisor ajustado
+      const divisor = genre2 ? 2.5 : 2;
+      const totalScore = (genreScore + themeScore + ratingScore) / divisor;
+
+      const finalScore =
+        totalScore * affinities.affinities["script-affinity-mod-mult"] +
         affinities.affinities["script-affinity-mod-offset"];
+
+      // Logs para depuração:
+      console.log("DEBUG: Affinity Calculation");
+      console.log("---------------------------");
+      console.log(`Genre 1: ${genre1}, Genre 2: ${genre2}`);
+      console.log(`Theme: ${theme}, Rating: ${rating}`);
+      console.log(`Genre 1 Index: ${genre1Index}`);
+      console.log(`Genre 2 Index: ${genre2Index}`);
+      console.log(`Theme Score: ${themeScore}`);
+      console.log(`Rating Score: ${ratingScore}`);
+      console.log(`Genre Score: ${genreScore}`);
+      console.log(`Divisor: ${divisor}`);
+      console.log(`Total Score: ${totalScore}`);
+      console.log(`Final Score: ${finalScore}`);
+      console.log("---------------------------");
 
       setTimeout(() => {
         setResult(finalScore);
@@ -96,6 +125,7 @@ const AffinityCalculator: React.FC = () => {
   return (
     <div className="affinity-form-container">
       <p className="text-l text-center mb-4 dark:text-gray-100">{t.subtitle}</p>
+
       <SelectInput
         label={t.genre1}
         name="genre1"
@@ -104,6 +134,7 @@ const AffinityCalculator: React.FC = () => {
         onChange={(e) => setGenre1(e.target.value)}
         required
       />
+
       <SelectInput
         label={t.genre2}
         name="genre2"
@@ -112,6 +143,7 @@ const AffinityCalculator: React.FC = () => {
         onChange={(e) => setGenre2(e.target.value)}
         isOptional={true}
       />
+
       <SelectInput
         label={t.theme}
         name="theme"
@@ -120,21 +152,30 @@ const AffinityCalculator: React.FC = () => {
         onChange={(e) => setTheme(e.target.value)}
         required
       />
+
       <div className="my-4">
-        <label className="block text-sm font-medium mb-2 dark:text-gray-300">{t.rating}</label>
+        <label className="block text-sm font-medium mb-2 dark:text-gray-300">
+          {t.rating}
+        </label>
         <AgeRatingRadio
           options={ratings.map((rating) => ({
             value: rating,
             label: rating.toUpperCase(),
-            color: rating === "pg" ? "bg-green-500" : rating === "pg-13" ? "bg-yellow-500" : "bg-red-500",
+            color:
+              rating === "pg"
+                ? "bg-green-500"
+                : rating === "pg-13"
+                  ? "bg-yellow-500"
+                  : "bg-red-500",
           }))}
           selectedValue={rating}
           onChange={setRating}
         />
       </div>
+
       <AffinityResult result={result} loading={loading} />
     </div>
   );
 };
 
-export default AffinityCalculator
+export default AffinityCalculator;
