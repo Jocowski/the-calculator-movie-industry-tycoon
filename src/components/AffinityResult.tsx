@@ -23,7 +23,7 @@ const AffinityResult: React.FC<AffinityResultProps> = ({ result, loading, locPre
   };
 
   return (
-    <div className="result-container flex flex-col items-center justify-center mt-4">
+    <div className="result-container flex flex-col items-center justify-center">
       {loading ? (
         // Exibe o spinner durante o carregamento
         <div className="spinner w-8 h-8 border-4 border-gray-300 border-t-blue-500 rounded-full animate-spin"></div>

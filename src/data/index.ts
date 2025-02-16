@@ -1,4 +1,3 @@
-// src/data/index.ts
 import genreData from './genre.json';
 import ratingData from './rating.json';
 import planningData from './planning.json';
@@ -6,6 +5,7 @@ import themeData from './theme.json';
 import seasonsData from './seasons.json';
 import scriptData from './script-affinity.json';
 
+// Definição completa do tipo
 export type AffinityMatrix = {
   header: string[];
   items: Record<string, number[]>;

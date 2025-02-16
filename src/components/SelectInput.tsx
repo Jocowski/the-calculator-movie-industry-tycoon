@@ -1,4 +1,5 @@
 "use client";
+
 import React from "react";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -9,7 +10,8 @@ type SelectInputProps = {
   value: string;
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
   required?: boolean;
-  isOptional?: boolean; // Nova prop para indicar se o campo é opcional
+  isOptional?: boolean;
+  className?: string;
 };
 
 const SelectInput: React.FC<SelectInputProps> = ({
@@ -20,33 +22,42 @@ const SelectInput: React.FC<SelectInputProps> = ({
   onChange,
   required = false,
   isOptional = false,
+  className = "",
 }) => {
   const { translations: t } = useLanguage();
 
   return (
-    <div className="mb-4 w-full">
-      <label htmlFor={name} className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+    <div className={`select-input ${className}`}>
+      {/* Label do campo */}
+      <label
+        htmlFor={name}
+        className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+      >
         {label}
       </label>
+
+      {/* Elemento select */}
       <select
         id={name}
         name={name}
         value={value}
         onChange={onChange}
         required={required}
-        className="mt-1 block w-full py-2 px-3 border rounded-md shadow-sm transition-colors duration-300 appearance-none pr-10
-                   bg-white text-gray-900 border-gray-300 dark:bg-formBackgroundDark dark:text-darkForeground dark:border-formBorderDark"
+        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm dark:bg-gray-700 dark:text-gray-100"
       >
-        <option value="">{t.select}</option>
+        <option value="" disabled>
+          {t.select}
+        </option>
         {options.map((option) => (
-          <option key={option} value={option} className="text-gray-900 dark:text-gray-100">
+          <option key={option} value={option}>
             {option}
           </option>
         ))}
       </select>
+
       {/* Texto auxiliar abaixo do select */}
       {isOptional && (
-        <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
+        <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
           {t.optinSelect}
         </p>
       )}
