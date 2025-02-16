@@ -22,8 +22,8 @@ body {
 
 .affinity-form-container {
   @apply p-4 sm:p-6 border rounded-xl shadow-md transition-colors duration-300;
-  width: 100%; /* Alterado de width fixo para 100% */
-  max-width: 400px; /* Adicionado max-width */
+  width: 100%;
+  max-width: 400px;
   margin: 0 auto;
 
   @apply bg-white dark:bg-formBackgroundDark;

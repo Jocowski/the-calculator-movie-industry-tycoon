@@ -6,12 +6,13 @@ import { useLanguage } from "@/context/LanguageContext";
 type AffinityResultProps = {
   result: number | null;
   loading: boolean;
+  locPrefix: string;
 };
 
-const AffinityResult: React.FC<AffinityResultProps> = ({ result, loading }) => {
+const AffinityResult: React.FC<AffinityResultProps> = ({ result, loading, locPrefix }) => {
   const { translations: t } = useLanguage();
 
-  // Função para determinar o rótulo com base na pontuação
+  // Determina a mensagem de afinidade com base no resultado
   const getAffinityLabel = (score: number | null): string => {
     if (score === null) return t.noResult;
     if (score < 0.5) return t.bad;
@@ -22,24 +23,18 @@ const AffinityResult: React.FC<AffinityResultProps> = ({ result, loading }) => {
   };
 
   return (
-    <div className="border rounded-md p-4 mt-4 text-center bg-gray-100 dark:bg-gray-800">
+    <div className="result-container flex flex-col items-center justify-center mt-4">
       {loading ? (
-        // Componente de Loading
-        <div className="flex flex-col items-center">
-          <div className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full text-blue-500">
-            {/* Spinner de carregamento */}
-          </div>
-        </div>
+        // Exibe o spinner durante o carregamento
+        <div className="spinner w-8 h-8 border-4 border-gray-300 border-t-blue-500 rounded-full animate-spin"></div>
+      ) : result !== null ? (
+        <>
+          <p>{`${t.result}`}</p>
+          <p className="font-bold">{getAffinityLabel(result)}</p>
+          <p>{`${t.score}: ${result?.toFixed(2) || "-.--"}`}</p>
+        </>
       ) : (
-        // Exibição do Resultado
-        <div className="result-content">
-          <p className="text-l">{t.result}</p>
-          <h2 className="text-xl font-bold mt-2">{getAffinityLabel(result)}</h2>
-          {/* Exibe o valor numérico do resultado para depuração, se necessário */}
-          <p className="text-gray-500 dark:text-gray-400 mt-2">
-            {t.score}: {result?.toFixed(2) || "-.--"}
-          </p>
-        </div>
+        <p>{`${t.noResult}`}</p>
       )}
     </div>
   );
