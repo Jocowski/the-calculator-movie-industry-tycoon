@@ -1,3 +1,4 @@
+//src/components/AffinityCalculator.tsx
 "use client";
 
 import React, { useEffect, useState, useCallback } from "react";
@@ -59,35 +60,54 @@ const AffinityCalculator: React.FC = () => {
   const calculateAffinity = useCallback(() => {
     if (genre1 && theme && rating) {
       setLoading(true);
+
       const genre1Index = genres.indexOf(genre1);
       const genre2Index = genre2 ? genres.indexOf(genre2) : -1;
 
-      const themeScore = (
-        (affinities.thematicRelations.items[theme]?.[genre1Index] || 0) +
-        (genre2Index >= 0 ? affinities.thematicRelations.items[theme]?.[genre2Index] || 0 : 0)
-      ) / (genre2 ? 2 : 1);
+      // Cálculo individualizado
+      const genreScore = genre2Index >= 0
+        ? (affinities.genreRelations.items[genre1]?.[genre2Index] || 0)
+        : 0;
 
-      const ratingScore = (
-        (affinities.ratingImpact.items[rating]?.[genre1Index] || 0) +
-        (genre2Index >= 0 ? affinities.ratingImpact.items[rating]?.[genre2Index] || 0 : 0)
-      ) / (genre2 ? 2 : 1);
+      const themeScoreGenre1 = affinities.thematicRelations.items[theme]?.[genre1Index] || 0;
+      const themeScoreGenre2 = genre2Index >= 0 ? affinities.thematicRelations.items[theme]?.[genre2Index] || 0 : 0;
 
-      let genreScore = genre2Index >= 0 ? affinities.genreRelations.items[genre1]?.[genre2Index] || 0 : 0;
+      const ratingScoreGenre1 = affinities.ratingImpact.items[rating]?.[genre1Index] || 0;
+      const ratingScoreGenre2 = genre2Index >= 0 ? affinities.ratingImpact.items[rating]?.[genre2Index] || 0 : 0;
 
-      const divisor = genre2 ? 2.5 : 2;
-      const totalScore = (genreScore + themeScore + ratingScore) / divisor;
-      const finalScore =
-        totalScore * affinities.scriptConfig.scriptAffinityModMult +
+      // Soma dos valores para calcular o base score
+      const baseScore =
+        themeScoreGenre1 +
+        themeScoreGenre2 +
+        ratingScoreGenre1 +
+        ratingScoreGenre2 +
+        genreScore;
+
+      // Ajuste final com multiplicador e offset
+      const finalBaseScore =
+        baseScore * affinities.scriptConfig.scriptAffinityModMult +
         affinities.scriptConfig.scriptAffinityModOffset;
 
+      // Cálculo dos scores sazonais (bônus aplicado ao base score)
       const seasonalData = Object.entries(affinities.seasonalWindows.items).map(
         ([season, values]) => {
-          const seasonMultiplier = values[genre1Index] || 1;
-          const adjustedScore = finalScore * seasonMultiplier;
+          const seasonMultiplierGenre1 = values[genre1Index] || 0;
+          const seasonMultiplierGenre2 = genre2Index >= 0 ? values[genre2Index] || 0 : 0;
+
+          // Média ponderada dos multiplicadores
+          const combinedSeasonMultiplier =
+            (seasonMultiplierGenre1 + seasonMultiplierGenre2) / (genre2 ? 2 : 1);
+
+          // Score ajustado para o evento sazonal, formatado com 2 casas decimais
+          const adjustedScore = Number((finalBaseScore * combinedSeasonMultiplier).toFixed(2));
+
+          // Determinar o label baseado no score ajustado
+          const label = getAffinityLabel(adjustedScore);
+
           return {
             season,
             score: adjustedScore,
-            label: getAffinityLabel(adjustedScore),
+            label,
           };
         }
       );
@@ -95,11 +115,10 @@ const AffinityCalculator: React.FC = () => {
       seasonalData.sort((a, b) => b.score - a.score);
 
       setTimeout(() => {
-        setResult(finalScore);
-        setSeasonResults(seasonalData);
+        setResult(finalBaseScore); // Apenas o base score
+        setSeasonResults(seasonalData); // Scores ajustados por evento sazonal
         setLoading(false);
 
-        // Enviar evento para o Google Analytics
         sendGTMEvent({
           event: 'form_submission',
           form_name: 'affinity_calculator',
@@ -107,7 +126,7 @@ const AffinityCalculator: React.FC = () => {
           genre2: genre2 || 'none',
           theme: theme,
           rating: rating,
-          score: finalScore
+          score: finalBaseScore.toFixed(2), // Alterado para 2 casas decimais
         });
       }, 800);
     } else {
@@ -143,13 +162,13 @@ const AffinityCalculator: React.FC = () => {
           <SelectInput
             name="genre2"
             label={t.genre2}
-            options={genres.filter((g) => g !== genre1)}
+            options={genres.filter((g) => g !== genre1)} // Filtra para não repetir o gênero principal
             value={genre2}
             onChange={(e) => {
-              setGenre2(e.target.value);
-              trackFieldChange('genre2', e.target.value);
+              setGenre2(e.target.value); // Permite limpar ou alterar a seleção
+              trackFieldChange("genre2", e.target.value);
             }}
-            isOptional
+            isOptional // Define que o campo é opcional
           />
         </div>
 

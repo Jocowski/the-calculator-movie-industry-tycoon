@@ -3,13 +3,12 @@
   "subtitle": "发现你下一部电影大片的完美组合！",
   "genre1": "类型 1",
   "genre2": "类型 2",
-  "optinSelect": "(可选)",
   "theme": "主题",
   "rating": "年龄评级",
   "result": "结果：",
   "noResult": "请填写所有必填字段。",
   "bad": "差",
-  "medium": "中",
+  "medium": "中立",
   "good": "好",
   "great": "优秀",
   "language": "语言",
@@ -23,7 +22,9 @@
   "disclaimerSuffix": "中进行初始电影配置。计算基于游戏文件分析，可能并非100%准确。",
   "viewOnGithub": "在GitHub上查看项目",
   "noEvent": "无活动",
-  "resultMessage": "您的选择",
-  "generatedScore": "生成的分数为",
-  "bestDatesToLaunch": "发布这部电影的最佳日期是"
+  "resultMessageOneGenre": "您选择的[genre1], 主题为[theme], 分级为[rating], 获得了评价：",
+  "resultMessageTwoGenres": "您选择的[genre1], 和[genre2], 主题为[theme], 分级为[rating], 获得了评价：",
+  "bestDatesToLaunch": "发布这部电影的最佳日期是",
+  "clearSelection": "无",
+  "optinSelect": "此字段为可选项"
 }

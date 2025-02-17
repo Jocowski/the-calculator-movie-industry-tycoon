@@ -3,13 +3,12 @@
   "subtitle": "Découvrez la combinaison parfaite pour votre prochain succès cinématographique!",
   "genre1": "Genre 1",
   "genre2": "Genre 2",
-  "optinSelect": "(Optionnel)",
   "theme": "Thème",
   "rating": "Classification par âge",
   "result": "Résultat :",
   "noResult": "Remplissez tous les champs obligatoires.",
   "bad": "Mauvais",
-  "medium": "Moyen",
+  "medium": "Neutre",
   "good": "Bon",
   "great": "Excellent",
   "language": "Langue",
@@ -23,7 +22,9 @@
   "disclaimerSuffix": ". Les calculs sont basés sur l'exploration des fichiers du jeu et peuvent ne pas être précis à 100%.",
   "viewOnGithub": "Voir le projet sur GitHub",
   "noEvent": "Aucun Événement",
-  "resultMessage": "Votre choix",
-  "generatedScore": "a généré un score de",
-  "bestDatesToLaunch": "Les meilleures dates pour lancer ce film sont"
+  "resultMessageOneGenre": "Votre choix de [genre1] avec le thème [theme] et la classification [rating] a reçu l'évaluation :",
+  "resultMessageTwoGenres": "Votre choix de [genre1] et de [genre2] avec le thème [theme] et la classification [rating] a reçu l'évaluation :",
+  "bestDatesToLaunch": "Les meilleures dates pour lancer ce film sont",
+  "clearSelection": "Aucun",
+  "optinSelect": "Ce champ est facultatif"
 }
