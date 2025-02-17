@@ -19,6 +19,8 @@ export const metadata: Metadata = {
   description: 'Calculate movie affinities for The Executive: Movie Industry Tycoon. Optimize your film production strategy with our advanced calculator.',
   keywords: 'movie industry, tycoon, calculator, film production, affinity, strategy',
   openGraph: {
+    siteName: 'Movie Industry Calculator',
+    url: 'https://the-calculator-movie-industry-tycoon.vercel.app/',
     title: 'The Calculator - Movie Industry Tycoon',
     description: 'Optimize your film production strategy with our advanced calculator for The Executive: Movie Industry Tycoon.',
     images: [
@@ -36,6 +38,7 @@ export const metadata: Metadata = {
     title: 'The Calculator - Movie Industry Tycoon',
     description: 'Optimize your film production strategy with our advanced calculator for The Executive: Movie Industry Tycoon.',
     images: ['/og-image.webp'],
+    site: '@GoblinzPub',
   },
   robots: {
     index: true,
