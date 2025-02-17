@@ -3,10 +3,18 @@
 import React from "react";
 import { useTheme } from "@/context/ThemeContext";
 import { useLanguage } from "@/context/LanguageContext";
+import { sendGTMEvent } from '@next/third-parties/google';
 
 const ThemeToggle: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
-  const { translations: t } = useLanguage(); // Traduções do idioma atual
+  const { translations: t } = useLanguage();
+  const handleToggleTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    toggleTheme();
+    setTimeout(() => {
+      sendGTMEvent({ event: 'theme_change', theme: newTheme });
+    }, 0);
+  };
 
   return (
     <div className="relative flex items-center justify-center group">
@@ -20,7 +28,7 @@ const ThemeToggle: React.FC = () => {
           type="checkbox"
           className="sr-only peer"
           checked={theme === "dark"}
-          onChange={toggleTheme}
+          onChange={handleToggleTheme}
         />
         <div className="w-14 h-7 bg-gray-300 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-indigo-500 rounded-full peer dark:bg-indigo-500 flex items-center px-2">
           {/* Ícone do Sol (lado esquerdo, branco) */}

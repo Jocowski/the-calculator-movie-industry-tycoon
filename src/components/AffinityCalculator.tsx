@@ -6,6 +6,7 @@ import affinities from "@/data";
 import SelectInput from "@/components/SelectInput";
 import AffinityResult from "@/components/AffinityResult";
 import AgeRatingRadio from "@/components/AgeRatingRadio";
+import { sendGTMEvent } from '@next/third-parties/google';
 
 const AffinityCalculator: React.FC = () => {
   const { translations: t } = useLanguage();
@@ -22,6 +23,24 @@ const AffinityCalculator: React.FC = () => {
     { season: string; score: number; label: string }[]
   >([]);
   const [loading, setLoading] = useState(false);
+
+  const [formStarted, setFormStarted] = useState(false);
+
+  const trackFieldChange = (fieldName: string, value: string) => {
+    if (!formStarted) {
+      setFormStarted(true);
+      sendGTMEvent({
+        event: 'form_start',
+        form_name: 'affinity_calculator'
+      });
+    }
+    sendGTMEvent({
+      event: 'form_field_change',
+      form_name: 'affinity_calculator',
+      field_name: fieldName,
+      field_value: value
+    });
+  };
 
   useEffect(() => {
     setGenres(affinities.genreRelations.header);
@@ -79,6 +98,17 @@ const AffinityCalculator: React.FC = () => {
         setResult(finalScore);
         setSeasonResults(seasonalData);
         setLoading(false);
+
+        // Enviar evento para o Google Analytics
+        sendGTMEvent({
+          event: 'form_submission',
+          form_name: 'affinity_calculator',
+          genre1: genre1,
+          genre2: genre2 || 'none',
+          theme: theme,
+          rating: rating,
+          score: finalScore
+        });
       }, 800);
     } else {
       setResult(null);
@@ -103,7 +133,10 @@ const AffinityCalculator: React.FC = () => {
             label={t.genre1}
             options={genres}
             value={genre1}
-            onChange={(e) => setGenre1(e.target.value)}
+            onChange={(e) => {
+              setGenre1(e.target.value);
+              trackFieldChange('genre1', e.target.value);
+            }}
             required
           />
 
@@ -112,7 +145,10 @@ const AffinityCalculator: React.FC = () => {
             label={t.genre2}
             options={genres.filter((g) => g !== genre1)}
             value={genre2}
-            onChange={(e) => setGenre2(e.target.value)}
+            onChange={(e) => {
+              setGenre2(e.target.value);
+              trackFieldChange('genre2', e.target.value);
+            }}
             isOptional
           />
         </div>
@@ -122,7 +158,10 @@ const AffinityCalculator: React.FC = () => {
           label={t.theme}
           options={themes}
           value={theme}
-          onChange={(e) => setTheme(e.target.value)}
+          onChange={(e) => {
+            setTheme(e.target.value);
+            trackFieldChange('theme', e.target.value);
+          }}
           required
         />
 
@@ -135,7 +174,10 @@ const AffinityCalculator: React.FC = () => {
               rating === "pg-13" ? "bg-yellow-500" : "bg-red-500"
           }))}
           selectedValue={rating}
-          onChange={setRating}
+          onChange={(value) => {
+            setRating(value);
+            trackFieldChange('rating', value);
+          }}
         />
 
         <AffinityResult
