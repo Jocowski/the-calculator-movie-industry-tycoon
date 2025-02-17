@@ -18,16 +18,25 @@ const AffinityCalculator: React.FC = () => {
   const [theme, setTheme] = useState("");
   const [rating, setRating] = useState("");
   const [result, setResult] = useState<number | null>(null);
+  const [seasonResults, setSeasonResults] = useState<
+    { season: string; score: number; label: string }[]
+  >([]);
   const [loading, setLoading] = useState(false);
 
-  // Inicializa dados estáticos
   useEffect(() => {
     setGenres(affinities.genreRelations.header);
     setThemes(Object.keys(affinities.thematicRelations.items));
     setRatings(Object.keys(affinities.ratingImpact.items));
   }, []);
 
-  // Calcula a afinidade
+  const getAffinityLabel = (score: number): string => {
+    if (score < 0.5) return t.bad;
+    if (score < 1.5) return t.medium;
+    if (score < 2.5) return t.good;
+    if (score >= 2.5) return t.great;
+    return t.noResult;
+  };
+
   const calculateAffinity = useCallback(() => {
     if (genre1 && theme && rating) {
       setLoading(true);
@@ -48,17 +57,32 @@ const AffinityCalculator: React.FC = () => {
 
       const divisor = genre2 ? 2.5 : 2;
       const totalScore = (genreScore + themeScore + ratingScore) / divisor;
-
       const finalScore =
         totalScore * affinities.scriptConfig.scriptAffinityModMult +
         affinities.scriptConfig.scriptAffinityModOffset;
 
+      const seasonalData = Object.entries(affinities.seasonalWindows.items).map(
+        ([season, values]) => {
+          const seasonMultiplier = values[genre1Index] || 1;
+          const adjustedScore = finalScore * seasonMultiplier;
+          return {
+            season,
+            score: adjustedScore,
+            label: getAffinityLabel(adjustedScore),
+          };
+        }
+      );
+
+      seasonalData.sort((a, b) => b.score - a.score);
+
       setTimeout(() => {
         setResult(finalScore);
+        setSeasonResults(seasonalData);
         setLoading(false);
       }, 800);
     } else {
       setResult(null);
+      setSeasonResults([]);
     }
   }, [genre1, genre2, theme, rating, genres]);
 
@@ -67,14 +91,13 @@ const AffinityCalculator: React.FC = () => {
   }, [calculateAffinity]);
 
   return (
-    <div className="affinity-form-container flex flex-col gap-6 w-full max-w-3xl mx-auto p-6 rounded-xl shadow-lg">
-      <h2 className="text-lg font-bold text-center text-gray-800 dark:text-gray-100 mb-4">
+    <div className="affinity-form-container flex flex-col gap-6 w-full max-w-2xl mx-auto p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg">
+      <h2 className="text-l font-bold text-center text-gray-800 dark:text-gray-100 mb-4">
         {t.subtitle}
       </h2>
 
-      <div className="flex flex-col gap-4 md:flex-row">
-        {/* Gênero 1 e Gênero 2 */}
-        <div className="flex flex-col gap-4 md:flex-row md:w-full">
+      <div className="flex flex-col gap-4">
+        <div className="grid md:grid-cols-2 gap-4">
           <SelectInput
             name="genre1"
             label={t.genre1}
@@ -82,7 +105,6 @@ const AffinityCalculator: React.FC = () => {
             value={genre1}
             onChange={(e) => setGenre1(e.target.value)}
             required
-            className="flex-1"
           />
 
           <SelectInput
@@ -92,11 +114,9 @@ const AffinityCalculator: React.FC = () => {
             value={genre2}
             onChange={(e) => setGenre2(e.target.value)}
             isOptional
-            className="flex-1"
           />
         </div>
 
-        {/* Tema */}
         <SelectInput
           name="theme"
           label={t.theme}
@@ -104,33 +124,30 @@ const AffinityCalculator: React.FC = () => {
           value={theme}
           onChange={(e) => setTheme(e.target.value)}
           required
-          className="w-full"
+        />
+
+        <AgeRatingRadio
+          label={t.rating}
+          options={ratings.map((rating) => ({
+            value: rating,
+            label: rating.toUpperCase(),
+            color: rating === "pg" ? "bg-green-500" :
+              rating === "pg-13" ? "bg-yellow-500" : "bg-red-500"
+          }))}
+          selectedValue={rating}
+          onChange={setRating}
+        />
+
+        <AffinityResult
+          result={result}
+          loading={loading}
+          genre1={genre1}
+          genre2={genre2}
+          theme={theme}
+          rating={rating}
+          seasonResults={seasonResults}
         />
       </div>
-
-      {/* Classificação Etária */}
-      <AgeRatingRadio
-        label={t.rating}
-        options={ratings.map((rating) => ({
-          value: rating,
-          label: rating.toUpperCase(),
-          color:
-            rating === "pg"
-              ? "bg-green-500"
-              : rating === "pg-13"
-                ? "bg-yellow-500"
-                : "bg-red-500",
-        }))}
-        selectedValue={rating}
-        onChange={setRating}
-      />
-
-      {/* Resultado */}
-      <AffinityResult
-        result={result}
-        loading={loading}
-        locPrefix={affinities.scriptConfig.locPrefix}
-      />
     </div>
   );
 };

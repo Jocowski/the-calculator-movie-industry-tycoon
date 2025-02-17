@@ -1,19 +1,18 @@
 {
-"season-vs-genre": {
-		"header": ["action","adventure","animation","biography","comedy","crime","drama","family","fantasy","horror","musical","mystery","romance","scifi","thriller"],
-		"items": {
-			"superbowl": [0,0,0,1,0,0,1,0,0,1,1,0,1,0,0],
-			"valentine": [1,1,1,1,3,1,1,1,1,2,2,1,3,1,1],
-			"easter": [1,1,3,1,2,1,1,3,2,1,1,1,1,1,1],
-			"memorialday": [3,3,2,2,3,2,2,3,2,2,2,2,2,3,2],
-			"eurocup": [0,0,1,1,0,0,1,1,0,1,1,0,1,0,0],
-			"worldcup": [0,0,1,1,0,0,1,1,0,1,1,0,1,0,0],
-			"summer": [3,3,3,2,3,2,2,3,3,1,3,2,2,3,3],
-			"halloween": [1,1,0,1,0,2,1,0,1,3,1,2,1,1,2],
-			"awards": [1,1,1,3,0,1,3,1,1,1,1,1,1,1,1],
-			"thanksgiving": [3,3,3,2,3,2,2,3,3,2,2,2,2,3,3],
-			"eoyholidays": [3,3,3,2,3,3,2,3,3,0,3,3,2,3,3]
-		}
-	}
+  "genre-vs-season": {
+    "header": ["action","adventure","animation","biography","comedy","crime","drama","family","fantasy","horror","musical","mystery","romance","scifi","thriller"],
+    "items": {
+      "superbowl": [0,0,0,1,0,0,1,0,0,1,1,0,1,0,0],
+      "valentine": [1,1,1,1,3,1,1,1,1,2,2,1,3,1,1],
+      "easter": [1,1,3,1,2,1,1,3,2,1,1,1,1,1,1],
+      "memorialday": [3,3,2,2,3,2,2,3,2,2,2,2,2,3,2],
+      "eurocup": [0,0,1,1,0,0,1,1,0,1,1,0,1,0,0],
+      "worldcup": [0,0,1,1,0,0,1,1,0,1,1,0,1,0,0],
+      "summer": [3,3,3,2,3,2,2,3,3,1,3,2,2,3,3],
+      "halloween": [1,1,0,1,0,2,1,0,1,3,1,2,1,1,2],
+      "awards": [1,1,1,3,0,1,3,1,1,1,1,1,1,1,1],
+      "thanksgiving": [3,3,3,2,3,2,2,3,3,2,2,2,2,3,3],
+      "eoyholidays": [3,3,3,2,3,3,2,3,3,0,3,3,2,3,3]
+    }
+  }
 }
-

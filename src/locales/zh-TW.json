@@ -8,10 +8,10 @@
   "rating": "年齡評級",
   "result": "結果：",
   "noResult": "請填寫所有必填字段。",
-  "bad": "差 🚫",
-  "medium": "中 ⚠️",
-  "good": "好 👍",
-  "great": "優秀 🎉",
+  "bad": "差",
+  "medium": "中",
+  "good": "好",
+  "great": "優秀",
   "language": "語言",
   "select": "請選擇",
   "score": "分數",
@@ -21,5 +21,9 @@
   "gameTitleAriaLabel": "The Executive - Movie Industry Tycoon（在新分頁中開啟）",
   "disclaimerPrefix": "本頁面與遊戲無任何關聯，僅旨在幫助用戶在",
   "disclaimerSuffix": "中進行初始電影配置。計算基於遊戲文件分析，可能並非100%準確。",
-  "viewOnGithub": "在GitHub上查看專案"
+  "viewOnGithub": "在GitHub上查看專案",
+  "noEvent": "無活動",
+  "resultMessage": "您的選擇",
+  "generatedScore": "產生的分數為",
+  "bestDatesToLaunch": "發布這部電影的最佳日期是"
 }

@@ -8,10 +8,10 @@
   "rating": "Clasificación por edad",
   "result": "Resultado:",
   "noResult": "Complete todos los campos obligatorios.",
-  "bad": "Malo 🚫",
-  "medium": "Medio ⚠️",
-  "good": "Bueno 👍",
-  "great": "Excelente 🎉",
+  "bad": "Malo",
+  "medium": "Medio",
+  "good": "Bueno",
+  "great": "Excelente",
   "language": "Idioma",
   "select": "Seleccione...",
   "score": "Puntuación",
@@ -21,5 +21,9 @@
   "gameTitleAriaLabel": "The Executive - Movie Industry Tycoon (se abre en una nueva pestaña)",
   "disclaimerPrefix": "Esta página no tiene ninguna afiliación con el juego y tiene como objetivo ayudar a los usuarios en la configuración inicial de la película dentro de",
   "disclaimerSuffix": ". Los cálculos se basan en la exploración de archivos del juego y pueden no ser 100% precisos.",
-  "viewOnGithub": "Ver proyecto en GitHub"
+  "viewOnGithub": "Ver proyecto en GitHub",
+  "noEvent": "Sin Evento",
+  "resultMessage": "Tu elección",
+  "generatedScore": "generó una puntuación de",
+  "bestDatesToLaunch": "Las mejores fechas para lanzar esta película son"
 }

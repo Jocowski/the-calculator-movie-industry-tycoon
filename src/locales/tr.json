@@ -8,10 +8,10 @@
   "rating": "Yaş Derecelendirmesi",
   "result": "Sonuç:",
   "noResult": "Tüm zorunlu alanları doldurun.",
-  "bad": "Kötü 🚫",
-  "medium": "Orta ⚠️",
-  "good": "İyi 👍",
-  "great": "Harika 🎉",
+  "bad": "Kötü",
+  "medium": "Orta",
+  "good": "İyi",
+  "great": "Harika",
   "language": "Dil",
   "select": "Seçiniz...",
   "score": "Skor",
@@ -21,5 +21,9 @@
   "gameTitleAriaLabel": "The Executive - Movie Industry Tycoon (yeni sekmede açılır)",
   "disclaimerPrefix": "Bu sayfanın oyunla hiçbir bağlantısı yoktur ve yalnızca",
   "disclaimerSuffix": "içindeki ilk film yapılandırmasında kullanıcılara yardımcı olmayı amaçlamaktadır. Hesaplamalar oyun dosyası analizine dayanmaktadır ve %100 doğru olmayabilir.",
-  "viewOnGithub": "Projeyi GitHub'da görüntüle"
+  "viewOnGithub": "Projeyi GitHub'da görüntüle",
+  "noEvent": "Etkinlik Yok",
+  "resultMessage": "Seçiminiz",
+  "generatedScore": "şu puanı üretti",
+  "bestDatesToLaunch": "Bu filmi yayınlamak için en iyi tarihler"
 }

@@ -8,10 +8,10 @@
   "rating": "年齢評価",
   "result": "結果：",
   "noResult": "必須フィールドをすべて入力してください。",
-  "bad": "悪い 🚫",
-  "medium": "普通 ⚠️",
-  "good": "良い 👍",
-  "great": "素晴らしい 🎉",
+  "bad": "悪い",
+  "medium": "普通",
+  "good": "良い",
+  "great": "素晴らしい",
   "language": "言語",
   "select": "選択してください",
   "score": "スコア",
@@ -21,5 +21,9 @@
   "gameTitleAriaLabel": "The Executive - Movie Industry Tycoon（新しいタブで開きます）",
   "disclaimerPrefix": "このページはゲームとは一切関係がなく、",
   "disclaimerSuffix": "内での映画の初期設定を支援する目的でのみ提供されています。計算はゲームファイルの解析に基づいており、100％正確でない場合があります。",
-  "viewOnGithub": "GitHubでプロジェクトを見る"
+  "viewOnGithub": "GitHubでプロジェクトを見る",
+  "noEvent": "イベントなし",
+  "resultMessage": "Ihre Auswahl",
+  "generatedScore": "ergab eine Punktzahl von",
+  "bestDatesToLaunch": "Die besten Termine für die Veröffentlichung dieses Films sind"
 }

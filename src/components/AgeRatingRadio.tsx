@@ -22,7 +22,7 @@ const AgeRatingRadio: React.FC<AgeRatingRadioProps> = ({
 }) => {
   return (
     <div className="age-rating-radio w-full">
-      {label && <p className="text-sm font-medium mb-2">{label}</p>}
+      {label && <p className="text-sm font-medium mb-2">{label}:</p>}
       <div className="flex gap-2 w-full">
         {options.map((option) => (
           <button
