@@ -16,8 +16,11 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   metadataBase: new URL('https://the-calculator-movie-industry-tycoon.vercel.app/'),
   title: 'The Calculator - Movie Industry Tycoon',
-  description: 'Calculate movie affinities for The Executive: Movie Industry Tycoon',
+  description: 'Calculate movie affinities for The Executive: Movie Industry Tycoon. Optimize your film production strategy with our advanced calculator.',
+  keywords: 'movie industry, tycoon, calculator, film production, affinity, strategy',
   openGraph: {
+    title: 'The Calculator - Movie Industry Tycoon',
+    description: 'Optimize your film production strategy with our advanced calculator for The Executive: Movie Industry Tycoon.',
     images: [
       {
         url: '/og-image.webp',
@@ -26,28 +29,34 @@ export const metadata: Metadata = {
         alt: 'The Calculator - Movie Industry Tycoon',
       },
     ],
+    type: 'website',
   },
-  other: {
-    "google-adsense-account": "ca-pub-4335073140276405"
-  }
+  twitter: {
+    card: 'summary_large_image',
+    title: 'The Calculator - Movie Industry Tycoon',
+    description: 'Optimize your film production strategy with our advanced calculator for The Executive: Movie Industry Tycoon.',
+    images: ['/og-image.webp'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="h-full">
+    <html lang="en">
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-        <Script
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4335073140276405"
-          strategy="afterInteractive"
-          crossOrigin="anonymous"
-        />
+        <link rel="canonical" href="https://the-calculator-movie-industry-tycoon.vercel.app/" />
       </head>
-      <body className={`${inter.className} flex flex-col h-full`}>
+      <body className={inter.className}>
         <ThemeProvider>
           <LanguageProvider>
             <header className="flex justify-end items-center p-4 space-x-4">
