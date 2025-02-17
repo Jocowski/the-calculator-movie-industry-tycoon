@@ -45,9 +45,19 @@ const SelectInput: React.FC<SelectInputProps> = ({
         required={required}
         className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm dark:bg-gray-700 dark:text-gray-100"
       >
+        {/* Opção padrão para selecionar */}
         <option value="" disabled>
           {t.select}
         </option>
+
+        {/* Opção para limpar a seleção (apenas se for opcional) */}
+        {isOptional && (
+          <option value="">
+            {t.clearSelection}
+          </option>
+        )}
+
+        {/* Opções dinâmicas */}
         {options.map((option) => (
           <option key={option} value={option}>
             {option}
