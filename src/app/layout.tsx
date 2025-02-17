@@ -7,9 +7,9 @@ import LanguageSelector from '@/components/LanguageSelector';
 import ThemeToggle from '@/components/ThemeToggle';
 import Disclaimer from '@/components/Disclaimer';
 import GitHubLink from '@/components/GitHubLink';
+import GoogleAnalytics from '@/components/GoogleAnalytics';
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
-import Script from 'next/script';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -71,6 +71,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               {children}
               <Analytics />
               <SpeedInsights />
+              <GoogleAnalytics />
             </main>
             <Disclaimer />
           </LanguageProvider>
