@@ -22,5 +22,8 @@
   "disclaimerPrefix": "Diese Seite steht in keiner Verbindung zum Spiel und dient lediglich dazu, Benutzern bei der ersten Filmkonfiguration in",
   "disclaimerSuffix": "zu helfen. Die Berechnungen basieren auf der Analyse von Spieldateien und sind möglicherweise nicht 100% genau.",
   "viewOnGithub": "Projekt auf GitHub ansehen",
-  "noEvent": "Kein Ereignis"
+  "noEvent": "Kein Ereignis",
+  "resultMessage": "Ihre Auswahl",
+  "generatedScore": "ergab eine Punktzahl von",
+  "bestDatesToLaunch": "Die besten Termine für die Veröffentlichung dieses Films sind"
 }
