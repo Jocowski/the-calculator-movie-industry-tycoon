@@ -26,5 +26,7 @@
   "resultMessageTwoGenres": "Tu elección de [genre1] y [genre2] con el tema [theme] y clasificación [rating] recibió la evaluación:",
   "bestDatesToLaunch": "Las mejores fechas para lanzar esta película son",
   "clearSelection": "Ninguno",
-  "optinSelect": "Este campo es opcional"
+  "optinSelect": "Este campo es opcional",
+  "newFeatureMessage": "¡Este proyecto es reciente y pronto llegarán nuevas funciones!",
+  "nextFeatureMessage": "La próxima función será el ajuste ideal para producción y post-producción."
 }

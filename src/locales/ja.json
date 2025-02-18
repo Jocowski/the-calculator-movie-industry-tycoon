@@ -26,5 +26,7 @@
   "resultMessageTwoGenres": "[genre1] と[genre2] のテーマ「[theme]」とレーティング「[rating]」の選択は、評価「[result]」:",
   "bestDatesToLaunch": "この映画を公開する最適な日付は次のとおりです",
   "clearSelection": "なし",
-  "optinSelect": "このフィールドは任意です"
+  "optinSelect": "このフィールドは任意です",
+  "newFeatureMessage": "このプロジェクトは最近のものであり、新機能がまもなく登場します！",
+  "nextFeatureMessage": "次の機能は、制作とポストプロダクションのための理想的な調整になります。"
 }

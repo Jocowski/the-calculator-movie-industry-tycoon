@@ -26,5 +26,7 @@
   "resultMessageTwoGenres": "您選擇的[genre1], 和[genre2], 主題為[theme], 分級為[rating], 獲得了評價：",
   "bestDatesToLaunch": "發布這部電影的最佳日期是",
   "clearSelection": "無",
-  "optinSelect": "此欄位為選填項目"
+  "optinSelect": "此欄位為選填項目",
+  "newFeatureMessage": "這個項目是最近的，新功能即將推出！",
+  "nextFeatureMessage": "下一個功能將是製作和後期製作的理想調整。"
 }

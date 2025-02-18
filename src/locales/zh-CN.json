@@ -26,5 +26,7 @@
   "resultMessageTwoGenres": "您选择的[genre1], 和[genre2], 主题为[theme], 分级为[rating], 获得了评价：",
   "bestDatesToLaunch": "发布这部电影的最佳日期是",
   "clearSelection": "无",
-  "optinSelect": "此字段为可选项"
+  "optinSelect": "此字段为可选项",
+  "newFeatureMessage": "这个项目是最近的，新功能即将推出！",
+  "nextFeatureMessage": "下一个功能将是制作和后期制作的理想调整。"
 }
