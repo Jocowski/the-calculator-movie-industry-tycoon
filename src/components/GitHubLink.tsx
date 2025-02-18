@@ -8,7 +8,7 @@ const GitHubLink: React.FC = () => {
   return (
     <div className="group relative inline-block">
       <a
-        href="https://github.com/seu-usuario/seu-repositorio"
+        href="https://github.com/ooVictorFranco/the-calculator-movie-industry-tycoon"
         target="_blank"
         rel="noopener noreferrer"
         className="flex items-center p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200"

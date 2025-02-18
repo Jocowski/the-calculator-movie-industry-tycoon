@@ -76,7 +76,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Victor Franco - [in/oovictorfranco](https://www.linkedin.com/in/oovictorfranco/)
 
-Project Link: [https://github.com/ooVictorFranco/the-calculator-movie-industry-tycoon](https://github.com/ooVictorFranco/the-calculator-movie-industry-tycoon)
+Project Link: [https://the-calculator-movie-industry-tycoon.vercel.app/](https://the-calculator-movie-industry-tycoon.vercel.app/)
 
 ## Acknowledgments
 
