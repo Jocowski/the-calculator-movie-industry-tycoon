@@ -127,7 +127,7 @@ const AffinityCalculator: React.FC = () => {
           rating: rating,
           score: finalBaseScore.toFixed(2), // Alterado para 2 casas decimais
         });
-      }, 800);
+      }, 300);
     } else {
       setResult(null);
       setSeasonResults([]);
