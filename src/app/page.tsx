@@ -28,13 +28,13 @@ export default function Home() {
       <p className="text-xs mt-5 text-center">
         {t.messageUpdate1}{' '}
         <a
-          href="https://steamcommunity.com/games/2315430/announcements/detail/532090605491192099?snr=2___"
+          href="https://store.steampowered.com/news/app/2315430/view/532090605491192445"
           target="_blank"
           rel="noopener noreferrer"
           className="text-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300 hover:underline transition-colors"
           aria-label={`${t.gameVersion}, ${t.newTab}`}
         >
-          {t.gameVersion}
+          {t.gameVersion}{' [1.0.5]'}
         </a>{' '}
         {t.messageUpdate2}
       </p>
