@@ -28,5 +28,7 @@
   "clearSelection": "Hiçbiri",
   "optinSelect": "Bu alan isteğe bağlıdır",
   "newFeatureMessage": "Bu proje yenidir ve yakında yeni özellikler gelecektir!",
-  "nextFeatureMessage": "Bir sonraki özellik, yapım ve post-prodüksiyon için ideal ayarlama olacaktır."
+  "nextFeatureMessage": "Bir sonraki özellik, yapım ve post-prodüksiyon için ideal ayarlama olacaktır.",
+  "bestGenresToLaunch": "Bu filmi yayınlamak için en iyi türler şunlardır",
+  "noGenreResults": "Tema doldurun, bu filmi yayınlamak için en iyi türleri görüntüleyin."
 }

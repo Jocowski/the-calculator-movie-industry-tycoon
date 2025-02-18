@@ -28,5 +28,7 @@
   "clearSelection": "Keiner",
   "optinSelect": "Dieses Feld ist optional",
   "newFeatureMessage": "Dieses Projekt ist neu und weitere Funktionen werden in Kürze verfügbar sein!",
-  "nextFeatureMessage": "Die nächste Funktion wird die ideale Anpassung für Produktion und Postproduktion sein."
+  "nextFeatureMessage": "Die nächste Funktion wird die ideale Anpassung für Produktion und Postproduktion sein.",
+  "bestGenresToLaunch": "Die besten Genres, um diesen Film zu veröffentlichen, sind",
+  "noGenreResults": "Füllen Sie das Thema aus, um die besten Genres zu sehen, um diesen Film zu veröffentlichen."
 }

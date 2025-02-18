@@ -28,5 +28,7 @@
   "clearSelection": "없음",
   "optinSelect": "이 필드는 선택 사항입니다",
   "newFeatureMessage": "이 프로젝트는 최근에 시작되었으며 곧 새로운 기능이 추가될 예정입니다!",
-  "nextFeatureMessage": "다음 기능은 제작 및 후반 작업을 위한 이상적인 조정이 될 것입니다."
+  "nextFeatureMessage": "다음 기능은 제작 및 후반 작업을 위한 이상적인 조정이 될 것입니다.",
+  "bestGenresToLaunch": "이 영화를 출시하기 가장 좋은 장르는 다음과 같습니다",
+  "noGenreResults": "테마를 입력하여 이 영화를 출시하기 가장 좋은 장르를 찾으세요."
 }

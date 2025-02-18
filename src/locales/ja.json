@@ -28,5 +28,7 @@
   "clearSelection": "なし",
   "optinSelect": "このフィールドは任意です",
   "newFeatureMessage": "このプロジェクトは最近のものであり、新機能がまもなく登場します！",
-  "nextFeatureMessage": "次の機能は、制作とポストプロダクションのための理想的な調整になります。"
+  "nextFeatureMessage": "次の機能は、制作とポストプロダクションのための理想的な調整になります。",
+  "bestGenresToLaunch": "この映画を公開する最適なジャンルは次のとおりです",
+  "noGenreResults": "テーマを入力して、この映画を公開する最適なジャンルを見つけてください。"
 }

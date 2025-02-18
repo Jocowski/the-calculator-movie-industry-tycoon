@@ -28,5 +28,7 @@
   "clearSelection": "无",
   "optinSelect": "此字段为可选项",
   "newFeatureMessage": "这个项目是最近的，新功能即将推出！",
-  "nextFeatureMessage": "下一个功能将是制作和后期制作的理想调整。"
+  "nextFeatureMessage": "下一个功能将是制作和后期制作的理想调整。",
+  "bestGenresToLaunch": "发布这部电影的最佳类型是",
+  "noGenreResults": "填写主题以查看发布这部电影的最佳类型。"
 }

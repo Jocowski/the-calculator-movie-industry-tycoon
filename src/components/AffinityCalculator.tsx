@@ -7,6 +7,7 @@ import affinities from "@/data";
 import SelectInput from "@/components/SelectInput";
 import AffinityResult from "@/components/AffinityResult";
 import AgeRatingRadio from "@/components/AgeRatingRadio";
+import GenreResults from "@/components/GenreResults";
 import { sendGTMEvent } from '@next/third-parties/google';
 
 const AffinityCalculator: React.FC = () => {
@@ -24,6 +25,9 @@ const AffinityCalculator: React.FC = () => {
     { season: string; score: number; label: string }[]
   >([]);
   const [loading, setLoading] = useState(false);
+  const [genreResults, setGenreResults] = useState<
+    { genre: string; label: string; affinity: number }[]
+  >([]);
 
   const [formStarted, setFormStarted] = useState(false);
 
@@ -58,6 +62,19 @@ const AffinityCalculator: React.FC = () => {
   };
 
   const calculateAffinity = useCallback(() => {
+    if (theme) {
+      const genresList = affinities.genreRelations.header;
+      const themeAffinity = affinities.thematicRelations.items[theme];
+
+      const genresData = genresList.map((genre, index) => ({
+        genre,
+        label: getAffinityLabel(themeAffinity[index]),
+        affinity: themeAffinity[index]
+      })).sort((a, b) => b.affinity - a.affinity);
+
+      setGenreResults(genresData);
+    }
+
     if (genre1 && theme && rating) {
       setLoading(true);
 
@@ -146,6 +163,20 @@ const AffinityCalculator: React.FC = () => {
       </h2>
 
       <div className="flex flex-col gap-4">
+        <SelectInput
+          name="theme"
+          label={t.theme}
+          options={themes}
+          value={theme}
+          onChange={(e) => {
+            setTheme(e.target.value);
+            trackFieldChange('theme', e.target.value);
+          }}
+          required
+        />
+
+        <GenreResults genreResults={genreResults} />
+
         <div className="grid md:grid-cols-2 gap-4">
           <SelectInput
             name="genre1"
@@ -171,18 +202,6 @@ const AffinityCalculator: React.FC = () => {
             isOptional // Define que o campo é opcional
           />
         </div>
-
-        <SelectInput
-          name="theme"
-          label={t.theme}
-          options={themes}
-          value={theme}
-          onChange={(e) => {
-            setTheme(e.target.value);
-            trackFieldChange('theme', e.target.value);
-          }}
-          required
-        />
 
         <AgeRatingRadio
           label={t.rating}
