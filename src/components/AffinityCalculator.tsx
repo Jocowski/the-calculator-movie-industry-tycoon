@@ -140,7 +140,7 @@ const AffinityCalculator: React.FC = () => {
   }, [calculateAffinity]);
 
   return (
-    <div className="affinity-form-container flex flex-col gap-6 w-full max-w-2xl mx-auto p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg">
+    <div className="affinity-form-container flex flex-col gap-6 w-full max-w-2xl mx-auto p-6 bg-white dark:bg-gray-800 rounded-xl shadow-xl">
       <h2 className="text-l font-bold text-center text-gray-800 dark:text-gray-100 mb-4">
         {t.subtitle}
       </h2>

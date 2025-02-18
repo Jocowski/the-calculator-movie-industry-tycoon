@@ -26,5 +26,7 @@
   "resultMessageTwoGenres": "[genre1], ve[genre2], teması '[theme]' ve sınıflandırması '[rating]' olan seçiminiz şu değerlendirmeyi aldı:",
   "bestDatesToLaunch": "Bu filmi yayınlamak için en iyi tarihler şunlardır",
   "clearSelection": "Hiçbiri",
-  "optinSelect": "Bu alan isteğe bağlıdır"
+  "optinSelect": "Bu alan isteğe bağlıdır",
+  "newFeatureMessage": "Bu proje yenidir ve yakında yeni özellikler gelecektir!",
+  "nextFeatureMessage": "Bir sonraki özellik, yapım ve post-prodüksiyon için ideal ayarlama olacaktır."
 }

@@ -15,6 +15,12 @@ export default function Home() {
       {/* Componente da calculadora */}
       <AffinityCalculator />
 
+      {/* Mensagem sobre novidades */}
+      <div className="mt-8 p-4 text-center text-sm text-gray-600 dark:text-gray-300  w-full max-w-2xl mx-auto p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md">
+        <p className="">{t.newFeatureMessage}</p>
+        <p className="mt-1 font-bold text-blue-500 dark:text-blue-300">{t.nextFeatureMessage}</p>
+      </div>
+
       {/* Dados estruturados para SEO */}
       <Script
         id="structured-data"
