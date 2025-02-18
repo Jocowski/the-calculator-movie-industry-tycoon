@@ -16,6 +16,7 @@
   "score": "Score",
   "lightModeTooltip": "Turn on the light",
   "darkModeTooltip": "Turn off the light",
+  "themeToggle": "Toggle between light and dark theme",
   "gameTitle": "The Executive - Movie Industry Tycoon",
   "gameTitleAriaLabel": "The Executive - Movie Industry Tycoon (opens in a new tab)",
   "disclaimerPrefix": "This page has no affiliation with the game and is intended solely to assist users in the initial film configuration within",
@@ -27,6 +28,10 @@
   "bestDatesToLaunch": "The best dates to launch this movie are",
   "clearSelection": "None",
   "optinSelect": "This field is optional",
-  "newFeatureMessage": "This project is recent and new features will be coming soon!",
-  "nextFeatureMessage": "The next feature will be the ideal adjustment for production and post-production."
+  "messageUpdate1": "The calculator is compatible with the version",
+  "gameVersion": "Patch notes [1.0.4]",
+  "messageUpdate2": "of the game.",
+  "nextFeatureMessage": "The next feature will be:",
+  "nextFeature": "Optimal adjustment for Production and Post-production",
+  "newTab": "(opens in new tab)"
 }
