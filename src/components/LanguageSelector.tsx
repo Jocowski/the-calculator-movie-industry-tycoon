@@ -10,7 +10,7 @@ const LanguageSelector: React.FC = () => {
   const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const newLocale = e.target.value;
     setLocale(newLocale);
-    sendGTMEvent({ event: 'language_change', language: newLocale });
+    window.gtag('event', 'language_change', { language: newLocale });
   };
 
   const languages = [

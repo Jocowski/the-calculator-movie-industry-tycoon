@@ -30,13 +30,11 @@ const AffinityCalculator: React.FC = () => {
   const trackFieldChange = (fieldName: string, value: string) => {
     if (!formStarted) {
       setFormStarted(true);
-      sendGTMEvent({
-        event: 'form_start',
+      window.gtag('event', 'form_start', {
         form_name: 'affinity_calculator'
       });
     }
-    sendGTMEvent({
-      event: 'form_field_change',
+    window.gtag('event', 'form_field_change', {
       form_name: 'affinity_calculator',
       field_name: fieldName,
       field_value: value
