@@ -1,16 +1,19 @@
 "use client";
 
-import React from "react";
-import { useLanguage } from "@/context/LanguageContext";
+import * as Select from '@radix-ui/react-select';
+import { ChevronDownIcon, CheckIcon } from '@radix-ui/react-icons';
+import { useLanguage } from '@/context/LanguageContext';
 import { sendGTMEvent } from '@next/third-parties/google';
 
-const LanguageSelector: React.FC = () => {
+const LanguageSelector = () => {
   const { locale, setLocale } = useLanguage();
 
-  const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const newLocale = e.target.value;
-    setLocale(newLocale);
-    window.gtag('event', 'language_change', { language: newLocale });
+  const handleLanguageChange = (value: string) => {
+    setLocale(value);
+    sendGTMEvent({
+      event: 'language_change',
+      language: value
+    });
   };
 
   const languages = [
@@ -27,17 +30,50 @@ const LanguageSelector: React.FC = () => {
   ];
 
   return (
-    <select
-      value={locale}
-      onChange={handleLanguageChange}
-      className="w-32 py-1 px-3 border border-gray-300 rounded-md shadow-sm bg-white text-gray-900 dark:bg-darkBackground dark:text-darkForeground dark:border-darkBorder focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 transition-colors duration-300"
-    >
-      {languages.map((lang) => (
-        <option key={lang.code} value={lang.code}>
-          {lang.label}
-        </option>
-      ))}
-    </select>
+    <Select.Root value={locale} onValueChange={handleLanguageChange}>
+      <Select.Trigger
+        className="inline-flex items-center justify-between px-3 py-2 text-sm bg-white dark:bg-formBackgroundDark rounded-md border border-gray-300 dark:border-formBorderDark hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+        aria-label="Seletor de idiomas"
+      >
+        <Select.Value>
+          {languages.find(lang => lang.code === locale)?.label}
+        </Select.Value>
+        <Select.Icon className="ml-2">
+          <ChevronDownIcon className="h-4 w-4" />
+        </Select.Icon>
+      </Select.Trigger>
+
+      <Select.Portal>
+        <Select.Content
+          className="overflow-hidden bg-white dark:bg-formBackgroundDark rounded-md shadow-lg border border-gray-200 dark:border-formBorderDark"
+          position="popper"
+          sideOffset={5}
+        >
+          <Select.ScrollUpButton className="flex items-center justify-center h-6 bg-white dark:bg-formBackgroundDark">
+            <ChevronDownIcon className="h-4 w-4" />
+          </Select.ScrollUpButton>
+
+          <Select.Viewport className="p-2">
+            {languages.map((lang) => (
+              <Select.Item
+                key={lang.code}
+                value={lang.code}
+                className="flex items-center px-3 py-2 text-sm rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer relative pr-8"
+              >
+                <Select.ItemText>{lang.label}</Select.ItemText>
+                <Select.ItemIndicator className="absolute right-1">
+                  <CheckIcon className="h-4 w-4" />
+                </Select.ItemIndicator>
+              </Select.Item>
+            ))}
+          </Select.Viewport>
+
+          <Select.ScrollDownButton className="flex items-center justify-center h-6 bg-white dark:bg-formBackgroundDark">
+            <ChevronDownIcon className="h-4 w-4" />
+          </Select.ScrollDownButton>
+        </Select.Content>
+      </Select.Portal>
+    </Select.Root>
   );
 };
 

@@ -16,6 +16,7 @@
   "score": "スコア",
   "lightModeTooltip": "ライトをつける",
   "darkModeTooltip": "ライトを消す",
+  "themeToggle": "ライトテーマとダークテーマを切り替える",
   "gameTitle": "The Executive - Movie Industry Tycoon",
   "gameTitleAriaLabel": "The Executive - Movie Industry Tycoon（新しいタブで開きます）",
   "disclaimerPrefix": "このページはゲームとは一切関係がなく、",
@@ -27,6 +28,10 @@
   "bestDatesToLaunch": "この映画を公開する最適な日付は次のとおりです",
   "clearSelection": "なし",
   "optinSelect": "このフィールドは任意です",
-  "newFeatureMessage": "このプロジェクトは最近のものであり、新機能がまもなく登場します！",
-  "nextFeatureMessage": "次の機能は、制作とポストプロダクションのための理想的な調整になります。"
+  "messageUpdate1": "この計算機はバージョンに対応しています",
+  "gameVersion": "パッチノート [1.0.4]",
+  "messageUpdate2": "のゲーム",
+  "nextFeatureMessage": "次の機能は：",
+  "nextFeature": "制作とポストプロダクションのための最適な調整",
+  "newTab": "(新しいタブで開く)"
 }

@@ -1,20 +1,20 @@
 "use client";
 
-import React from "react";
-import { useLanguage } from "@/context/LanguageContext";
+import * as Select from '@radix-ui/react-select';
+import { ChevronDownIcon, CheckIcon } from '@radix-ui/react-icons';
+import { useLanguage } from '@/context/LanguageContext';
 
 type SelectInputProps = {
   label: string;
   name: string;
   options: string[];
   value: string;
-  onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  onChange: (value: string) => void;
   required?: boolean;
   isOptional?: boolean;
-  className?: string;
 };
 
-const SelectInput: React.FC<SelectInputProps> = ({
+const SelectInput = ({
   label,
   name,
   options,
@@ -22,54 +22,77 @@ const SelectInput: React.FC<SelectInputProps> = ({
   onChange,
   required = false,
   isOptional = false,
-  className = "",
-}) => {
+}: SelectInputProps) => {
   const { translations: t } = useLanguage();
 
+  const handleValueChange = (value: string) => {
+    const cleanedValue = value === "unselected" ? "" : value;
+    onChange(cleanedValue);
+    window.gtag('event', 'form_field_change', {
+      form_name: 'affinity_calculator',
+      field_name: name,
+      field_value: cleanedValue,
+    });
+  };
+
   return (
-    <div className={`select-input ${className}`}>
-      {/* Label do campo */}
-      <label
-        htmlFor={name}
-        className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
-      >
-        {label}:
+    <div className="space-y-2">
+      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+        {label}
       </label>
 
-      {/* Elemento select */}
-      <select
-        id={name}
-        name={name}
-        value={value}
-        onChange={onChange}
-        required={required}
-        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm dark:bg-gray-700 dark:text-gray-100"
-      >
-        {/* Opção padrão para selecionar */}
-        <option value="" disabled>
-          {t.select}
-        </option>
+      <Select.Root value={value} onValueChange={handleValueChange}>
+        <Select.Trigger
+          className="w-full flex items-center justify-between px-3 py-2 border rounded-md shadow-sm bg-white dark:bg-formBackgroundDark text-gray-900 dark:text-darkForeground border-gray-300 dark:border-formBorderDark"
+          aria-label={label}
+        >
+          <Select.Value placeholder={t.select} />
+          <Select.Icon className="text-gray-500 dark:text-gray-400">
+            <ChevronDownIcon />
+          </Select.Icon>
+        </Select.Trigger>
 
-        {/* Opção para limpar a seleção (apenas se for opcional) */}
-        {isOptional && (
-          <option value="">
-            {t.clearSelection}
-          </option>
-        )}
+        <Select.Portal>
+          <Select.Content className="z-50 bg-white dark:bg-formBackgroundDark rounded-md shadow-lg border border-gray-200 dark:border-formBorderDark">
+            <Select.ScrollUpButton className="flex items-center justify-center h-6 bg-white dark:bg-formBackgroundDark text-gray-500 cursor-default">
+              <ChevronDownIcon />
+            </Select.ScrollUpButton>
 
-        {/* Opções dinâmicas */}
-        {options.map((option) => (
-          <option key={option} value={option}>
-            {option}
-          </option>
-        ))}
-      </select>
+            <Select.Viewport className="p-2">
+              {isOptional && (
+                <Select.Item
+                  value="unselected" // Violação da regra de valores não vazios
+                  className="flex items-center px-3 py-2 text-sm rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer"
+                >
+                  <Select.ItemText>{t.clearSelection}</Select.ItemText>
+                </Select.Item>
+              )}
 
-      {/* Texto auxiliar abaixo do select */}
+              {options.map((option) => (
+                <Select.Item
+                  key={option}
+                  value={option}
+                  className="flex items-center px-3 py-2 text-sm rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer"
+                >
+                  <Select.ItemText>{option}</Select.ItemText>
+                  <Select.ItemIndicator className="ml-auto">
+                    <CheckIcon />
+                  </Select.ItemIndicator>
+                </Select.Item>
+              ))}
+            </Select.Viewport>
+
+            <Select.ScrollDownButton className="flex items-center justify-center h-6 bg-white dark:bg-formBackgroundDark text-gray-500 cursor-default">
+              <ChevronDownIcon />
+            </Select.ScrollDownButton>
+          </Select.Content>
+        </Select.Portal>
+      </Select.Root>
+
       {isOptional && (
-        <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+        <span className="block text-xs text-gray-500 dark:text-gray-400 mt-1">
           {t.optinSelect}
-        </p>
+        </span>
       )}
     </div>
   );

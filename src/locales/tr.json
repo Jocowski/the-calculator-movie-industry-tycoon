@@ -16,6 +16,7 @@
   "score": "Skor",
   "lightModeTooltip": "Işığı aç",
   "darkModeTooltip": "Işığı kapat",
+  "themeToggle": "Açık ve koyu tema arasında geçiş yap",
   "gameTitle": "The Executive - Movie Industry Tycoon",
   "gameTitleAriaLabel": "The Executive - Movie Industry Tycoon (yeni sekmede açılır)",
   "disclaimerPrefix": "Bu sayfanın oyunla hiçbir bağlantısı yoktur ve yalnızca",
@@ -27,6 +28,10 @@
   "bestDatesToLaunch": "Bu filmi yayınlamak için en iyi tarihler şunlardır",
   "clearSelection": "Hiçbiri",
   "optinSelect": "Bu alan isteğe bağlıdır",
-  "newFeatureMessage": "Bu proje yenidir ve yakında yeni özellikler gelecektir!",
-  "nextFeatureMessage": "Bir sonraki özellik, yapım ve post-prodüksiyon için ideal ayarlama olacaktır."
+  "messageUpdate1": "Hesap makinesi, sürüm ile uyumludur",
+  "gameVersion": "Yama notları [1.0.4]",
+  "messageUpdate2": "oyunun",
+  "nextFeatureMessage": "Bir sonraki özellik şu olacak:",
+  "nextFeature": "Üretim ve Post-prodüksiyon için optimal ayarlama",
+  "newTab": "(yeni sekmede açar)"
 }

@@ -34,6 +34,7 @@ const AffinityCalculator: React.FC = () => {
         form_name: 'affinity_calculator'
       });
     }
+
     window.gtag('event', 'form_field_change', {
       form_name: 'affinity_calculator',
       field_name: fieldName,
@@ -146,38 +147,39 @@ const AffinityCalculator: React.FC = () => {
       <div className="flex flex-col gap-4">
         <div className="grid md:grid-cols-2 gap-4">
           <SelectInput
-            name="genre1"
             label={t.genre1}
+            name="genre1"
             options={genres}
             value={genre1}
-            onChange={(e) => {
-              setGenre1(e.target.value);
-              trackFieldChange('genre1', e.target.value);
+            onChange={(value) => {
+              setGenre1(value);
+              trackFieldChange('genre1', value);
             }}
             required
           />
 
           <SelectInput
-            name="genre2"
             label={t.genre2}
-            options={genres.filter((g) => g !== genre1)} // Filtra para não repetir o gênero principal
-            value={genre2}
-            onChange={(e) => {
-              setGenre2(e.target.value); // Permite limpar ou alterar a seleção
-              trackFieldChange("genre2", e.target.value);
+            name="genre2"
+            options={genres.filter(g => g !== genre1)}
+            value={genre2 || "unselected"} // Fornece valor padrão compatível
+            onChange={(value) => {
+              const cleanedValue = value === "unselected" ? "" : value;
+              setGenre2(cleanedValue);
+              trackFieldChange('genre2', cleanedValue);
             }}
-            isOptional // Define que o campo é opcional
+            isOptional
           />
         </div>
 
         <SelectInput
-          name="theme"
           label={t.theme}
+          name="theme"
           options={themes}
           value={theme}
-          onChange={(e) => {
-            setTheme(e.target.value);
-            trackFieldChange('theme', e.target.value);
+          onChange={(value) => {
+            setTheme(value);
+            trackFieldChange('theme', value);
           }}
           required
         />

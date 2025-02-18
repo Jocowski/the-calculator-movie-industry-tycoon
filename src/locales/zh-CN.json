@@ -16,6 +16,7 @@
   "score": "分数",
   "lightModeTooltip": "开灯",
   "darkModeTooltip": "关灯",
+  "themeToggle": "切换明暗主题",
   "gameTitle": "The Executive - Movie Industry Tycoon",
   "gameTitleAriaLabel": "The Executive - Movie Industry Tycoon（在新标签页中打开）",
   "disclaimerPrefix": "本页面与游戏无任何关联，仅旨在帮助用户在",
@@ -27,6 +28,10 @@
   "bestDatesToLaunch": "发布这部电影的最佳日期是",
   "clearSelection": "无",
   "optinSelect": "此字段为可选项",
-  "newFeatureMessage": "这个项目是最近的，新功能即将推出！",
-  "nextFeatureMessage": "下一个功能将是制作和后期制作的理想调整。"
+  "messageUpdate1": "该计算器兼容版本",
+  "gameVersion": "补丁说明 [1.0.4]",
+  "messageUpdate2": "的游戏",
+  "nextFeatureMessage": "下一个功能将是：",
+  "nextFeature": "生产和后期制作的最佳调整",
+  "newTab": "(在新标签页中打开)"
 }
