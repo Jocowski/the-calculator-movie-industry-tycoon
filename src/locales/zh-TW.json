@@ -125,5 +125,8 @@
   "SEASON_halloween": "萬聖節",
   "SEASON_awards": "頒獎季",
   "SEASON_thanksgiving": "感恩節",
-  "SEASON_eoyholidays": "年末假期"
+  "SEASON_eoyholidays": "年末假期",
+  "RATING_R": "限制級",
+  "RATING_PG_13": "保護級",
+  "RATING_PG": "普遍級"
 }

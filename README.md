@@ -6,6 +6,8 @@
 
 **Note:** This tool has no official affiliation with the game "The Executive - Movie Industry Tycoon" and is a fan-made project created for the community. Also, please note that I am not a professional developer, and this project is purely a hobby.
 
+Project Link: [https://the-calculator-movie-industry-tycoon.vercel.app/](https://the-calculator-movie-industry-tycoon.vercel.app/)
+
 ## Features
 
 - Primary and secondary genre selection
@@ -74,10 +76,9 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Acknowledgments
 
-- [Developer @JocoJocowski](https://github.com/Jocowski)
+- Developer [@JocoJocowski](https://github.com/Jocowski)
 - [The Executive - Movie Industry Tycoon](https://store.steampowered.com/app/2315430/The_Executive__Movie_Industry_Tycoon/)
 
 ## Contact
 
-Project Link: [https://the-calculator-movie-industry-tycoon.vercel.app/](https://the-calculator-movie-industry-tycoon.vercel.app/)
 Victor Franco - [in/oovictorfranco](https://www.linkedin.com/in/oovictorfranco/)

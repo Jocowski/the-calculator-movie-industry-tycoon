@@ -56,7 +56,7 @@ const AgeRatingRadio: React.FC<AgeRatingRadioProps> = ({
               }`}
             onClick={() => onChange(option.value)}
           >
-            {getTranslatedRating(option.value)}
+            {option.label}
           </button>
         ))}
       </div>

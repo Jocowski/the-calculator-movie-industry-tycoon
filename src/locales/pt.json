@@ -125,5 +125,8 @@
   "SEASON_halloween": "Dia das Bruxas",
   "SEASON_awards": "Temporada de Prêmios",
   "SEASON_thanksgiving": "Ação de Graças",
-  "SEASON_eoyholidays": "Festas de Fim de Ano"
+  "SEASON_eoyholidays": "Festas de Fim de Ano",
+  "RATING_R": "16+",
+  "RATING_PG_13": "12+",
+  "RATING_PG": "L"
 }
