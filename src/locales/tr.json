@@ -125,5 +125,8 @@
   "SEASON_halloween": "Cadılar Bayramı",
   "SEASON_awards": "Ödül Sezonu",
   "SEASON_thanksgiving": "Şükran Günü",
-  "SEASON_eoyholidays": "Yıl Sonu Tatilleri"
+  "SEASON_eoyholidays": "Yıl Sonu Tatilleri",
+  "RATING_R": "18+",
+  "RATING_PG_13": "13+",
+  "RATING_PG": "Genel"
 }

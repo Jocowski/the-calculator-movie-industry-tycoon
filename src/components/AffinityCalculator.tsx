@@ -90,12 +90,15 @@ const AffinityCalculator: React.FC = () => {
 
   // Adicione este novo useEffect (após o que ordena os temas):
   useEffect(() => {
-    const translatedRatings = ratings.map(rating => ({
-      value: rating,
-      label: (t as Record<string, string>)[`RATING_${rating.replace("-", "_")}`] || rating
-    }));
+    const translatedRatings = ratings.map(rating => {
+      const normalizedRating = rating.toUpperCase().replace("-", "_") as keyof typeof t;
+      return {
+        value: rating,
+        label: t[`RATING_${normalizedRating}` as keyof typeof t] || rating
+      };
+    });
     setRatingsOptions(translatedRatings);
-  }, [ratings, t]); // Dependências importantes
+  }, [ratings, t]);
 
   // Função para obter o rótulo de afinidade
   const getAffinityLabel = (score: number): string => {

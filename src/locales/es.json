@@ -125,5 +125,8 @@
   "SEASON_halloween": "Halloween",
   "SEASON_awards": "Temporada de Premios",
   "SEASON_thanksgiving": "Día de Acción de Gracias",
-  "SEASON_eoyholidays": "Fiestas de Fin de Año"
+  "SEASON_eoyholidays": "Fiestas de Fin de Año",
+  "RATING_R": "18",
+  "RATING_PG_13": "13",
+  "RATING_PG": "TP"
 }

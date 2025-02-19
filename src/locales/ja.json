@@ -125,5 +125,8 @@
   "SEASON_halloween": "ハロウィーン",
   "SEASON_awards": "アワードシーズン",
   "SEASON_thanksgiving": "感謝祭",
-  "SEASON_eoyholidays": "年末の祝日"
+  "SEASON_eoyholidays": "年末の祝日",
+  "RATING_R": "R18+",
+  "RATING_PG_13": "PG12",
+  "RATING_PG": "G"
 }

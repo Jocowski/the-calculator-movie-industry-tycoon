@@ -125,5 +125,8 @@
   "SEASON_halloween": "할로윈",
   "SEASON_awards": "시상식 시즌",
   "SEASON_thanksgiving": "추수감사절",
-  "SEASON_eoyholidays": "연말 휴일"
+  "SEASON_eoyholidays": "연말 휴일",
+  "RATING_R": "청불",
+  "RATING_PG_13": "12세",
+  "RATING_PG": "전체"
 }
