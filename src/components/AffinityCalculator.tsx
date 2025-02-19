@@ -7,12 +7,27 @@ import affinities from "@/data";
 import SelectInput from "@/components/SelectInput";
 import AffinityResult from "@/components/AffinityResult";
 import AgeRatingRadio from "@/components/AgeRatingRadio";
+import GenresInput from "@/components/GenresInput";
 import { sendGTMEvent } from '@next/third-parties/google';
+
+interface GenreScore {
+  genre: string;
+  score: number;
+  label: string;
+}
+
+interface SeasonResult {
+  season: string;
+  score: number;
+  label: string;
+}
 
 const AffinityCalculator: React.FC = () => {
   const { translations: t } = useLanguage();
 
   const [genres, setGenres] = useState<string[]>([]);
+  const [genres1, setGenres1] = useState<GenreScore[]>([]);
+  const [genres2, setGenres2] = useState<GenreScore[]>([]);
   const [themes, setThemes] = useState<string[]>([]);
   const [ratings, setRatings] = useState<string[]>([]);
   const [genre1, setGenre1] = useState("");
@@ -44,6 +59,11 @@ const AffinityCalculator: React.FC = () => {
 
   useEffect(() => {
     setGenres(affinities.genreRelations.header);
+
+    const initialGenres = affinities.genreRelations.header.map(genre => ({ genre: genre, score: 0, label: "" }));
+    setGenres1(initialGenres);
+    setGenres2(initialGenres);
+
     setThemes(Object.keys(affinities.thematicRelations.items));
     setRatings(Object.keys(affinities.ratingImpact.items));
   }, []);
@@ -56,7 +76,82 @@ const AffinityCalculator: React.FC = () => {
     return t.noResult;
   };
 
+  const calculateGenreScores = (
+    sourceGenre: string | null,
+    themeScores: GenreScore[] | null,
+  ): GenreScore[] => {
+    if (!sourceGenre) return themeScores || [];
+
+    const genreScores = affinities.genreRelations.header.map(genre => ({
+      genre,
+      score: affinities.genreRelations.items[sourceGenre]?.[genres.indexOf(genre)] || 0,
+      label: getAffinityLabel(affinities.genreRelations.items[sourceGenre]?.[genres.indexOf(genre)] || 0)
+    }));
+
+    if (!themeScores) return genreScores;
+
+    return themeScores.map(genre => ({
+      genre: genre.genre,
+      score: (themeScores[genres.indexOf(genre.genre)].score + genreScores[genres.indexOf(genre.genre)].score) / 2,
+      label: getAffinityLabel((themeScores[genres.indexOf(genre.genre)].score + genreScores[genres.indexOf(genre.genre)].score) / 2)
+    }));
+  };
+
+  const getThemeScores = (theme: string): GenreScore[] => {
+    return affinities.thematicRelations.header.map(genre => ({
+      genre,
+      score: affinities.thematicRelations.items[theme]?.[genres.indexOf(genre)] || 0,
+      label: getAffinityLabel(affinities.thematicRelations.items[theme]?.[genres.indexOf(genre)] || 0)
+    }));
+  };
+  
   const calculateAffinity = useCallback(() => {
+    if (theme) {
+      const themeScores = getThemeScores(theme);
+      
+      if (!genre2) {
+        setGenres1([...themeScores].sort((a, b) => b.score - a.score));
+      }
+  
+      if (genre1) {
+        const combinedScores = calculateGenreScores(genre1, themeScores)
+          .sort((a, b) => b.score - a.score)
+          .filter(genre => genre.genre !== genre1);
+        setGenres2(combinedScores);
+      }
+  
+      if (genre1 && genre2) {
+        const combinedScores = calculateGenreScores(genre2, themeScores)
+          .sort((a, b) => b.score - a.score)
+          .filter(genre => genre.genre !== genre2);
+        setGenres1(combinedScores);
+      }
+    }
+
+    if (!theme) {
+      if (genre1) {
+        const genreScores = calculateGenreScores(genre1, null)
+          .sort((a, b) => b.score - a.score)
+          .filter(genre => genre.genre !== genre1);
+
+        setGenres2(genreScores);
+      }
+
+      if (genre2) {
+        const genreScores = calculateGenreScores(genre2, null)
+          .sort((a, b) => b.score - a.score)
+          .filter(genre => genre.genre !== genre2);
+
+        setGenres1(genreScores);
+      } else {
+        setGenres1(affinities.genreRelations.header.map(genre => ({
+          genre,
+          score: 0,
+          label: ""
+        })));
+      }
+    }
+
     if (genre1 && theme && rating) {
       setLoading(true);
 
@@ -145,33 +240,6 @@ const AffinityCalculator: React.FC = () => {
       </h2>
 
       <div className="flex flex-col gap-4">
-        <div className="grid md:grid-cols-2 gap-4">
-          <SelectInput
-            label={t.genre1}
-            name="genre1"
-            options={genres}
-            value={genre1}
-            onChange={(value) => {
-              setGenre1(value);
-              trackFieldChange('genre1', value);
-            }}
-            required
-          />
-
-          <SelectInput
-            label={t.genre2}
-            name="genre2"
-            options={genres.filter(g => g !== genre1)}
-            value={genre2 || "unselected"} // Fornece valor padrão compatível
-            onChange={(value) => {
-              const cleanedValue = value === "unselected" ? "" : value;
-              setGenre2(cleanedValue);
-              trackFieldChange('genre2', cleanedValue);
-            }}
-            isOptional
-          />
-        </div>
-
         <SelectInput
           label={t.theme}
           name="theme"
@@ -183,6 +251,31 @@ const AffinityCalculator: React.FC = () => {
           }}
           required
         />
+
+        <div className="grid md:grid-cols-2 gap-4">
+          <GenresInput
+            label={t.genre1}
+            name="genre1"
+            options={genres1}
+            value={genre1}
+            onChange={(value) => {
+              setGenre1(value);
+              trackFieldChange('genre1', value);
+            }}
+          />
+
+          <GenresInput
+            label={t.genre2}
+            name="genre2"
+            options={genres2}
+            value={genre2}
+            onChange={(value) => {
+              setGenre2(value);
+              trackFieldChange('genre2', value);
+            }}
+            isOptional
+          />
+        </div>
 
         <AgeRatingRadio
           label={t.rating}
