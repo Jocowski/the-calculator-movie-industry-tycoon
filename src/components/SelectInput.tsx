@@ -27,11 +27,14 @@ const SelectInput = ({
 
   const handleValueChange = (value: string) => {
     const cleanedValue = value === "unselected" ? "" : value;
+    const translatedLabel = getTranslatedOption(cleanedValue);
+
     onChange(cleanedValue);
     window.gtag('event', 'form_field_change', {
       form_name: 'affinity_calculator',
       field_name: name,
       field_value: cleanedValue,
+      field_label: translatedLabel // Novo parâmetro
     });
   };
 

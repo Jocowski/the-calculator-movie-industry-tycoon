@@ -35,12 +35,7 @@ const AgeRatingRadio: React.FC<AgeRatingRadioProps> = ({
   selectedValue,
   onChange,
 }) => {
-  const { translations: t } = useLanguage(); // Contexto obtido
-
-  const getTranslatedRating = (value: string): string => {
-    const key = `RATING_${value.replace("-", "_")}`;
-    return t[key as keyof typeof t] || value; // Type assertion segura
-  };
+  const { translations: t } = useLanguage();
 
   return (
     <div className="age-rating-radio w-full">

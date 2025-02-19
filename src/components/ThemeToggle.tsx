@@ -14,9 +14,10 @@ const ThemeToggle: React.FC = () => {
     toggleTheme();
 
     sendGTMEvent({
-      event: 'theme_change',
-      event_category: 'User Interaction',
-      event_label: newTheme
+      event: 'user_interaction',
+      event_name: 'theme_change',
+      theme: newTheme,
+      interaction_type: 'toggle'
     });
   };
 
