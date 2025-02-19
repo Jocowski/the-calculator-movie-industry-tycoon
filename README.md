@@ -72,12 +72,12 @@ Contributions are welcome! To contribute:
 
 Distributed under the MIT License. See `LICENSE` for more information.
 
-## Contact
-
-Victor Franco - [in/oovictorfranco](https://www.linkedin.com/in/oovictorfranco/)
-
-Project Link: [https://the-calculator-movie-industry-tycoon.vercel.app/](https://the-calculator-movie-industry-tycoon.vercel.app/)
-
 ## Acknowledgments
 
+- [Developer @JocoJocowski](https://github.com/Jocowski)
 - [The Executive - Movie Industry Tycoon](https://store.steampowered.com/app/2315430/The_Executive__Movie_Industry_Tycoon/)
+
+## Contact
+
+Project Link: [https://the-calculator-movie-industry-tycoon.vercel.app/](https://the-calculator-movie-industry-tycoon.vercel.app/)
+Victor Franco - [in/oovictorfranco](https://www.linkedin.com/in/oovictorfranco/)

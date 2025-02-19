@@ -2,18 +2,18 @@
 
 import React from "react";
 import { useLanguage } from "@/context/LanguageContext";
-import SuperbowlIcon from "@/components/SuperbowlIcon";
-import ValentineIcon from "@/components/ValentineIcon";
-import EasterIcon from "@/components/EasterIcon";
-import MemorialDayIcon from "@/components/MemorialDayIcon";
-import EuroCupIcon from "@/components/EuroCupIcon";
-import WorldCupIcon from "@/components/WorldCupIcon";
-import SummerIcon from "@/components/SummerIcon";
-import HalloweenIcon from "@/components/HalloweenIcon";
-import AwardsIcon from "@/components/AwardsIcon";
-import ThanksgivingIcon from "@/components/ThanksgivingIcon";
-import EOYHolidaysIcon from "@/components/EOYHolidaysIcon";
-import CalendarIcon from "@/components/CalendarIcon";
+import SuperbowlIcon from "@/components/Icons/SuperbowlIcon";
+import ValentineIcon from "@/components/Icons/ValentineIcon";
+import EasterIcon from "@/components/Icons/EasterIcon";
+import MemorialDayIcon from "@/components/Icons/MemorialDayIcon";
+import EuroCupIcon from "@/components/Icons/EuroCupIcon";
+import WorldCupIcon from "@/components/Icons/WorldCupIcon";
+import SummerIcon from "@/components/Icons/SummerIcon";
+import HalloweenIcon from "@/components/Icons/HalloweenIcon";
+import AwardsIcon from "@/components/Icons/AwardsIcon";
+import ThanksgivingIcon from "@/components/Icons/ThanksgivingIcon";
+import EOYHolidaysIcon from "@/components/Icons/EOYHolidaysIcon";
+import CalendarIcon from "@/components/Icons/CalendarIcon";
 
 type SeasonalResultsProps = {
   seasonResults: { season: string; score: number; label: string }[];
@@ -21,6 +21,11 @@ type SeasonalResultsProps = {
 
 const SeasonalResults: React.FC<SeasonalResultsProps> = ({ seasonResults }) => {
   const { translations: t } = useLanguage();
+
+  // Função para traduzir o nome da temporada
+  const getTranslatedSeason = (season: string): string => {
+    return (t as Record<string, string>)[`SEASON_${season}`] || season;
+  };
 
   // Função para obter o ícone da temporada
   const getSeasonIcon = (season: string) => {
@@ -81,19 +86,20 @@ const SeasonalResults: React.FC<SeasonalResultsProps> = ({ seasonResults }) => {
       <p className="my-2 text-sm text-gray-600 dark:text-gray-400">
         {t.bestDatesToLaunch}:
       </p>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-2">
         {seasonResults.map(({ season, score, label }, index) => (
           <div
             key={index}
             className="p-2 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 flex flex-col items-center text-center bg-white dark:bg-gray-800">
             {getSeasonIcon(season)}
             <span className="text-xs font-medium text-gray-500 dark:text-gray-400">
-              {season}
+              {/* Texto traduzido */}
+              {getTranslatedSeason(season)}
             </span>
             <span className={`text-l font-bold my-2 py-1 px-2 rounded ${getScoreBgColor(label)} ${getTextColor(label)}`}>
               {label}
             </span>
-            <span className="text-xs font-medium text-gray-500 dark:text-gray-400">
+            <span className="text-xs font-medium text-gray-400 dark:text-gray-500">
               Score: {score}
             </span>
           </div>

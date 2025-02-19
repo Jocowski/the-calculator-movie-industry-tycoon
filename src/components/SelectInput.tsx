@@ -35,10 +35,20 @@ const SelectInput = ({
     });
   };
 
+  // Função helper type-safe
+  const getTranslatedOption = (option: string): string => {
+    const genreKey = `GENRE_${option}`;
+    const themeKey = `THEME_${option}`;
+
+    return (t as Record<string, string>)[genreKey] ||
+      (t as Record<string, string>)[themeKey] ||
+      option;
+  };
+
   return (
     <div className="space-y-2">
       <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-        {label}
+        {label}:
       </label>
 
       <Select.Root value={value} onValueChange={handleValueChange}>
@@ -61,7 +71,7 @@ const SelectInput = ({
             <Select.Viewport className="p-2">
               {isOptional && (
                 <Select.Item
-                  value="unselected" // Violação da regra de valores não vazios
+                  value="unselected"
                   className="flex items-center px-3 py-2 text-sm rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer"
                 >
                   <Select.ItemText>{t.clearSelection}</Select.ItemText>
@@ -74,7 +84,9 @@ const SelectInput = ({
                   value={option}
                   className="flex items-center px-3 py-2 text-sm rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer"
                 >
-                  <Select.ItemText>{option}</Select.ItemText>
+                  <Select.ItemText>
+                    {getTranslatedOption(option)}
+                  </Select.ItemText>
                   <Select.ItemIndicator className="ml-auto">
                     <CheckIcon />
                   </Select.ItemIndicator>

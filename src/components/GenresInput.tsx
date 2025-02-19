@@ -25,6 +25,12 @@ const GenresInput = ({
 }: GenresInputProps) => {
   const { translations: t } = useLanguage();
 
+  // Função helper type-safe
+  const getTranslatedGenre = (genre: string): string => {
+    const key = `GENRE_${genre}`;
+    return (t as Record<string, string>)[key] || genre;
+  };
+
   const handleValueChange = (value: string) => {
     const cleanedValue = value === "unselected" ? "" : value;
     onChange(cleanedValue);
@@ -54,15 +60,15 @@ const GenresInput = ({
   // Função para determinar a cor do texto com base no label
   const getTextColor = (label: string): string => {
     if (label.toLowerCase() === t.medium.toLowerCase()) {
-      return "text-gray-900"; // Médio
+      return "text-gray-900";
     }
-    return "text-white"; // Ruim, Bom ou Ótimo
+    return "text-white";
   };
 
   return (
     <div className="space-y-2">
       <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-        {label}
+        {label}:
       </label>
 
       <Select.Root value={value} onValueChange={handleValueChange}>
@@ -85,7 +91,7 @@ const GenresInput = ({
             <Select.Viewport className="p-2">
               {isOptional && (
                 <Select.Item
-                  value="unselected" // Violação da regra de valores não vazios
+                  value="unselected"
                   className="flex items-center px-3 py-2 text-sm rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer"
                 >
                   <Select.ItemText>{t.clearSelection}</Select.ItemText>
@@ -103,7 +109,8 @@ const GenresInput = ({
                       {option.label && (
                         <span className={`inline-block w-4 h-4 rounded-full mr-2 ${getScoreBgColor(option.label)}`}></span>
                       )}
-                      {option.genre}
+                      {/* Texto traduzido com função helper */}
+                      {getTranslatedGenre(option.genre)}
                     </div>
                   </Select.ItemText>
                   <Select.ItemIndicator className="ml-auto">
