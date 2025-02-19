@@ -1,4 +1,3 @@
-//src/components/AffinityCalculator.tsx
 "use client";
 
 import React, { useEffect, useState, useCallback } from "react";
@@ -9,6 +8,7 @@ import AffinityResult from "@/components/AffinityResult";
 import AgeRatingRadio from "@/components/AgeRatingRadio";
 import GenresInput from "@/components/GenresInput";
 import { sendGTMEvent } from "@next/third-parties/google";
+import useFormTracking from '@/hooks/useFormTracking';
 
 interface GenreScore {
   genre: string;
@@ -26,8 +26,9 @@ const AffinityCalculator: React.FC = () => {
   const { translations: t, locale } = useLanguage();
 
   // Função helper para traduções de temas
-  const getThemeTranslation = (theme: string): string => {
-    return (t as Record<string, string>)[`THEME_${theme}`] || theme;
+  const getTranslatedKey = (prefix: string, key: string): string => {
+    const translationKey = `${prefix}_${key.replace(/-/g, '_').toUpperCase()}`;
+    return (t as Record<string, string>)[translationKey] || key;
   };
 
   const [genres, setGenres] = useState<string[]>([]);
@@ -45,20 +46,66 @@ const AffinityCalculator: React.FC = () => {
   const [loading, setLoading] = useState(false);
 
   const [formStarted, setFormStarted] = useState(false);
+  const [filledFields, setFilledFields] = useState<Set<string>>(new Set());
+  const [formStartTime, setFormStartTime] = useState<number>(0);
+
+  const [gtagReady, setGtagReady] = useState(false);
+
+  useEffect(() => {
+    const checkGtag = () => {
+      if (typeof window.gtag === 'function') {
+        setGtagReady(true);
+        return true;
+      }
+      return false;
+    };
+
+    if (!checkGtag()) {
+      const timer = setInterval(() => {
+        if (checkGtag()) {
+          clearInterval(timer);
+        }
+      }, 500);
+      return () => clearInterval(timer);
+    }
+  }, []);
+
+  const safeGtag = (event: string, params: Record<string, any>) => {
+    if (gtagReady && typeof window.gtag === 'function') {
+      window.gtag('event', event, params);
+    } else {
+      console.warn('[GTAG] Evento não enviado:', event, params);
+    }
+  };
+
+  useFormTracking({
+    filledFields,
+    formName: 'affinity_calculator',
+    delay: 15000
+  });
 
   // Função para rastrear mudanças nos campos do formulário
-  const trackFieldChange = (fieldName: string, value: string) => {
+  const trackFieldChange = (fieldName: string, value: string, label: string) => {
+    const newFilled = new Set(filledFields);
+    newFilled.add(fieldName);
+    setFilledFields(newFilled);
+
     if (!formStarted) {
       setFormStarted(true);
-      window.gtag("event", "form_start", {
+      safeGtag("form_start", { // ← Usando a função segura
         form_name: "affinity_calculator",
+        initial_field: fieldName,
+        initial_label: label
       });
     }
 
-    window.gtag("event", "form_field_change", {
+    safeGtag("form_field_change", { // ← Usando a função segura
       form_name: "affinity_calculator",
       field_name: fieldName,
       field_value: value,
+      field_label: label,
+      filled_fields_count: newFilled.size,
+      filled_fields: Array.from(newFilled).join(',')
     });
   };
 
@@ -78,7 +125,7 @@ const AffinityCalculator: React.FC = () => {
     const sortedThemes = Object.keys(affinities.thematicRelations.items)
       .map((theme) => ({
         key: theme,
-        label: getThemeTranslation(theme), // Usa a função helper
+        label: getTranslatedKey('THEME', theme),
       }))
       .sort((a, b) => a.label.localeCompare(b.label, locale, { sensitivity: "base" }))
       .map((item) => item.key);
@@ -90,13 +137,10 @@ const AffinityCalculator: React.FC = () => {
 
   // Adicione este novo useEffect (após o que ordena os temas):
   useEffect(() => {
-    const translatedRatings = ratings.map(rating => {
-      const normalizedRating = rating.toUpperCase().replace("-", "_") as keyof typeof t;
-      return {
-        value: rating,
-        label: t[`RATING_${normalizedRating}` as keyof typeof t] || rating
-      };
-    });
+    const translatedRatings = ratings.map(rating => ({
+      value: rating,
+      label: getTranslatedKey('RATING', rating)
+    }));
     setRatingsOptions(translatedRatings);
   }, [ratings, t]);
 
@@ -275,11 +319,25 @@ const AffinityCalculator: React.FC = () => {
         sendGTMEvent({
           event: 'form_submission',
           form_name: 'affinity_calculator',
-          genre1: genre1,
-          genre2: genre2 || 'none',
-          theme: theme,
-          rating: rating,
-          score: finalBaseScore.toFixed(2), // Alterado para 2 casas decimais
+          genre1: {
+            value: genre1,
+            label: getTranslatedKey('GENRE', genre1)
+          },
+          genre2: {
+            value: genre2 || 'none',
+            label: genre2 ? getTranslatedKey('GENRE', genre2) : 'none'
+          },
+          theme: {
+            value: theme,
+            label: getTranslatedKey('THEME', theme)
+          },
+          rating: {
+            value: rating,
+            label: getTranslatedKey('RATING', rating)
+          },
+          score: finalBaseScore.toFixed(2),
+          completion_time: Date.now() - formStartTime,
+          filled_fields: Array.from(filledFields).join(',')
         });
       }, 300);
     } else {
@@ -306,7 +364,7 @@ const AffinityCalculator: React.FC = () => {
           value={theme}
           onChange={(value) => {
             setTheme(value);
-            trackFieldChange('theme', value);
+            trackFieldChange('theme', value, getTranslatedKey('THEME', value));
           }}
           required
         />
@@ -319,7 +377,7 @@ const AffinityCalculator: React.FC = () => {
             value={genre1}
             onChange={(value) => {
               setGenre1(value);
-              trackFieldChange('genre1', value);
+              trackFieldChange('genre1', value, getTranslatedKey('GENRE', value));
             }}
           />
 
@@ -330,7 +388,7 @@ const AffinityCalculator: React.FC = () => {
             value={genre2}
             onChange={(value) => {
               setGenre2(value);
-              trackFieldChange('genre2', value);
+              trackFieldChange('genre2', value, getTranslatedKey('GENRE', value));
             }}
             isOptional
           />
@@ -342,7 +400,8 @@ const AffinityCalculator: React.FC = () => {
           selectedValue={rating}
           onChange={(value) => {
             setRating(value);
-            trackFieldChange('rating', value);
+            const label = ratingsOptions.find(opt => opt.value === value)?.label || value;
+            trackFieldChange('rating', value, label);
           }}
         />
 

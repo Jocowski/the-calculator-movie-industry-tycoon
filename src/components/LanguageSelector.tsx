@@ -11,8 +11,11 @@ const LanguageSelector = () => {
   const handleLanguageChange = (value: string) => {
     setLocale(value);
     sendGTMEvent({
-      event: 'language_change',
-      language: value
+      event: 'user_interaction',
+      event_name: 'language_change',
+      selected_language: value,
+      interaction_type: 'dropdown',
+      language_label: languages.find(lang => lang.code === value)?.label
     });
   };
 
