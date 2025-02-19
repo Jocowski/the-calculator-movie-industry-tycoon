@@ -99,9 +99,12 @@ const GenresInput = ({
                   className="flex items-center px-3 py-2 text-sm rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer"
                 >
                   <Select.ItemText>
-                    <span className={option.label ? `text-l font-bold my-2 py-1 px-2 rounded ${getScoreBgColor(option.label)} ${getTextColor(option.label)}` : ''}>
+                    <div className="flex items-center">
+                      {option.label && (
+                        <span className={`inline-block w-4 h-4 rounded-full mr-2 ${getScoreBgColor(option.label)}`}></span>
+                      )}
                       {option.genre}
-                    </span>
+                    </div>
                   </Select.ItemText>
                   <Select.ItemIndicator className="ml-auto">
                     <CheckIcon />
