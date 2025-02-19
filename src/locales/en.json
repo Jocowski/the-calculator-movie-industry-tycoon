@@ -128,5 +128,6 @@
   "SEASON_eoyholidays": "End of Year Holidays",
   "RATING_R": "R",
   "RATING_PG_13": "PG-13",
-  "RATING_PG": "PG"
+  "RATING_PG": "PG",
+  "clearAll": "Clear All"
 }

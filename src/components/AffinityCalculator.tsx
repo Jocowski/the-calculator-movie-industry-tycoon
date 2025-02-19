@@ -9,6 +9,7 @@ import AgeRatingRadio from "@/components/AgeRatingRadio";
 import GenresInput from "@/components/GenresInput";
 import { sendGTMEvent } from "@next/third-parties/google";
 import useFormTracking from '@/hooks/useFormTracking';
+import ClearButton from '@/components/ClearButton';
 
 interface GenreScore {
   genre: string;
@@ -350,6 +351,27 @@ const AffinityCalculator: React.FC = () => {
     calculateAffinity();
   }, [calculateAffinity]);
 
+  const handleClearAll = () => {
+    // Reset states
+    setGenre1("");
+    setGenre2("");
+    setTheme("");
+    setRating("");
+    setResult(null);
+    setSeasonResults([]);
+
+    // Reset tracking states
+    setFormStarted(false);
+    setFilledFields(new Set());
+    setFormStartTime(0);
+
+    // Track event
+    safeGtag("form_reset", {
+      form_name: "affinity_calculator",
+      filled_fields_before_reset: Array.from(filledFields).join(',')
+    });
+  };
+
   return (
     <div className="affinity-form-container flex flex-col gap-6 w-full max-w-2xl mx-auto p-6 bg-white dark:bg-gray-800 rounded-xl shadow-xl">
       <h2 className="text-l font-bold text-center text-gray-800 dark:text-gray-100 mb-4">
@@ -404,6 +426,17 @@ const AffinityCalculator: React.FC = () => {
             trackFieldChange('rating', value, label);
           }}
         />
+
+        {result !== null && (
+          <div className="result-actions pt-4">
+            <ClearButton
+              onClear={handleClearAll}
+              label={t.clearAll}
+              testId="clear-all-button"
+            />
+            <div className="border-t border-gray-300 dark:border-gray-600 w-full"></div>
+          </div>
+        )}
 
         <AffinityResult
           result={result}
