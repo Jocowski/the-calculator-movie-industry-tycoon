@@ -128,5 +128,6 @@
   "SEASON_eoyholidays": "Fêtes de Fin d'Année",
   "RATING_R": "-16",
   "RATING_PG_13": "-12",
-  "RATING_PG": "TP"
+  "RATING_PG": "TP",
+  "clearAll": "Tout effacer"
 }

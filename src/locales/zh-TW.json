@@ -128,5 +128,6 @@
   "SEASON_eoyholidays": "年末假期",
   "RATING_R": "限制級",
   "RATING_PG_13": "保護級",
-  "RATING_PG": "普遍級"
+  "RATING_PG": "普遍級",
+  "clearAll": "全部清除"
 }

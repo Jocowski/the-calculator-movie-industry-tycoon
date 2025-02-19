@@ -128,5 +128,6 @@
   "SEASON_eoyholidays": "연말 휴일",
   "RATING_R": "청불",
   "RATING_PG_13": "12세",
-  "RATING_PG": "전체"
+  "RATING_PG": "전체",
+  "clearAll": "모두 지우기"
 }

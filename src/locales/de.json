@@ -128,5 +128,6 @@
   "SEASON_eoyholidays": "Jahresendfeiertage",
   "RATING_R": "18",
   "RATING_PG_13": "12",
-  "RATING_PG": "0"
+  "RATING_PG": "0",
+  "clearAll": "Alles zurücksetzen"
 }
