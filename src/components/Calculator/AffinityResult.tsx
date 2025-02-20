@@ -43,7 +43,7 @@ const AffinityResult: React.FC<AffinityResultProps> = ({
 
   if (result === null) {
     return (
-      <div className="result-container">
+      <div className="result-container" aria-live="polite">
         <p className="text-gray-600 dark:text-gray-400 text-center text-sm">
           {t.noResult}
         </p>
@@ -52,7 +52,7 @@ const AffinityResult: React.FC<AffinityResultProps> = ({
   }
 
   return (
-    <div className="result-container space-y-2">
+    <div className="result-container space-y-2" aria-live="polite">
       <BaseScoreResult
         result={result}
         genre1={genre1}

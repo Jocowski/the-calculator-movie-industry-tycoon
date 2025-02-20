@@ -24,7 +24,6 @@
 │   │   └── privacy-policy
 │   │       └── page.tsx
 │   ├── components
-│   │   ├── AffinityCalculator.tsx
 │   │   ├── Buttons
 │   │   │   └── ClearButton.tsx
 │   │   ├── Calculator
@@ -32,7 +31,7 @@
 │   │   │   ├── AffinityResult.tsx
 │   │   │   ├── BaseScoreResult.tsx
 │   │   │   └── SeasonalResults.tsx
-│   │   ├── Disclaimer.tsx
+│   │   ├── Footer.tsx
 │   │   ├── GitHubLink.tsx
 │   │   ├── Icons
 │   │   │   ├── AwardsIcon.tsx
@@ -90,4 +89,4 @@
 ├── tailwind.config.ts
 └── tsconfig.json
 
-19 directories, 72 files
+19 directories, 71 files
