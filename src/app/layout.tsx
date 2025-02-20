@@ -66,6 +66,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="canonical" href="https://the-calculator-movie-industry-tycoon.vercel.app/" />
       </head>
       <body className={inter.className}>
+        {/* Skip link para navegação por teclado */}
+        <a href="#main-content" className="skip-link absolute top-[-40px] left-0 bg-blue-600 text-white p-2 z-50 focus:top-0">
+          Skip to main content
+        </a>
         <ThemeProvider>
           <LanguageProvider>
             <header className="flex justify-end items-center p-4 space-x-4">
