@@ -299,8 +299,8 @@ const AffinityCalculator: React.FC = () => {
           // Score ajustado para o evento sazonal, formatado com 2 casas decimais
           const adjustedScore = Number((finalBaseScore * combinedSeasonMultiplier).toFixed(2));
 
-          // Determinar o label baseado no score ajustado
-          const label = getAffinityLabel(adjustedScore);
+          // Determinar o label baseado no combinedSeasonMultiplier em vez do adjustedScore
+          const label = getAffinityLabel(combinedSeasonMultiplier);
 
           return {
             season,
