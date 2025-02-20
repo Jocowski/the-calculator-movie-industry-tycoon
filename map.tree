@@ -1,0 +1,86 @@
+.
+├── LICENSE
+├── README.md
+├── eslint.config.mjs
+├── map.tree
+├── next-env.d.ts
+├── next.config.ts
+├── package-lock.json
+├── package.json
+├── postcss.config.mjs
+├── public
+│   ├── og-image.webp
+│   ├── robots.txt
+│   └── sitemap.xml
+├── src
+│   ├── app
+│   │   ├── api
+│   │   │   └── affinities
+│   │   │       └── route.ts
+│   │   ├── favicon.ico
+│   │   ├── globals.css
+│   │   ├── layout.tsx
+│   │   ├── page.tsx
+│   │   └── privacy-policy
+│   │       └── page.tsx
+│   ├── components
+│   │   ├── AffinityCalculator.tsx
+│   │   ├── AffinityResult.tsx
+│   │   ├── AgeRatingRadio.tsx
+│   │   ├── BaseScoreResult.tsx
+│   │   ├── ClearButton.tsx
+│   │   ├── Disclaimer.tsx
+│   │   ├── GenresInput.tsx
+│   │   ├── GitHubLink.tsx
+│   │   ├── Icons
+│   │   │   ├── AwardsIcon.tsx
+│   │   │   ├── CalendarIcon.tsx
+│   │   │   ├── EOYHolidaysIcon.tsx
+│   │   │   ├── EasterIcon.tsx
+│   │   │   ├── EuroCupIcon.tsx
+│   │   │   ├── HalloweenIcon.tsx
+│   │   │   ├── MemorialDayIcon.tsx
+│   │   │   ├── SummerIcon.tsx
+│   │   │   ├── SuperbowlIcon.tsx
+│   │   │   ├── ThanksgivingIcon.tsx
+│   │   │   ├── ValentineIcon.tsx
+│   │   │   └── WorldCupIcon.tsx
+│   │   ├── LanguageSelector.tsx
+│   │   ├── SeasonalResults.tsx
+│   │   ├── SelectInput.tsx
+│   │   ├── ThemeToggle.tsx
+│   │   └── analytics
+│   │       ├── GoogleAnalytics.tsx
+│   │       ├── GoogleTagManager.tsx
+│   │       └── MicrosoftClarity.tsx
+│   ├── context
+│   │   ├── LanguageContext.tsx
+│   │   └── ThemeContext.tsx
+│   ├── data
+│   │   ├── genre.json
+│   │   ├── index.ts
+│   │   ├── planning.json
+│   │   ├── rating.json
+│   │   ├── script-affinity.json
+│   │   ├── seasons.json
+│   │   └── theme.json
+│   ├── hooks
+│   │   └── useFormTracking.ts
+│   ├── locales
+│   │   ├── de.json
+│   │   ├── en.json
+│   │   ├── es.json
+│   │   ├── fr.json
+│   │   ├── ja.json
+│   │   ├── ko.json
+│   │   ├── pt.json
+│   │   ├── tr.json
+│   │   ├── zh-CN.json
+│   │   └── zh-TW.json
+│   └── types
+│       └── globals.d.ts
+├── tailwind.config.ts
+├── tsconfig.json
+└── utils
+
+16 directories, 68 files
