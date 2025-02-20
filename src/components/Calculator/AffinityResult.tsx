@@ -1,9 +1,16 @@
+// src/components/Calculator/AffinityResult.tsx
 "use client";
 
 import React from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import BaseScoreResult from "./BaseScoreResult";
 import SeasonalResults from "./SeasonalResults";
+
+export type SeasonResult = {
+  season: string;
+  score: number;
+  label: string;
+};
 
 type AffinityResultProps = {
   result: number | null;
@@ -12,7 +19,7 @@ type AffinityResultProps = {
   genre2?: string;
   theme: string;
   rating: string;
-  seasonResults: { season: string; score: number; label: string }[];
+  seasonResults: SeasonResult[];
 };
 
 const AffinityResult: React.FC<AffinityResultProps> = ({
@@ -28,7 +35,7 @@ const AffinityResult: React.FC<AffinityResultProps> = ({
 
   if (loading) {
     return (
-      <div className="result-container flex justify-center py-8">
+      <div className="result-container flex justify-center py-8" role="status">
         <div className="w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin" />
       </div>
     );
@@ -46,7 +53,6 @@ const AffinityResult: React.FC<AffinityResultProps> = ({
 
   return (
     <div className="result-container space-y-2">
-      {/* Resultado Base */}
       <BaseScoreResult
         result={result}
         genre1={genre1}
@@ -54,8 +60,6 @@ const AffinityResult: React.FC<AffinityResultProps> = ({
         theme={theme}
         rating={rating}
       />
-
-      {/* Resultados Sazonais */}
       <SeasonalResults seasonResults={seasonResults} />
     </div>
   );

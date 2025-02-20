@@ -1,3 +1,4 @@
+// src/components/Inputs/GenresInput.tsx
 "use client";
 
 import * as Select from '@radix-ui/react-select';
@@ -25,7 +26,6 @@ const GenresInput = ({
 }: GenresInputProps) => {
   const { translations: t } = useLanguage();
 
-  // Função helper type-safe
   const getTranslatedGenre = (genre: string): string => {
     const key = `GENRE_${genre}`;
     return (t as Record<string, string>)[key] || genre;
@@ -34,14 +34,15 @@ const GenresInput = ({
   const handleValueChange = (value: string) => {
     const cleanedValue = value === "unselected" ? "" : value;
     onChange(cleanedValue);
-    window.gtag('event', 'form_field_change', {
-      form_name: 'affinity_calculator',
-      field_name: name,
-      field_value: cleanedValue,
-    });
+    if (typeof window.gtag === "function") {
+      window.gtag('event', 'form_field_change', {
+        form_name: 'affinity_calculator',
+        field_name: name,
+        field_value: cleanedValue
+      });
+    }
   };
 
-  // Função para determinar a cor de fundo com base no label
   const getScoreBgColor = (label: string): string => {
     switch (label.toLowerCase()) {
       case t.bad.toLowerCase():
@@ -57,12 +58,8 @@ const GenresInput = ({
     }
   };
 
-  // Função para determinar a cor do texto com base no label
   const getTextColor = (label: string): string => {
-    if (label.toLowerCase() === t.medium.toLowerCase()) {
-      return "text-gray-900";
-    }
-    return "text-white";
+    return label.toLowerCase() === t.medium.toLowerCase() ? "text-gray-900" : "text-white";
   };
 
   return (
@@ -70,7 +67,6 @@ const GenresInput = ({
       <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
         {label}:
       </label>
-
       <Select.Root value={value} onValueChange={handleValueChange}>
         <Select.Trigger
           className="w-full flex items-center justify-between px-3 py-2 border rounded-md shadow-sm bg-white dark:bg-formBackgroundDark text-gray-900 dark:text-darkForeground border-gray-300 dark:border-formBorderDark"
@@ -81,13 +77,11 @@ const GenresInput = ({
             <ChevronDownIcon />
           </Select.Icon>
         </Select.Trigger>
-
         <Select.Portal>
           <Select.Content className="z-50 bg-white dark:bg-formBackgroundDark rounded-md shadow-lg border border-gray-200 dark:border-formBorderDark">
             <Select.ScrollUpButton className="flex items-center justify-center h-6 bg-white dark:bg-formBackgroundDark text-gray-500 cursor-default">
               <ChevronDownIcon />
             </Select.ScrollUpButton>
-
             <Select.Viewport className="p-2">
               {isOptional && (
                 <Select.Item
@@ -97,7 +91,6 @@ const GenresInput = ({
                   <Select.ItemText>{t.clearSelection}</Select.ItemText>
                 </Select.Item>
               )}
-
               {options.map((option) => (
                 <Select.Item
                   key={option.genre}
@@ -109,7 +102,6 @@ const GenresInput = ({
                       {option.label && (
                         <span className={`inline-block w-4 h-4 rounded-full mr-2 ${getScoreBgColor(option.label)}`}></span>
                       )}
-                      {/* Texto traduzido com função helper */}
                       {getTranslatedGenre(option.genre)}
                     </div>
                   </Select.ItemText>
@@ -119,14 +111,12 @@ const GenresInput = ({
                 </Select.Item>
               ))}
             </Select.Viewport>
-
             <Select.ScrollDownButton className="flex items-center justify-center h-6 bg-white dark:bg-formBackgroundDark text-gray-500 cursor-default">
               <ChevronDownIcon />
             </Select.ScrollDownButton>
           </Select.Content>
         </Select.Portal>
       </Select.Root>
-
       {isOptional && (
         <span className="block text-xs text-gray-500 dark:text-gray-400 mt-1">
           {t.optinSelect}

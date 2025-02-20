@@ -129,5 +129,16 @@
   "RATING_R": "R18+",
   "RATING_PG_13": "PG12",
   "RATING_PG": "G",
-  "clearAll": "すべてクリア"
+  "clearAll": "すべてクリア",
+  "backToHome": "ホームに戻る",
+  "privacyPolicyTitle": "プライバシーポリシー",
+  "privacyPolicyIntro": "The Calculator for Movie Industry Tycoonでは、皆様のプライバシーを大切にし、当社の取り組みについて透明性を保つよう努めています。",
+  "privacyPolicySection1": "データ収集：当プラットフォームの利用中に、ユーザーの機微な情報は一切収集しません。",
+  "privacyPolicySection2": "キャッシュ利用：ブラウザのキャッシュは、言語およびテーマ（ライト/ダーク）の設定を保存し、ユーザー体験を向上させるためにのみ使用されます。",
+  "privacyPolicySection3": "広告および解析ツール：当プラットフォームに表示される広告は第三者によって提供され、開発者とは直接関係がありません。これらの広告は、開発者やThe Calculator for Movie Industry Tycoonの意見を反映するものではありません。また、Google AnalyticsやMicrosoft Clarityなどのツールを使用して匿名データを収集し、プラットフォームの使いやすさとパフォーマンスを向上させています。これらの情報は、ユーザー体験の分析および最適化のためにのみ使用されます。",
+  "privacyPolicySection4": "第三者のクッキー：広告主は、広告とのやり取りに関する情報を収集するため、独自のクッキーまたは類似技術を使用する場合があります。ユーザーのデータがどのように扱われるかを理解するために、これら第三者のプライバシーポリシーをご確認ください。",
+  "privacyPolicySection5": "ユーザーの管理：ブラウザまたはデバイスの設定を通じて、クッキーや広告の設定を管理できます。",
+  "privacyPolicyContact": "お問い合わせ：ご質問やご懸念がある場合は、DiscordのModdingチャンネルからお問い合わせください：[こちらをクリックして連絡チャネルにアクセス](https://discord.com/channels/1220379497447161887/1341490944486277150)。",
+  "privacyPolicyLastUpdated": "最終更新日：2025年2月20日",
+  "privacyPolicyLink": "プライバシーポリシーを表示"
 }

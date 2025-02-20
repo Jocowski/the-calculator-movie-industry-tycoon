@@ -129,5 +129,16 @@
   "RATING_R": "限制",
   "RATING_PG_13": "PG-13",
   "RATING_PG": "普通",
-  "clearAll": "全部清除"
+  "clearAll": "全部清除",
+  "backToHome": "返回首页",
+  "privacyPolicyTitle": "隐私政策",
+  "privacyPolicyIntro": "在 The Calculator for Movie Industry Tycoon，我们重视您的隐私，并致力于对我们的做法保持透明。",
+  "privacyPolicySection1": "数据收集：我们在您访问本平台期间不会收集任何敏感的用户数据。",
+  "privacyPolicySection2": "缓存使用：我们仅使用您的浏览器缓存来存储您的语言和主题（明/暗）偏好，以提升您的用户体验。",
+  "privacyPolicySection3": "广告与分析工具：本平台上显示的广告由第三方提供，与开发者无直接关联。这些广告不反映开发者或 The Calculator for Movie Industry Tycoon 的观点。我们还使用 Google Analytics 和 Microsoft Clarity 等工具来收集匿名数据，以改善平台的可用性和性能。这些信息仅用于分析和优化用户体验。",
+  "privacyPolicySection4": "第三方 Cookie：广告商可能会使用他们自己的 Cookie 或类似技术来收集您与广告互动的信息。建议您查阅这些第三方的隐私政策，以了解您的数据如何被处理。",
+  "privacyPolicySection5": "用户控制：您可以通过浏览器或设备设置管理您的 Cookie 和广告偏好。",
+  "privacyPolicyContact": "联系方式：如有任何疑问或担忧，请通过我们的 Discord Modding 频道与我们联系：[点击此处访问联系频道](https://discord.com/channels/1220379497447161887/1341490944486277150)。",
+  "privacyPolicyLastUpdated": "最后更新：2025年2月20日",
+  "privacyPolicyLink": "查看隐私政策"
 }

@@ -1,3 +1,4 @@
+// src/components/Inputs/AgeRatingRadio.tsx
 "use client";
 
 import React from "react";
@@ -15,7 +16,6 @@ type AgeRatingRadioProps = {
   onChange: (value: string) => void;
 };
 
-// Função para cores mantida fora do componente
 const getColorClass = (value: string): string => {
   switch (value.toLowerCase()) {
     case "pg":

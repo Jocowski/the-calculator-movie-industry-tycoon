@@ -1,4 +1,4 @@
-// src/components/ClearButton.tsx
+// src/components/Buttons/ClearButton.tsx
 "use client";
 
 import React from 'react';

@@ -1,3 +1,4 @@
+// src/components/ThemeToggle.tsx
 "use client";
 
 import { useTheme } from "@/context/ThemeContext";
@@ -12,7 +13,6 @@ const ThemeToggle: React.FC = () => {
   const handleToggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     toggleTheme();
-
     sendGTMEvent({
       event: 'user_interaction',
       event_name: 'theme_change',
@@ -34,11 +34,8 @@ const ThemeToggle: React.FC = () => {
           <MoonIcon className="h-5 w-5 text-indigo-800" />
         )}
       </button>
-
-      {/* Tooltip com posicionamento ajustado */}
       <div className="absolute top-full right-0 mt-2 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm bg-gray-700 dark:bg-gray-200 text-white dark:text-gray-800 whitespace-nowrap py-1 px-2 rounded-md shadow-lg w-max pointer-events-none">
         {theme === "dark" ? t.lightModeTooltip : t.darkModeTooltip}
-        {/* Seta do tooltip */}
         <div className="absolute -top-1 right-3 w-2 h-2 bg-gray-700 dark:bg-gray-200 transform rotate-45" />
       </div>
     </div>

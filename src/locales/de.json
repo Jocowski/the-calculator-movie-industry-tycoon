@@ -129,5 +129,16 @@
   "RATING_R": "18",
   "RATING_PG_13": "12",
   "RATING_PG": "0",
-  "clearAll": "Alles zurücksetzen"
+  "clearAll": "Alles zurücksetzen",
+  "backToHome": "Zurück zur Startseite",
+  "privacyPolicyTitle": "Datenschutzerklärung",
+  "privacyPolicyIntro": "Bei The Calculator for Movie Industry Tycoon legen wir großen Wert auf Ihren Datenschutz und bemühen uns, unsere Praktiken transparent darzulegen.",
+  "privacyPolicySection1": "Datenerhebung: Wir erheben während Ihres Besuchs auf unserer Plattform keine sensiblen Benutzerdaten.",
+  "privacyPolicySection2": "Nutzung des Caches: Wir verwenden ausschließlich den Cache Ihres Browsers, um Ihre Spracheinstellungen und Ihr Theme (hell/dunkel) zu speichern und Ihre Erfahrung zu verbessern.",
+  "privacyPolicySection3": "Werbung und Analysetools: Die auf unserer Plattform angezeigten Anzeigen werden von Dritten bereitgestellt und sind nicht direkt mit dem Entwickler verbunden. Diese Anzeigen spiegeln nicht die Ansichten des Entwicklers oder von The Calculator for Movie Industry Tycoon wider. Wir nutzen außerdem Tools wie Google Analytics und Microsoft Clarity, um anonyme Daten zu sammeln und die Benutzerfreundlichkeit sowie Leistung unserer Plattform zu verbessern. Diese Informationen werden ausschließlich zur Analyse und Optimierung der Nutzererfahrung verwendet.",
+  "privacyPolicySection4": "Cookies von Drittanbietern: Werbetreibende können eigene Cookies oder ähnliche Technologien verwenden, um Informationen über Ihre Interaktionen mit ihren Anzeigen zu sammeln. Wir empfehlen, die Datenschutzerklärungen dieser Drittanbieter zu prüfen, um zu verstehen, wie Ihre Daten verarbeitet werden.",
+  "privacyPolicySection5": "Nutzerkontrolle: Sie können Ihre Cookie- und Werbeeinstellungen über die Einstellungen Ihres Browsers oder Geräts verwalten.",
+  "privacyPolicyContact": "Kontakt: Wenn Sie Fragen oder Bedenken haben, kontaktieren Sie uns bitte über unseren Modding-Kanal auf Discord: [Klicken Sie hier, um den Kontaktkanal zu öffnen](https://discord.com/channels/1220379497447161887/1341490944486277150).",
+  "privacyPolicyLastUpdated": "Letzte Aktualisierung: 20. Februar 2025",
+  "privacyPolicyLink": "Datenschutzerklärung anzeigen"
 }

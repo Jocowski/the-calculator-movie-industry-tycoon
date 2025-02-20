@@ -1,3 +1,4 @@
+// src/components/Disclaimer.tsx
 "use client";
 
 import React from 'react';
@@ -20,11 +21,14 @@ const Disclaimer: React.FC = () => {
         >
           {t.gameTitle}
         </a>{' '}
-        {t.disclaimerSuffix} Read <Link
+        {t.disclaimerPrefix}{" "}
+        <Link
           href="/privacy-policy"
-          aria-label="Policy privacy"
+          aria-label={t.privacyPolicyLink}
           className="text-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300 hover:underline transition-colors"
-        > Policy Privacy</Link>
+        >
+          {t.privacyPolicyLink}
+        </Link>
       </p>
     </footer>
   );

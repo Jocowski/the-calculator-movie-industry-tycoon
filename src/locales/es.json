@@ -129,5 +129,16 @@
   "RATING_R": "18",
   "RATING_PG_13": "13",
   "RATING_PG": "TP",
-  "clearAll": "Limpiar todo"
+  "clearAll": "Limpiar todo",
+  "backToHome": "Volver a Inicio",
+  "privacyPolicyTitle": "Política de Privacidad",
+  "privacyPolicyIntro": "En The Calculator for Movie Industry Tycoon, valoramos su privacidad y nos esforzamos por ser transparentes acerca de nuestras prácticas.",
+  "privacyPolicySection1": "Recopilación de datos: No recopilamos datos sensibles de los usuarios durante su visita a nuestra plataforma.",
+  "privacyPolicySection2": "Uso de caché: Utilizamos exclusivamente la caché de su navegador para almacenar sus preferencias de idioma y tema (claro/oscuro) con el fin de mejorar su experiencia.",
+  "privacyPolicySection3": "Publicidad y herramientas analíticas: Los anuncios que se muestran en nuestra plataforma son proporcionados por terceros y no están directamente afiliados al desarrollador. Estos anuncios no reflejan las opiniones del desarrollador ni de The Calculator for Movie Industry Tycoon. También utilizamos herramientas como Google Analytics y Microsoft Clarity para recopilar datos anónimos y mejorar la usabilidad y el rendimiento de nuestra plataforma. Esta información se utiliza únicamente para analizar y optimizar la experiencia del usuario.",
+  "privacyPolicySection4": "Cookies de terceros: Los anunciantes pueden utilizar sus propios cookies o tecnologías similares para recopilar información sobre sus interacciones con los anuncios. Le recomendamos revisar las políticas de privacidad de estos terceros para entender cómo se manejan sus datos.",
+  "privacyPolicySection5": "Control del usuario: Puede gestionar sus preferencias de cookies y publicidad a través de la configuración de su navegador o dispositivo.",
+  "privacyPolicyContact": "Contacto: Si tiene alguna pregunta o inquietud, póngase en contacto con nosotros a través de nuestro canal de Modding en Discord: [Haga clic aquí para acceder al canal de contacto](https://discord.com/channels/1220379497447161887/1341490944486277150).",
+  "privacyPolicyLastUpdated": "Última actualización: 20 de febrero de 2025",
+  "privacyPolicyLink": "Ver políticas de privacidad"
 }

@@ -129,5 +129,16 @@
   "RATING_R": "18+",
   "RATING_PG_13": "13+",
   "RATING_PG": "Genel",
-  "clearAll": "Hepsini Temizle"
+  "clearAll": "Hepsini Temizle",
+  "backToHome": "Ana Sayfaya Dön",
+  "privacyPolicyTitle": "Gizlilik Politikası",
+  "privacyPolicyIntro": "The Calculator for Movie Industry Tycoon olarak, gizliliğinize değer veriyor ve uygulamalarımız hakkında şeffaf olmaya çalışıyoruz.",
+  "privacyPolicySection1": "Veri Toplama: Platformumuzu ziyaret ederken kullanıcıların hassas verilerini toplamıyoruz.",
+  "privacyPolicySection2": "Önbellek Kullanımı: Tarayıcı önbelleğini yalnızca dil ve tema (açık/karanlık) tercihlerinizi saklamak ve deneyiminizi geliştirmek amacıyla kullanıyoruz.",
+  "privacyPolicySection3": "Reklam ve Analitik Araçlar: Platformumuzda gösterilen reklamlar üçüncü taraflar tarafından sağlanmakta olup, geliştiriciyle doğrudan bağlantısı bulunmamaktadır. Bu reklamlar, geliştiricinin veya The Calculator for Movie Industry Tycoon'un görüşlerini yansıtmamaktadır. Ayrıca, Google Analytics ve Microsoft Clarity gibi araçları kullanarak anonim veriler topluyoruz. Bu bilgiler yalnızca kullanıcı deneyiminin analiz edilmesi ve optimize edilmesi amacıyla kullanılmaktadır.",
+  "privacyPolicySection4": "Üçüncü Taraf Çerezleri: Reklam verenler, reklamlarla etkileşiminiz hakkında bilgi toplamak için kendi çerezlerini veya benzer teknolojileri kullanabilir. Verilerinizin nasıl işlendiğini anlamak için lütfen bu üçüncü tarafların gizlilik politikalarını inceleyin.",
+  "privacyPolicySection5": "Kullanıcı Kontrolü: Tarayıcı veya cihaz ayarları aracılığıyla çerez ve reklam tercihlerinizi yönetebilirsiniz.",
+  "privacyPolicyContact": "İletişim: Herhangi bir sorunuz veya endişeniz varsa, lütfen Discord’daki Modding Kanalımız üzerinden bizimle iletişime geçin: [İletişim kanalına erişmek için buraya tıklayın](https://discord.com/channels/1220379497447161887/1341490944486277150).",
+  "privacyPolicyLastUpdated": "Son güncelleme: 20 Şubat 2025",
+  "privacyPolicyLink": "Gizlilik Politikasını Görüntüle"
 }

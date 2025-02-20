@@ -1,16 +1,13 @@
+// src/components/analytics/GoogleAnalytics.tsx
 import Script from 'next/script';
 
 const GoogleAnalytics = () => {
   const gaId = process.env.NEXT_PUBLIC_GA_ID;
-
   if (!gaId) return null;
 
   return (
     <>
-      <Script
-        src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
-        strategy="afterInteractive"
-      />
+      <Script src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} strategy="afterInteractive" />
       <Script id="google-analytics" strategy="afterInteractive">
         {`
           window.dataLayer = window.dataLayer || [];
@@ -23,4 +20,4 @@ const GoogleAnalytics = () => {
   );
 };
 
-export default GoogleAnalytics
+export default GoogleAnalytics;

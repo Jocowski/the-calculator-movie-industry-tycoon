@@ -1,17 +1,18 @@
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import './globals.css';
-import { ThemeProvider } from '@/context/ThemeContext';
-import { LanguageProvider } from '@/context/LanguageContext';
-import LanguageSelector from '@/components/LanguageSelector';
-import ThemeToggle from '@/components/ThemeToggle';
-import Disclaimer from '@/components/Disclaimer';
-import GitHubLink from '@/components/GitHubLink';
-import GoogleAnalytics from '@/components/analytics/GoogleAnalytics';
-import GoogleTagManager from '@/components/analytics/GoogleTagManager';
-import MicrosoftClarity from '@/components/analytics/MicrosoftClarity';
-import { Analytics } from "@vercel/analytics/react"
-import { SpeedInsights } from "@vercel/speed-insights/next"
+// src/app/layout.tsx
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+import { ThemeProvider } from "@/context/ThemeContext";
+import { LanguageProvider } from "@/context/LanguageContext";
+import LanguageSelector from "@/components/LanguageSelector";
+import ThemeToggle from "@/components/ThemeToggle";
+import Footer from "@/components/Footer";
+import GitHubLink from "@/components/GitHubLink";
+import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
+import GoogleTagManager from "@/components/analytics/GoogleTagManager";
+import MicrosoftClarity from "@/components/analytics/MicrosoftClarity";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -30,17 +31,17 @@ export const metadata: Metadata = {
         url: '/og-image.webp',
         width: 650,
         height: 365,
-        alt: 'The Calculator - Movie Industry Tycoon',
-      },
+        alt: 'The Calculator - Movie Industry Tycoon'
+      }
     ],
-    type: 'website',
+    type: 'website'
   },
   twitter: {
     card: 'summary_large_image',
     title: 'The Calculator - Movie Industry Tycoon',
     description: 'Optimize your film production strategy with our advanced calculator for The Executive: Movie Industry Tycoon.',
     images: ['/og-image.webp'],
-    site: '@GoblinzPub',
+    site: '@GoblinzPub'
   },
   robots: {
     index: true,
@@ -48,11 +49,11 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1
+    }
+  }
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -77,7 +78,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Analytics />
               <SpeedInsights />
             </main>
-            <Disclaimer />
+            <Footer />
           </LanguageProvider>
         </ThemeProvider>
       </body>

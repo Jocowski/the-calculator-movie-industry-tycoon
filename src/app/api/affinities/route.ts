@@ -1,3 +1,4 @@
+// src/app/api/affinities/route.ts
 import { NextResponse } from 'next/server';
 import affinitiesData from '@/data';
 
