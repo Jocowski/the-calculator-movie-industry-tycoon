@@ -129,5 +129,16 @@
   "RATING_R": "R",
   "RATING_PG_13": "PG-13",
   "RATING_PG": "PG",
-  "clearAll": "Clear All"
+  "clearAll": "Clear All",
+  "backToHome": "Back to Home",
+  "privacyPolicyTitle": "Privacy Policy",
+  "privacyPolicyIntro": "At The Calculator for Movie Industry Tycoon, we value your privacy and strive to be transparent about our practices.",
+  "privacyPolicySection1": "Data Collection: We do not collect any sensitive user data during your visit to our platform.",
+  "privacyPolicySection2": "Cache Usage: We use your browser's cache exclusively to store your language and theme (light/dark) preferences to enhance your experience.",
+  "privacyPolicySection3": "Advertising and Analytics Tools: Ads displayed on our platform are provided by third parties and are not directly affiliated with the developer. These ads do not reflect the opinions or views of the developer or The Calculator for Movie Industry Tycoon. We also use tools such as Google Analytics and Microsoft Clarity to collect anonymous data to improve the usability and performance of our platform. This information is used solely for analysis and optimization of the user experience.",
+  "privacyPolicySection4": "Third-Party Cookies: Advertisers may use their own cookies or similar technologies to collect information about your interactions with their ads. We recommend reviewing the privacy policies of these third parties to understand how your data is handled.",
+  "privacyPolicySection5": "User Control: You can manage your cookie and advertising preferences through your browser or device settings.",
+  "privacyPolicyContact": "Contact: If you have any questions or concerns, please contact us through our Modding Channel on Discord: [Click here to access the contact channel](https://discord.com/channels/1220379497447161887/1341490944486277150).",
+  "privacyPolicyLastUpdated": "Last updated: February 20, 2025",
+  "privacyPolicyLink": "View Privacy Policy"
 }

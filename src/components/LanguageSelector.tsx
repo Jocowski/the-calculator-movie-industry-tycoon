@@ -1,3 +1,4 @@
+// src/components/LanguageSelector.tsx
 "use client";
 
 import * as Select from '@radix-ui/react-select';
@@ -45,7 +46,6 @@ const LanguageSelector = () => {
           <ChevronDownIcon className="h-4 w-4" />
         </Select.Icon>
       </Select.Trigger>
-
       <Select.Portal>
         <Select.Content
           className="overflow-hidden bg-white dark:bg-formBackgroundDark rounded-md shadow-lg border border-gray-200 dark:border-formBorderDark"
@@ -55,7 +55,6 @@ const LanguageSelector = () => {
           <Select.ScrollUpButton className="flex items-center justify-center h-6 bg-white dark:bg-formBackgroundDark">
             <ChevronDownIcon className="h-4 w-4" />
           </Select.ScrollUpButton>
-
           <Select.Viewport className="p-2">
             {languages.map((lang) => (
               <Select.Item
@@ -70,7 +69,6 @@ const LanguageSelector = () => {
               </Select.Item>
             ))}
           </Select.Viewport>
-
           <Select.ScrollDownButton className="flex items-center justify-center h-6 bg-white dark:bg-formBackgroundDark">
             <ChevronDownIcon className="h-4 w-4" />
           </Select.ScrollDownButton>

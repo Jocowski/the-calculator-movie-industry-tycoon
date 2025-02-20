@@ -1,3 +1,4 @@
+// src/components/Calculator/BaseScoreResult.tsx
 "use client";
 
 import React from "react";
@@ -20,7 +21,7 @@ const getScoreBgColor = (score: number): string => {
 
 const getTextColor = (score: number): string => {
   if (score >= 1.5 && score < 2.5) return "text-gray-900";
-  return "text-white"; 
+  return "text-white";
 };
 
 const BaseScoreResult: React.FC<BaseScoreResultProps> = ({
@@ -32,7 +33,6 @@ const BaseScoreResult: React.FC<BaseScoreResultProps> = ({
 }) => {
   const { translations: t } = useLanguage();
 
-  // Função helper type-safe
   const getTranslatedTerm = (prefix: 'GENRE' | 'THEME', term: string): string => {
     const key = `${prefix}_${term}`;
     return (t as Record<string, string>)[key] || term;
@@ -48,11 +48,12 @@ const BaseScoreResult: React.FC<BaseScoreResultProps> = ({
   const renderTranslatedMessage = (message: string, values: { [key: string]: string }) => {
     const regex = /\[([^\]]+)\]/g;
     const parts = message.split(regex);
-
     return parts.map((part, index) =>
       values[part] ? <strong key={index}>{values[part]}</strong> : part
     );
   };
+
+  const translatedRating = (t as Record<string, string>)[`RATING_${rating.replace('-', '_').toUpperCase()}`] || rating;
 
   return (
     <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 text-center">
@@ -63,7 +64,7 @@ const BaseScoreResult: React.FC<BaseScoreResultProps> = ({
             genre1: getTranslatedTerm('GENRE', genre1),
             genre2: genre2 ? getTranslatedTerm('GENRE', genre2) : "",
             theme: getTranslatedTerm('THEME', theme),
-            rating
+            rating: translatedRating
           }
         )}
       </p>

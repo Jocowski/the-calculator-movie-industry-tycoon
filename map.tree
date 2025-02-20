@@ -25,12 +25,14 @@
 │   │       └── page.tsx
 │   ├── components
 │   │   ├── AffinityCalculator.tsx
-│   │   ├── AffinityResult.tsx
-│   │   ├── AgeRatingRadio.tsx
-│   │   ├── BaseScoreResult.tsx
-│   │   ├── ClearButton.tsx
+│   │   ├── Buttons
+│   │   │   └── ClearButton.tsx
+│   │   ├── Calculator
+│   │   │   ├── AffinityCalculator.tsx
+│   │   │   ├── AffinityResult.tsx
+│   │   │   ├── BaseScoreResult.tsx
+│   │   │   └── SeasonalResults.tsx
 │   │   ├── Disclaimer.tsx
-│   │   ├── GenresInput.tsx
 │   │   ├── GitHubLink.tsx
 │   │   ├── Icons
 │   │   │   ├── AwardsIcon.tsx
@@ -45,9 +47,11 @@
 │   │   │   ├── ThanksgivingIcon.tsx
 │   │   │   ├── ValentineIcon.tsx
 │   │   │   └── WorldCupIcon.tsx
+│   │   ├── Inputs
+│   │   │   ├── AgeRatingRadio.tsx
+│   │   │   ├── GenresInput.tsx
+│   │   │   └── SelectInput.tsx
 │   │   ├── LanguageSelector.tsx
-│   │   ├── SeasonalResults.tsx
-│   │   ├── SelectInput.tsx
 │   │   ├── ThemeToggle.tsx
 │   │   └── analytics
 │   │       ├── GoogleAnalytics.tsx
@@ -65,7 +69,9 @@
 │   │   ├── seasons.json
 │   │   └── theme.json
 │   ├── hooks
-│   │   └── useFormTracking.ts
+│   │   ├── useCalculateAffinity.ts
+│   │   ├── useFormTracking.ts
+│   │   └── useGtag.ts
 │   ├── locales
 │   │   ├── de.json
 │   │   ├── en.json
@@ -77,10 +83,11 @@
 │   │   ├── tr.json
 │   │   ├── zh-CN.json
 │   │   └── zh-TW.json
-│   └── types
-│       └── globals.d.ts
+│   ├── types
+│   │   └── globals.d.ts
+│   └── utils
+│       └── affinityCalculations.ts
 ├── tailwind.config.ts
-├── tsconfig.json
-└── utils
+└── tsconfig.json
 
-16 directories, 68 files
+19 directories, 72 files

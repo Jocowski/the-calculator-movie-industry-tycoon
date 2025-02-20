@@ -129,5 +129,16 @@
   "RATING_R": "-16",
   "RATING_PG_13": "-12",
   "RATING_PG": "TP",
-  "clearAll": "Tout effacer"
+  "clearAll": "Tout effacer",
+  "backToHome": "Retour à l'accueil",
+  "privacyPolicyTitle": "Politique de Confidentialité",
+  "privacyPolicyIntro": "Chez The Calculator for Movie Industry Tycoon, nous accordons une grande importance à votre vie privée et nous efforçons d'être transparents quant à nos pratiques.",
+  "privacyPolicySection1": "Collecte de données : Nous ne collectons aucune donnée sensible des utilisateurs lors de votre visite sur notre plateforme.",
+  "privacyPolicySection2": "Utilisation du cache : Nous utilisons exclusivement le cache de votre navigateur pour stocker vos préférences de langue et de thème (clair/sombre) afin d'améliorer votre expérience.",
+  "privacyPolicySection3": "Publicité et outils d'analyse : Les publicités affichées sur notre plateforme sont fournies par des tiers et ne sont pas directement affiliées au développeur. Ces publicités ne reflètent pas les opinions du développeur ni de The Calculator for Movie Industry Tycoon. Nous utilisons également des outils tels que Google Analytics et Microsoft Clarity pour collecter des données anonymes afin d'améliorer la convivialité et les performances de notre plateforme. Ces informations sont utilisées uniquement pour analyser et optimiser l'expérience utilisateur.",
+  "privacyPolicySection4": "Cookies de tiers : Les annonceurs peuvent utiliser leurs propres cookies ou technologies similaires pour collecter des informations sur vos interactions avec leurs publicités. Nous vous recommandons de consulter les politiques de confidentialité de ces tiers afin de comprendre comment vos données sont traitées.",
+  "privacyPolicySection5": "Contrôle de l'utilisateur : Vous pouvez gérer vos préférences de cookies et de publicité via les paramètres de votre navigateur ou de votre appareil.",
+  "privacyPolicyContact": "Contact : Si vous avez des questions ou des préoccupations, veuillez nous contacter via notre canal Modding sur Discord : [Cliquez ici pour accéder au canal de contact](https://discord.com/channels/1220379497447161887/1341490944486277150).",
+  "privacyPolicyLastUpdated": "Dernière mise à jour : 20 février 2025",
+  "privacyPolicyLink": "Voir la politique de confidentialité"
 }

@@ -1,10 +1,11 @@
+// src/context/ThemeContext.tsx
 "use client";
 
 import React, { createContext, useContext, useEffect, useState, ReactNode } from "react";
 
 type ThemeContextType = {
-  theme: string; // light ou dark
-  toggleTheme: () => void; // Alterna entre os temas
+  theme: string;
+  toggleTheme: () => void;
 };
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
@@ -13,26 +14,19 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   const [theme, setTheme] = useState<string>("light");
 
   useEffect(() => {
-    // Obtém o tema do localStorage ou usa 'light' como padrão
     const savedTheme = localStorage.getItem("theme") || "light";
     setTheme(savedTheme);
   }, []);
 
-  // Aplica tema sempre que o estado mudar
   useEffect(() => {
     const root = window.document.documentElement;
     root.classList.remove("light", "dark");
     root.classList.add(theme);
-
-    localStorage.setItem("theme", theme); // Salva o novo tema no localStorage
+    localStorage.setItem("theme", theme);
   }, [theme]);
 
-  // Alternância entre os dois temas
   const toggleTheme = () => {
-    setTheme((prevTheme) => {
-      const newTheme = prevTheme === "light" ? "dark" : "light";
-      return newTheme;
-    });
+    setTheme(prev => (prev === "light" ? "dark" : "light"));
   };
 
   return (

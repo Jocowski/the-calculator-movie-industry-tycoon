@@ -1,3 +1,4 @@
+// src/components/Calculator/SeasonalResults.tsx
 "use client";
 
 import React from "react";
@@ -22,12 +23,10 @@ type SeasonalResultsProps = {
 const SeasonalResults: React.FC<SeasonalResultsProps> = ({ seasonResults }) => {
   const { translations: t } = useLanguage();
 
-  // Função para traduzir o nome da temporada
   const getTranslatedSeason = (season: string): string => {
     return (t as Record<string, string>)[`SEASON_${season}`] || season;
   };
 
-  // Função para obter o ícone da temporada
   const getSeasonIcon = (season: string) => {
     switch (season.toLowerCase()) {
       case "superbowl":
@@ -57,7 +56,6 @@ const SeasonalResults: React.FC<SeasonalResultsProps> = ({ seasonResults }) => {
     }
   };
 
-  // Função para determinar a cor de fundo com base no label
   const getScoreBgColor = (label: string): string => {
     switch (label.toLowerCase()) {
       case t.bad.toLowerCase():
@@ -73,12 +71,8 @@ const SeasonalResults: React.FC<SeasonalResultsProps> = ({ seasonResults }) => {
     }
   };
 
-  // Função para determinar a cor do texto com base no label
   const getTextColor = (label: string): string => {
-    if (label.toLowerCase() === t.medium.toLowerCase()) {
-      return "text-gray-900"; // Médio
-    }
-    return "text-white"; // Ruim, Bom ou Ótimo
+    return label.toLowerCase() === t.medium.toLowerCase() ? "text-gray-900" : "text-white";
   };
 
   return (
@@ -90,10 +84,10 @@ const SeasonalResults: React.FC<SeasonalResultsProps> = ({ seasonResults }) => {
         {seasonResults.map(({ season, score, label }, index) => (
           <div
             key={index}
-            className="p-2 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 flex flex-col items-center text-center bg-white dark:bg-gray-800">
+            className="p-2 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 flex flex-col items-center text-center bg-white dark:bg-gray-800"
+          >
             {getSeasonIcon(season)}
             <span className="text-xs font-medium text-gray-500 dark:text-gray-400">
-              {/* Texto traduzido */}
               {getTranslatedSeason(season)}
             </span>
             <span className={`text-l font-bold my-2 py-1 px-2 rounded ${getScoreBgColor(label)} ${getTextColor(label)}`}>

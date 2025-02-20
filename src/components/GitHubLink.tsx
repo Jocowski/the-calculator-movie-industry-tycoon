@@ -1,3 +1,4 @@
+// src/components/GitHubLink.tsx
 "use client";
 import React from 'react';
 import { useLanguage } from '@/context/LanguageContext';
@@ -27,11 +28,8 @@ const GitHubLink: React.FC = () => {
           />
         </svg>
       </a>
-
-      {/* Tooltip aprimorado */}
       <div className="absolute top-full right-0 mt-2 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm bg-gray-700 dark:bg-gray-200 text-white dark:text-gray-800 whitespace-nowrap py-1 px-2 rounded-md shadow-lg w-max pointer-events-none">
         {t.viewOnGithub}
-        {/* Seta do tooltip */}
         <div className="absolute -top-1 right-3 w-2 h-2 bg-gray-700 dark:bg-gray-200 transform rotate-45" />
       </div>
     </div>

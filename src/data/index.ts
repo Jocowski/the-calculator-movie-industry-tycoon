@@ -1,3 +1,4 @@
+// src/data/index.ts
 import genreData from './genre.json';
 import ratingData from './rating.json';
 import planningData from './planning.json';

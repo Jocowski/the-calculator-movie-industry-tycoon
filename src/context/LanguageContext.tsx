@@ -1,3 +1,4 @@
+// src/context/LanguageContext.tsx
 "use client";
 
 import React, { createContext, useContext, useState, ReactNode, useEffect } from "react";
@@ -14,7 +15,7 @@ import tr from "@/locales/tr.json";
 
 type Translations = typeof en;
 
-const translationsMap = {
+const translationsMap: Record<string, Translations> = {
   en,
   pt,
   fr,
@@ -25,6 +26,26 @@ const translationsMap = {
   "zh-CN": zhCN,
   "zh-TW": zhTW,
   tr,
+};
+
+// Lista dos idiomas suportados
+const supportedLanguages = Object.keys(translationsMap);
+
+// Função para detectar o idioma do navegador e definir um idioma padrão válido
+const detectUserLanguage = (): string => {
+  if (typeof window !== "undefined" && navigator?.language) {
+    const browserLang = navigator.language.split("-")[0]; // Obtém o código de idioma primário (ex: "pt" de "pt-BR")
+
+    // Verifica se o idioma primário ou a variação completa existe na plataforma
+    if (supportedLanguages.includes(browserLang)) {
+      return browserLang;
+    }
+    if (supportedLanguages.includes(navigator.language)) {
+      return navigator.language;
+    }
+  }
+
+  return "en"; // Retorna inglês caso nenhum idioma suportado seja detectado
 };
 
 type LanguageContextType = {
@@ -39,13 +60,14 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const [locale, setLocaleState] = useState<string>("en");
 
   useEffect(() => {
-    // Obtém o idioma do localStorage ou usa 'en' como padrão
-    const savedLocale = localStorage.getItem("locale") || "en";
-    setLocaleState(savedLocale);
+    // Obtém o idioma do localStorage ou detecta automaticamente o idioma do usuário
+    const savedLocale = localStorage.getItem("locale");
+    const defaultLocale = savedLocale || detectUserLanguage();
+    
+    setLocaleState(defaultLocale);
   }, []);
 
-  const translations = translationsMap[locale as keyof typeof translationsMap];
-  const safeTranslations = translations || translationsMap["en"];
+  const translations = translationsMap[locale] || translationsMap["en"];
 
   const setLocale = (newLocale: string) => {
     setLocaleState(newLocale);
@@ -53,7 +75,7 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   };
 
   return (
-    <LanguageContext.Provider value={{ locale, setLocale, translations: safeTranslations }}>
+    <LanguageContext.Provider value={{ locale, setLocale, translations }}>
       {children}
     </LanguageContext.Provider>
   );

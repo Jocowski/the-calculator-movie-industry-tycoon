@@ -1,3 +1,4 @@
+// src/components/Inputs/SelectInput.tsx
 "use client";
 
 import * as Select from '@radix-ui/react-select';
@@ -27,25 +28,21 @@ const SelectInput = ({
 
   const handleValueChange = (value: string) => {
     const cleanedValue = value === "unselected" ? "" : value;
-    const translatedLabel = getTranslatedOption(cleanedValue);
-
     onChange(cleanedValue);
-    window.gtag('event', 'form_field_change', {
-      form_name: 'affinity_calculator',
-      field_name: name,
-      field_value: cleanedValue,
-      field_label: translatedLabel // Novo parâmetro
-    });
+    if (typeof window.gtag === "function") {
+      window.gtag('event', 'form_field_change', {
+        form_name: 'affinity_calculator',
+        field_name: name,
+        field_value: cleanedValue
+      });
+    }
   };
 
-  // Função helper type-safe
   const getTranslatedOption = (option: string): string => {
     if (name === "theme") {
-      // Para temas, utiliza o formato correto sem uppercase
       const translationKey = `THEME_${option.replace(/-/g, '_')}`;
       return (t as Record<string, string>)[translationKey] || option;
     }
-    // Para outros campos, como gêneros, mantém a lógica atual (ou adapte conforme necessário)
     const genreKey = `GENRE_${option}`;
     return (t as Record<string, string>)[genreKey] || option;
   };
@@ -55,7 +52,6 @@ const SelectInput = ({
       <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
         {label}:
       </label>
-
       <Select.Root value={value} onValueChange={handleValueChange}>
         <Select.Trigger
           className="w-full flex items-center justify-between px-3 py-2 border rounded-md shadow-sm bg-white dark:bg-formBackgroundDark text-gray-900 dark:text-darkForeground border-gray-300 dark:border-formBorderDark"
@@ -66,13 +62,11 @@ const SelectInput = ({
             <ChevronDownIcon />
           </Select.Icon>
         </Select.Trigger>
-
         <Select.Portal>
           <Select.Content className="z-50 bg-white dark:bg-formBackgroundDark rounded-md shadow-lg border border-gray-200 dark:border-formBorderDark">
             <Select.ScrollUpButton className="flex items-center justify-center h-6 bg-white dark:bg-formBackgroundDark text-gray-500 cursor-default">
               <ChevronDownIcon />
             </Select.ScrollUpButton>
-
             <Select.Viewport className="p-2">
               {isOptional && (
                 <Select.Item
@@ -82,30 +76,25 @@ const SelectInput = ({
                   <Select.ItemText>{t.clearSelection}</Select.ItemText>
                 </Select.Item>
               )}
-
               {options.map((option) => (
                 <Select.Item
                   key={option}
                   value={option}
                   className="flex items-center px-3 py-2 text-sm rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer"
                 >
-                  <Select.ItemText>
-                    {getTranslatedOption(option)}
-                  </Select.ItemText>
+                  <Select.ItemText>{getTranslatedOption(option)}</Select.ItemText>
                   <Select.ItemIndicator className="ml-auto">
                     <CheckIcon />
                   </Select.ItemIndicator>
                 </Select.Item>
               ))}
             </Select.Viewport>
-
             <Select.ScrollDownButton className="flex items-center justify-center h-6 bg-white dark:bg-formBackgroundDark text-gray-500 cursor-default">
               <ChevronDownIcon />
             </Select.ScrollDownButton>
           </Select.Content>
         </Select.Portal>
       </Select.Root>
-
       {isOptional && (
         <span className="block text-xs text-gray-500 dark:text-gray-400 mt-1">
           {t.optinSelect}
