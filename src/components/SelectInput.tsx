@@ -40,12 +40,14 @@ const SelectInput = ({
 
   // Função helper type-safe
   const getTranslatedOption = (option: string): string => {
+    if (name === "theme") {
+      // Para temas, utiliza o formato correto sem uppercase
+      const translationKey = `THEME_${option.replace(/-/g, '_')}`;
+      return (t as Record<string, string>)[translationKey] || option;
+    }
+    // Para outros campos, como gêneros, mantém a lógica atual (ou adapte conforme necessário)
     const genreKey = `GENRE_${option}`;
-    const themeKey = `THEME_${option}`;
-
-    return (t as Record<string, string>)[genreKey] ||
-      (t as Record<string, string>)[themeKey] ||
-      option;
+    return (t as Record<string, string>)[genreKey] || option;
   };
 
   return (

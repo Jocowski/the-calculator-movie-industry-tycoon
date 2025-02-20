@@ -28,7 +28,11 @@ const AffinityCalculator: React.FC = () => {
 
   // Função helper para traduções de temas
   const getTranslatedKey = (prefix: string, key: string): string => {
-    const translationKey = `${prefix}_${key.replace(/-/g, '_').toUpperCase()}`;
+    // Se for tema, não converte para uppercase para casar com a estrutura de tradução existente
+    const translationKey =
+      prefix === "THEME"
+        ? `${prefix}_${key.replace(/-/g, '_')}`
+        : `${prefix}_${key.replace(/-/g, '_').toUpperCase()}`;
     return (t as Record<string, string>)[translationKey] || key;
   };
 
