@@ -40,7 +40,7 @@ export default function Home() {
             "@type": "WebApplication",
             "name": "The Calculator - Movie Industry Tycoon",
             "description": "Calculate movie affinities for The Executive: Movie Industry Tycoon",
-            "url": "https://the-calculator-movie-industry-tycoon.vercel.app/",
+            "url": "https://www.calcmovietycoon.com/",
             "applicationCategory": "UtilityApplication",
             "operatingSystem": "Web",
             "author": {

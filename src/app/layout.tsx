@@ -17,13 +17,13 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://the-calculator-movie-industry-tycoon.vercel.app/'),
+  metadataBase: new URL('https://www.calcmovietycoon.com/'),
   title: 'The Calculator - Movie Industry Tycoon',
   description: 'Calculate movie affinities for The Executive: Movie Industry Tycoon. Optimize your film production strategy with our advanced calculator.',
   keywords: 'movie industry, tycoon, calculator, film production, affinity, strategy',
   openGraph: {
     siteName: 'Movie Industry Calculator',
-    url: 'https://the-calculator-movie-industry-tycoon.vercel.app/',
+    url: 'https://www.calcmovietycoon.com/',
     title: 'The Calculator - Movie Industry Tycoon',
     description: 'Optimize your film production strategy with our advanced calculator for The Executive: Movie Industry Tycoon.',
     images: [
@@ -63,7 +63,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <GoogleAnalytics />
         <GoogleTagManager />
         <MicrosoftClarity />
-        <link rel="canonical" href="https://the-calculator-movie-industry-tycoon.vercel.app/" />
+        <link rel="canonical" href="https://www.calcmovietycoon.com/" />
+        <meta name="ezoic-site-verification" content="EsLTZPRvvkNdChsTLC5Rn68gkiEjTK" />
       </head>
       <body className={inter.className}>
         {/* Skip link para navegação por teclado */}
