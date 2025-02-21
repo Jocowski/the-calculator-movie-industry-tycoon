@@ -140,5 +140,14 @@
   "privacyPolicySection5": "Control del usuario: Puede gestionar sus preferencias de cookies y publicidad a través de la configuración de su navegador o dispositivo.",
   "privacyPolicyContact": "Contacto: Si tiene alguna pregunta o inquietud, póngase en contacto con nosotros a través de nuestro canal de Modding en Discord: [Haga clic aquí para acceder al canal de contacto](https://discord.com/channels/1220379497447161887/1341490944486277150).",
   "privacyPolicyLastUpdated": "Última actualización: 20 de febrero de 2025",
-  "privacyPolicyLink": "Ver políticas de privacidad"
+  "privacyPolicyLink": "Ver políticas de privacidad",
+  "productionPlanning": "La sugerencia para la asignación de recursos de esta película es:",
+  "productionLabel": "Producción",
+  "postProductionLabel": "Posproducción",
+  "writing": "Guion",
+  "costume": "Vestuario",
+  "setdesign": "Diseño de Escenografía",
+  "specialeffect": "Efectos Especiales",
+  "sound": "Sonido",
+  "editing": "Edición"
 }

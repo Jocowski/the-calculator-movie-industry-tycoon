@@ -11,9 +11,8 @@ import ClearButton from "@/components/Buttons/ClearButton";
 import useFormTracking from "@/hooks/useFormTracking";
 import { useGtag } from "@/hooks/useGtag";
 import { useCalculateAffinity } from "@/hooks/useCalculateAffinity";
+import { useCalculateProduction } from "@/hooks/useCalculateProduction";
 import affinities from "@/data";
-
-// Importando funções de cálculo
 import { getThemeScores, getAffinityLabel, calculateGenreScores } from "@/utils/affinityCalculations";
 
 const AffinityCalculator: React.FC = () => {
@@ -28,15 +27,21 @@ const AffinityCalculator: React.FC = () => {
   const [formStartTime, setFormStartTime] = useState(0);
   const [filledFields, setFilledFields] = useState<Set<string>>(new Set());
 
-  const ratingsOptions = Object.keys(affinities.ratingImpact.items).map(ratingKey => ({
+  const ratingsOptions = Object.keys(affinities.ratingImpact.items).map((ratingKey) => ({
     value: ratingKey,
-    label: (t as Record<string, string>)[`RATING_${ratingKey.replace('-', '_').toUpperCase()}`] || ratingKey
+    label:
+      (t as Record<string, string>)[`RATING_${ratingKey.replace("-", "_").toUpperCase()}`] ||
+      ratingKey,
   }));
 
-  const [genresOptions1, setGenresOptions1] = useState<{ genre: string; score: number; label: string }[]>([]);
-  const [genresOptions2, setGenresOptions2] = useState<{ genre: string; score: number; label: string }[]>([]);
+  const [genresOptions1, setGenresOptions1] = useState<
+    { genre: string; score: number; label: string }[]
+  >([]);
+  const [genresOptions2, setGenresOptions2] = useState<
+    { genre: string; score: number; label: string }[]
+  >([]);
 
-  useFormTracking({ filledFields, formName: 'affinity_calculator', delay: 15000 });
+  useFormTracking({ filledFields, formName: "affinity_calculator", delay: 15000 });
 
   const { result, seasonResults, loading } = useCalculateAffinity({
     genre1,
@@ -48,21 +53,28 @@ const AffinityCalculator: React.FC = () => {
     locale,
     formStartTime,
     filledFields,
-    safeGtag
+    safeGtag,
   });
+
+  // Chama o hook de produção e pós-produção e lê seus valores
+  const { production, postProduction } = useCalculateProduction(genre1, genre2);
 
   // Atualiza as opções de gênero dinamicamente
   useEffect(() => {
     if (theme) {
-      const themeScores = getThemeScores(theme, affinities, genres, (score: number) =>
-        getAffinityLabel(score, t as Record<string, string>)
+      const themeScores = getThemeScores(
+        theme,
+        affinities,
+        genres,
+        (score: number) => getAffinityLabel(score, t as Record<string, string>)
       );
 
       if (!genre2) {
         setGenresOptions1([...themeScores].sort((a, b) => b.score - a.score));
       } else {
         setGenresOptions1(
-          themeScores.filter((item: { genre: string }) => item.genre !== genre2)
+          themeScores
+            .filter((item: { genre: string }) => item.genre !== genre2)
             .sort((a, b) => b.score - a.score)
         );
       }
@@ -76,7 +88,8 @@ const AffinityCalculator: React.FC = () => {
           (score: number) => getAffinityLabel(score, t as Record<string, string>)
         );
         setGenresOptions2(
-          combinedScores.filter((item: { genre: string }) => item.genre !== genre1)
+          combinedScores
+            .filter((item: { genre: string }) => item.genre !== genre1)
             .sort((a, b) => b.score - a.score)
         );
       } else {
@@ -84,10 +97,10 @@ const AffinityCalculator: React.FC = () => {
       }
     } else {
       setGenresOptions1(
-        affinities.genreRelations.header.map(genre => ({ genre, score: 0, label: "" }))
+        affinities.genreRelations.header.map((genre) => ({ genre, score: 0, label: "" }))
       );
       setGenresOptions2(
-        affinities.genreRelations.header.map(genre => ({ genre, score: 0, label: "" }))
+        affinities.genreRelations.header.map((genre) => ({ genre, score: 0, label: "" }))
       );
     }
   }, [theme, genre1, genre2, genres, t]);
@@ -101,7 +114,7 @@ const AffinityCalculator: React.FC = () => {
     setFormStartTime(0);
     safeGtag("form_reset", {
       form_name: "affinity_calculator",
-      filled_fields_before_reset: Array.from(filledFields).join(',')
+      filled_fields_before_reset: Array.from(filledFields).join(","),
     });
   };
 
@@ -149,11 +162,7 @@ const AffinityCalculator: React.FC = () => {
 
         {result !== null && (
           <div className="result-actions pt-4">
-            <ClearButton
-              onClear={handleClearAll}
-              label={t.clearAll}
-              testId="clear-all-button"
-            />
+            <ClearButton onClear={handleClearAll} label={t.clearAll} testId="clear-all-button" />
             <div className="border-t border-gray-300 dark:border-gray-600 w-full"></div>
           </div>
         )}
@@ -166,6 +175,8 @@ const AffinityCalculator: React.FC = () => {
           theme={theme}
           rating={rating}
           seasonResults={seasonResults}
+          production={production}
+          postProduction={postProduction}
         />
       </div>
     </div>

@@ -140,5 +140,14 @@
   "privacyPolicySection5": "ユーザーの管理：ブラウザまたはデバイスの設定を通じて、クッキーや広告の設定を管理できます。",
   "privacyPolicyContact": "お問い合わせ：ご質問やご懸念がある場合は、DiscordのModdingチャンネルからお問い合わせください：[こちらをクリックして連絡チャネルにアクセス](https://discord.com/channels/1220379497447161887/1341490944486277150)。",
   "privacyPolicyLastUpdated": "最終更新日：2025年2月20日",
-  "privacyPolicyLink": "プライバシーポリシーを表示"
+  "privacyPolicyLink": "プライバシーポリシーを表示",
+  "productionPlanning": "本作のリソース配分に関する提案は次のとおりです:",
+  "productionLabel": "制作",
+  "postProductionLabel": "ポストプロダクション",
+  "writing": "脚本",
+  "costume": "衣装",
+  "setdesign": "セットデザイン",
+  "specialeffect": "特殊効果",
+  "sound": "サウンド",
+  "editing": "編集"
 }

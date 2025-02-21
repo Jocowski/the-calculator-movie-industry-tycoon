@@ -140,5 +140,14 @@
   "privacyPolicySection5": "사용자 제어: 브라우저나 기기 설정을 통해 쿠키 및 광고 설정을 관리할 수 있습니다.",
   "privacyPolicyContact": "문의: 질문이나 우려 사항이 있으시면, Discord의 Modding 채널을 통해 문의해 주시기 바랍니다: [여기를 클릭하여 연락 채널로 이동](https://discord.com/channels/1220379497447161887/1341490944486277150).",
   "privacyPolicyLastUpdated": "최종 업데이트: 2025년 2월 20일",
-  "privacyPolicyLink": "개인정보 처리방침 보기"
+  "privacyPolicyLink": "개인정보 처리방침 보기",
+  "productionPlanning": "이 영화에 대한 리소스 할당 제안은 다음과 같습니다:",
+  "productionLabel": "프로덕션",
+  "postProductionLabel": "포스트 프로덕션",
+  "writing": "각본",
+  "costume": "의상",
+  "setdesign": "세트 디자인",
+  "specialeffect": "특수 효과",
+  "sound": "사운드",
+  "editing": "편집"
 }

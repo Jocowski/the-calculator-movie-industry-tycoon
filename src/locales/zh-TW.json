@@ -140,5 +140,14 @@
   "privacyPolicySection5": "用戶控制：您可以透過瀏覽器或裝置設定管理您的 Cookie 及廣告偏好。",
   "privacyPolicyContact": "聯絡方式：如有任何疑問或擔憂，請透過我們的 Discord Modding 頻道與我們聯絡：[點此進入聯絡頻道](https://discord.com/channels/1220379497447161887/1341490944486277150)。",
   "privacyPolicyLastUpdated": "最後更新：2025年2月20日",
-  "privacyPolicyLink": "查看隱私政策"
+  "privacyPolicyLink": "查看隱私政策",
+  "productionPlanning": "本片的資源分配建議如下：",
+  "productionLabel": "製作",
+  "postProductionLabel": "後期製作",
+  "writing": "劇本",
+  "costume": "服裝",
+  "setdesign": "場景設計",
+  "specialeffect": "特效",
+  "sound": "聲音",
+  "editing": "剪輯"
 }
