@@ -128,7 +128,13 @@ const AffinityCalculator: React.FC = () => {
         <SelectInput
           name="theme"
           label={t.theme}
-          options={Object.keys(affinities.thematicRelations.items)}
+          options={Object.keys(affinities.thematicRelations.items).sort((a, b) => {
+            // Função auxiliar para obter a tradução do tema usando toLowerCase
+            const getThemeLabel = (key: string): string =>
+              ((t as Record<string, string>)[`THEME_${key.toLowerCase()}`] || key).toLowerCase();
+
+            return getThemeLabel(a).localeCompare(getThemeLabel(b));
+          })}
           value={theme}
           onChange={(value) => setTheme(value)}
           required
