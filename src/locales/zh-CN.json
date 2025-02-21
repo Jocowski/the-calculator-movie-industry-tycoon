@@ -31,8 +31,8 @@
   "messageUpdate1": "该计算器兼容版本",
   "gameVersion": "补丁说明",
   "messageUpdate2": "的游戏",
-  "nextFeatureMessage": "下一个功能将是：",
-  "nextFeature": "生产和后期制作的最佳调整",
+  "nextFeatureMessage": "新功能即将推出：",
+  "nextFeature": "制作与后期制作的高级资源建议",
   "newTab": "(在新标签页中打开)",
   "GENRE_action": "动作",
   "GENRE_adventure": "冒险",
@@ -140,5 +140,14 @@
   "privacyPolicySection5": "用户控制：您可以通过浏览器或设备设置管理您的 Cookie 和广告偏好。",
   "privacyPolicyContact": "联系方式：如有任何疑问或担忧，请通过我们的 Discord Modding 频道与我们联系：[点击此处访问联系频道](https://discord.com/channels/1220379497447161887/1341490944486277150)。",
   "privacyPolicyLastUpdated": "最后更新：2025年2月20日",
-  "privacyPolicyLink": "查看隐私政策"
+  "privacyPolicyLink": "查看隐私政策",
+  "productionPlanning": "本片的资源分配建议如下：",
+  "productionLabel": "制作",
+  "postProductionLabel": "后期制作",
+  "writing": "剧本",
+  "costume": "服装",
+  "setdesign": "场景设计",
+  "specialeffect": "特效",
+  "sound": "声音",
+  "editing": "剪辑"
 }

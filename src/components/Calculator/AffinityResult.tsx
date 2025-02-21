@@ -5,11 +5,24 @@ import React from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import BaseScoreResult from "./BaseScoreResult";
 import SeasonalResults from "./SeasonalResults";
+import ProductionResult from "./ProductionResult";
 
 export type SeasonResult = {
   season: string;
   score: number;
   label: string;
+};
+
+type ProductionProps = {
+  writing: number;
+  costume: number;
+  setdesign: number;
+};
+
+type PostProductionProps = {
+  specialeffect: number;
+  sound: number;
+  editing: number;
 };
 
 type AffinityResultProps = {
@@ -20,6 +33,9 @@ type AffinityResultProps = {
   theme: string;
   rating: string;
   seasonResults: SeasonResult[];
+  // Planejamento de Produção e Pós-Produção
+  production: ProductionProps | null;
+  postProduction: PostProductionProps | null;
 };
 
 const AffinityResult: React.FC<AffinityResultProps> = ({
@@ -30,6 +46,8 @@ const AffinityResult: React.FC<AffinityResultProps> = ({
   theme,
   rating,
   seasonResults,
+  production,
+  postProduction,
 }) => {
   const { translations: t } = useLanguage();
 
@@ -52,7 +70,7 @@ const AffinityResult: React.FC<AffinityResultProps> = ({
   }
 
   return (
-    <div className="result-container space-y-2" aria-live="polite">
+    <div className="result-container space-y-4" aria-live="polite">
       <BaseScoreResult
         result={result}
         genre1={genre1}
@@ -60,6 +78,12 @@ const AffinityResult: React.FC<AffinityResultProps> = ({
         theme={theme}
         rating={rating}
       />
+
+      {/* Exibe planejamento se os dados existirem */}
+      {production && postProduction && (
+        <ProductionResult production={production} postProduction={postProduction} />
+      )}
+
       <SeasonalResults seasonResults={seasonResults} />
     </div>
   );

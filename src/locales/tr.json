@@ -31,8 +31,8 @@
   "messageUpdate1": "Hesap makinesi, sürüm ile uyumludur",
   "gameVersion": "Yama notları",
   "messageUpdate2": "oyunun",
-  "nextFeatureMessage": "Bir sonraki özellik şu olacak:",
-  "nextFeature": "Üretim ve Post-prodüksiyon için optimal ayarlama",
+  "nextFeatureMessage": "Yakında gelecek yenilikler:",
+  "nextFeature": "Prodüksiyon ve Post-prodüksiyon için Premium Kaynak Önerileri",
   "newTab": "(yeni sekmede açar)",
   "GENRE_action": "Aksiyon",
   "GENRE_adventure": "Macera",
@@ -140,5 +140,14 @@
   "privacyPolicySection5": "Kullanıcı Kontrolü: Tarayıcı veya cihaz ayarları aracılığıyla çerez ve reklam tercihlerinizi yönetebilirsiniz.",
   "privacyPolicyContact": "İletişim: Herhangi bir sorunuz veya endişeniz varsa, lütfen Discord’daki Modding Kanalımız üzerinden bizimle iletişime geçin: [İletişim kanalına erişmek için buraya tıklayın](https://discord.com/channels/1220379497447161887/1341490944486277150).",
   "privacyPolicyLastUpdated": "Son güncelleme: 20 Şubat 2025",
-  "privacyPolicyLink": "Gizlilik Politikasını Görüntüle"
+  "privacyPolicyLink": "Gizlilik Politikasını Görüntüle",
+  "productionPlanning": "Bu film için kaynak tahsisi önerisi şöyledir:",
+  "productionLabel": "Yapım",
+  "postProductionLabel": "Post-Prodüksiyon",
+  "writing": "Senaryo",
+  "costume": "Kostüm",
+  "setdesign": "Set Tasarımı",
+  "specialeffect": "Özel Efektler",
+  "sound": "Ses",
+  "editing": "Kurgu"
 }

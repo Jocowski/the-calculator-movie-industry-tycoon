@@ -31,8 +31,8 @@
   "messageUpdate1": "A calculadora é compatível com a versão",
   "gameVersion": "Patch notes",
   "messageUpdate2": "do jogo.",
-  "nextFeatureMessage": "O próximo recurso será:",
-  "nextFeature": "Ajuste ideal para Produção e Pós-produção",
+  "nextFeatureMessage": "Novidades chegando em breve:",
+  "nextFeature": "Sugestão de recursos Premium para Produção e Pós-Produção",
   "newTab": "(abre em nova aba)",
   "GENRE_action": "Ação",
   "GENRE_adventure": "Aventura",
@@ -140,5 +140,14 @@
   "privacyPolicySection5": "Controle do Usuário: Você pode gerenciar suas preferências de cookies e anúncios por meio das configurações do seu navegador ou dispositivo.",
   "privacyPolicyContact": "Contato: Caso tenha dúvidas ou preocupações, entre em contato conosco através do nosso Canal de Modding no Discord: [Clique aqui para acessar o canal de contato](https://discord.com/channels/1220379497447161887/1341490944486277150).",
   "privacyPolicyLastUpdated": "Última atualização: 20 de fevereiro de 2025.",
-  "privacyPolicyLink": "Ver Políticas de Privacidade"
+  "privacyPolicyLink": "Ver Políticas de Privacidade",
+  "productionPlanning": "A sugestão para a alocação de recursos deste filme é:",
+  "productionLabel": "Produção",
+  "postProductionLabel": "Pós-Produção",
+  "writing": "Roteiro",
+  "costume": "Figurino",
+  "setdesign": "Cenografia",
+  "specialeffect": "Efeitos Especiais",
+  "sound": "Som",
+  "editing": "Edição"
 }
