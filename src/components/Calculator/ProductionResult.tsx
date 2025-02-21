@@ -33,7 +33,7 @@ const ProductionResult: React.FC<ProductionResultProps> = ({ production, postPro
    */
   const renderSliderCard = (label: string, value: number, testId: string) => {
     // O slider vai de 10 a 50 (intervalo = 40). Calculamos a % para posicionar o valor.
-    const leftPos = ((value - 10) / 40) * 100;
+    const leftPos = ((value - 10) / 40) * 90;
 
     return (
       <div
@@ -62,7 +62,7 @@ const ProductionResult: React.FC<ProductionResultProps> = ({ production, postPro
 
           {/* Valor posicionado abaixo do thumb */}
           <div
-            className="absolute text-xs text-gray-500 dark:text-gray-400"
+            className="absolute text-xs text-gray-500 dark:text-gray-300 ml-2"
             style={{
               left: `${leftPos}%`,
               transform: "translateX(-50%)",

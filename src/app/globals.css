@@ -80,7 +80,7 @@ input[type='range'].readonly-slider {
   width: 100%;
   height: 6px;
   border-radius: 9999px;
-  margin: 8px 0;
+  margin: 8px 0 ;
   cursor: default;
   pointer-events: none;
   /* Exibe os ticks – 8 intervalos para 9 pontos (10, 15, ..., 50) */
